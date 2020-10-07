@@ -1,6 +1,24 @@
 .map
-  .menu_wrapper
-    .content
-    .footer
-      .title = link_to 'arr-Point', root_path
-      .menu 
+  #map style="width: 100%; height: 900px;"
+  javascript: 
+    DG.then(function() {
+      var map;
+      var location_detection_disabled = "#{ t('.location_detection_disabled') }";
+      map = DG.map('map', {
+        center: [55.75, 37.62],
+        fullscreenControl: false,
+        zoom: 13
+      })
+      map.locate({setView: true, watch: true})
+      .on('locationfound', function(e) {
+          DG.marker([e.latitude, e.longitude]).addTo(map);
+      })
+      .on('locationerror', function(e) {
+          DG.popup()
+            .setLatLng(map.getCenter())
+            .setContent( location_detection_disabled )
+            .openOn(map);
+      });      
+    })
+  .title = link_to '«arrival Point»', root_path
+  .menu 

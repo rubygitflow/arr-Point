@@ -2,6 +2,7 @@
   "name": "arr_Point",
   "private": true,
   "dependencies": {
+    "2gis-maps": "^3.6.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
