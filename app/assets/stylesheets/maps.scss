@@ -1,0 +1,57 @@
+$DarkMagenta: #8B008B;
+
+.map {
+  height: 100%;
+}
+
+.menu_wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  .content {
+    flex: 1 0 auto;
+  }
+
+  .footer {
+    flex: 0 0 auto;
+    height: 25pt;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .title {
+      padding-left: 7pt;
+
+      a {
+        text-decoration: none; 
+        font: 24pt bold impact;
+        color: $DarkMagenta; 
+        margin-bottom: 7pt;
+       }
+      a:visited {
+        text-decoration: none; 
+        color: $DarkMagenta; 
+      } 
+      a:hover {
+        text-decoration: none; 
+        color: lighten($DarkMagenta, 15%);
+      }
+    }
+
+    .menu {
+      border-top: 10pt double #888;
+      border-bottom: 3.3pt solid #888;
+      margin-right: 7pt;
+      margin-top: 4pt;
+      margin-bottom: 4.5pt;
+      width: 24pt;
+      cursor: pointer;
+    }
+    .menu:hover {
+      border-color: lighten($DarkMagenta, 15%);
+    }
+  }
+
+}
