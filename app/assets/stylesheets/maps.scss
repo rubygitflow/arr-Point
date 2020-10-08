@@ -40,20 +40,46 @@ $DarkMagenta: #8B008B;
   .menu {
     z-index: 5001;
     position: fixed;
+    display: inline-block;
     bottom: 0;
     right: 0;
-    height: 3pt;
-
-    border-top: 10pt double #888;
-    border-bottom: 3.3pt solid #888;
+    height: 24pt;
     margin-right: 7pt;
     margin-top: 4pt;
     margin-bottom: 4.5pt;
     width: 24pt;
-    cursor: pointer;
- }
-  .menu:hover {
-    border-color: lighten($DarkMagenta, 15%);
-  }
 
+    .dropbtn {
+      height: 3pt;
+      border-top: 10pt double #888;
+      border-bottom: 3.3pt solid #888;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .dropup-content {
+      display: none;
+      position: absolute;
+      background-color: #f1f1f1;
+      min-width: 90px;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      z-index: 5002;
+      float: right;
+      right:0;
+      bottom: 28pt;
+
+      a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      a:hover {background-color: #ddd}
+    }
+    
+    .dropbtn:hover, .dropbtn:focus {
+      border-color: lighten($DarkMagenta, 15%);
+    }
+
+ }
 }

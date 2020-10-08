@@ -2,4 +2,5 @@ ru:
   maps:
     index:
       location_detection_disabled: "Доступ к определению местоположения отключён"
-  
+      menu: "Меню"
+      service_name: "точка Прибытия"
