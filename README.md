@@ -1,5 +1,5 @@
 # arrival Point
-Open project of the private taxi support service
+Open project of the private taxi support service.
 
-Version: None
-Status: initializing of the project
+* Version: None
+* Status: initializing of the project
