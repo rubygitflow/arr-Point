@@ -11,8 +11,6 @@ $DarkMagenta: #8B008B;
     position: relative;
   }
 
-
-
   .title {
     z-index: 5000;
     position: fixed;
@@ -76,7 +74,7 @@ $DarkMagenta: #8B008B;
       }
       a:hover {background-color: #ddd}
     }
-    
+
     .dropbtn:hover, .dropbtn:focus {
       border-color: lighten($DarkMagenta, 15%);
     }
