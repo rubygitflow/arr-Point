@@ -9,6 +9,8 @@ $DarkMagenta: #8B008B;
 
   #map {
     position: relative;
+    width: 100%; 
+    height: 104%;
   }
 
   .title {
@@ -18,6 +20,7 @@ $DarkMagenta: #8B008B;
     left: 0;
     height: 25pt;
     padding-left: 7pt;
+    padding-bottom: 7pt;
 
     a {
       text-decoration: none; 

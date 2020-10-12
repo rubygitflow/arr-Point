@@ -1,5 +1,5 @@
 .map
-  #map style="width: 100%; height: 900px;"
+  #map
   javascript: 
     DG.then(function() {
       var map;
@@ -32,7 +32,7 @@
   .menu  title="#{ t('.menu') }"
     .dropbtn onclick="dropFunction()"
     .dropup-content#menuDropup
-      = link_to 'RU/EN', change_language_maps_path, id:'langbtn', data: { onclick:'changeLangFunction()'}
+      = link_to 'RU / EN', change_language_maps_path, id:'langbtn', data: { onclick:'changeLangFunction()'}
     javascript: 
       function dropFunction() {
         var elem = document.getElementById("menuDropup");
