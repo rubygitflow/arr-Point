@@ -1,6 +1,57 @@
 ru:
+  service_name: "точка Прибытия"
+  sign_up: "Регистрация" 
+  sign_in: "Вход" 
+  sign_out: "Выход" 
+
   maps:
     index:
       location_detection_disabled: "Доступ к определению местоположения отключён"
       menu: "Меню"
-      service_name: "точка Прибытия"
+
+  activerecord:
+    models:
+      user:
+        few: Пользователя
+        many: Пользователей
+        one: Пользователь
+        other: Пользователи
+    attributes:
+      user:
+        name: "Имя"
+        phone: "Номер телефона"
+        role: "Роль"
+        role_rules_accepted: "Согласие с правилами сервиса"
+
+        confirmation_sent_at: Дата отправки подтверждения
+        confirmation_token: Код подтверждения email
+        confirmed_at: Дата подтверждения
+        created_at: Дата создания
+        current_password: Текущий пароль
+        current_sign_in_at: Дата текущего входа
+        current_sign_in_ip: IP текущего входа
+        email: Адрес Email
+        encrypted_password: Зашифрованный пароль
+        failed_attempts: Неудачные попытки
+        last_sign_in_at: Дата последнего входа
+        last_sign_in_ip: IP последнего входа
+        locked_at: Дата блокировки
+        password: Пароль
+        password_confirmation: Подтверждение пароля
+        remember_created_at: Дата создания запоминания
+        remember_me: Запомнить меня
+        reset_password_sent_at: Дата отправки сброса пароля
+        reset_password_token: Токен сброса пароля
+        sign_in_count: Количество входов
+        unconfirmed_email: Неподтвержденный email
+        unlock_token: Токен разблокировки
+        updated_at: Дата обновления
+    
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "Недопустимый формат электронной почты"
+            role_rules_accepted:
+              accepted: "Вы должны выразить согласие с Условиями и Положениями"

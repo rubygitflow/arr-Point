@@ -8,6 +8,8 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
+import "@fortawesome/fontawesome-free/css/all.css"
+import "spectre.css"
 import "2gis-maps"
 
 // Uncomment to copy all static images under ../images to the output folder and reference

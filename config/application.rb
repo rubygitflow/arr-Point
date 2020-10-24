@@ -12,6 +12,7 @@ module ArrPoint
     config.load_defaults 6.0
 
     config.time_zone = 'Moscow'
+    config.i18n.available_locales = [:en, :ru] 
     config.i18n.default_locale = :ru # == 2gis.default_locale = :ru
 
     # Settings in config/environments/* take precedence over those specified here.

@@ -1,6 +1,7 @@
 doctype html
 html
   head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
     title arr-Point
     = csrf_meta_tags
     = csp_meta_tag
@@ -8,5 +9,45 @@ html
     = stylesheet_link_tag  "application", 'data-turbolinks-track': 'reload', media: 'all'
     = javascript_pack_tag  "application", 'data-turbolinks-track': 'reload'
 
+    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
+    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
+
   body
-    = yield
+    - if controller.controller_name != "maps"
+      header class="navbar"
+        section class="navbar-section"
+        section class="navbar-section navbar-center"
+          = link_to "«#{ t('service_name') }»", root_path, class:"navbar-brand"
+        section class="navbar-section"
+          - if user_signed_in? 
+            = link_to "#{ t('sign_out') }", destroy_user_session_path, method: :delete 
+
+      main class="container"
+        - flash.each do |level, text|
+          div class="#{flash_class(level)}"
+            p = text 
+
+        = yield
+    - else
+      = yield
+
+      #up_container onclick="hideFunction()"
+        main class="container"
+          - flash.each do |level, text|
+            div class="#{flash_class(level)}"
+              p = text 
+         
+      javascript: 
+        function hideFunction() {
+          document.getElementById("up_container").style.display = "none";
+        };
+
+        window.addEventListener('load', function() {
+          let flash = "#{flash.inspect}"; 
+          let is_flash = ("#{flash.any?}" == "true"); 
+          if (is_flash) {
+            document.getElementById("up_container").style.display = "block";
+          } else {
+            document.getElementById("up_container").style.display = "none";
+          };
+        });
