@@ -35,4 +35,12 @@ class User < ApplicationRecord
   def authy_turn_off
     update!(authy_enabled: false)
   end
+
+  def driver?
+    role == 'Driver'
+  end
+
+  def passenger?
+    role == 'Passenger'
+  end
 end

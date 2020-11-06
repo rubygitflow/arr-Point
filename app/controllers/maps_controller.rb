@@ -3,6 +3,9 @@ class MapsController < ApplicationController
 
   before_action :authenticate_user!, except: %i[index change_language]
 
+  skip_authorization_check :only => [:index, :change_language]
+  # authorize_resource
+
   def index
     if user_signed_in? && current_user.authy_enabled && 
     !current_user.authy_id && !current_user.last_sign_in_with_authy
