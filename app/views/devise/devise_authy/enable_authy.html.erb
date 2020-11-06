@@ -1,0 +1,28 @@
+<div class="columns">
+  <div class="column col-4 col-mx-auto card minw-250">
+    <div class="card-header">
+      <h2><%= t('devise.authy_register_title') %></h2>
+    </div>
+
+    <%= enable_authy_form class: "card-body authy-form" do %>
+      <div class="form-group">
+        <%= label_tag "authy-countries", t('devise.country'), 
+        class: "form-label" %>
+        <%= text_field_tag :country_code, "#{@resource.country_code}", 
+        autocomplete: :off, placeholder: t('devise.country'), 
+        id: "authy-countries", class: "form-input" %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'authy-cellphone', t('devise.cellphone'), 
+        class: "form-label" %>
+        <%= text_field_tag :cellphone, "#{@resource.phone_number}", 
+        autocomplete: :off, placeholder: t('devise.cellphone'), 
+        id: "authy-cellphone", class: "form-input" %>
+      </div>
+      <div class="actions pt-2">
+        <%= button_tag t('devise.enable_authy'), type: "submit", 
+        class: "btn btn-block btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

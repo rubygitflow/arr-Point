@@ -1,7 +1,55 @@
 en:
+  service_name: "arrival Point"
+  sign_up: "Sign up" 
+  sign_in: "Sign in" 
+  sign_out: "Sign out" 
+
   maps:
     index:
       location_detection_disabled: "Location access disabled"
       menu: "Menu"
-      service_name: "arrival Point"
-      
+
+  activerecord:
+    models:
+      user:
+        one: User
+        other: Users
+    attributes:
+      user:
+        name: "Name"
+        phone: "Phone"
+        role: "Role"
+        role_rules_accepted: "Acceptance of the role rules"
+
+        confirmation_sent_at: Confirmation sent at
+        confirmation_token: Confirmation token
+        confirmed_at: Confirmed at
+        created_at: Created at
+        current_password: Current password
+        current_sign_in_at: Current sign in at
+        current_sign_in_ip: Current sign in IP
+        email: E-mail address
+        encrypted_password: Encrypted password
+        failed_attempts: Failed attempts
+        last_sign_in_at: Last sign in at
+        last_sign_in_ip: Last sign in IP
+        locked_at: Locked at
+        password: Password
+        password_confirmation: Password confirmation
+        remember_created_at: Remember created at
+        remember_me: Remember me
+        reset_password_sent_at: Reset password sent at
+        reset_password_token: Reset password token
+        sign_in_count: Sign in count
+        unconfirmed_email: Unconfirmed email
+        unlock_token: Unlock token
+        updated_at: Updated at
+    
+    errors:
+      models:
+        user:
+          attributes:
+            email:
+              invalid: "Invalid email format"
+            role_rules_accepted:
+              accepted: "You must agree to the Terms and Conditions"

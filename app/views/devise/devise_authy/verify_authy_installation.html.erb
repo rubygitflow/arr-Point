@@ -1,0 +1,29 @@
+<div class="columns">
+  <div class="column col-4 col-mx-auto card minw-250">
+    <div class="card-header">
+      <h2><%= t('devise.authy_verify_installation_title') %></h2>
+    </div>
+
+    <%= verify_authy_installation_form class: 'card-body authy-form' do %>
+      <legend><%= t('devise.submit_token_title') %>
+        
+      </legend>
+      <div class="form-group">1. <%= authy_request_sms_link %></div>
+      <div class="form-group">
+        <%= label_tag 'authy-token', '2. Enter token', class: 'form-label' %>
+        <%= text_field_tag :token, "", :autocomplete => :off, 
+        :id => 'authy-token', class: 'form-input' %>
+      </div>
+      <div class="form-group">
+        <label>
+          <%= check_box_tag :remember_device %>
+          <span><%= t('devise.remember_device') %></span>
+        </label>
+      </div>
+      <div class="actions">
+        <%= submit_tag t('devise.enable_my_account'), 
+        :class => 'btn btn-block btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>

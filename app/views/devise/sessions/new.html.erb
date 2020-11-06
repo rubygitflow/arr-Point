@@ -1,0 +1,43 @@
+<div class="columns">
+  <div class="column col-4 col-mx-auto card minw-250">
+    <div class="card-header">
+      <h2><%= t('devise.sessions.title_sign_in') %></h2>
+    </div>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), 
+    html: { class: "card-body" }) do |f| %>
+
+      <div class="form-group">
+        <%= f.label :email, t('devise.shared.lbl_email'), 
+        class: "form-label" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", 
+        class: "form-input" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password, t('devise.shared.lbl_password'), 
+        class: "form-label" %>
+        <%= f.password_field :password, autocomplete: "current-password", 
+        class: "form-input" %>
+      </div>
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="form-group">
+          <%= f.label :remember_me, class: "form-checkbox" do %>
+            <%= f.check_box :remember_me %>
+            <i class="form-icon"></i> <%= t('devise.sessions.remember_me') %>           
+          <% end %>
+        </div>
+      <% end -%>
+
+      <div class="actions">
+        <%= f.button t('devise.sessions.btn_sign_in'), type: "submit", 
+        class: "btn btn-block btn-primary mb-2" %>
+      </div>
+    <% end %>
+
+    <div class="card-footer">
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>
