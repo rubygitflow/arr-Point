@@ -6,4 +6,8 @@ module ApplicationHelper
       else "toast toast-#{level}"
     end
   end
+  
+  def prepare_chage_phone(phone)
+    session[:mutable_phone] = phone
+  end
 end

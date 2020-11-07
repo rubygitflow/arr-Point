@@ -3,6 +3,10 @@ ru:
   sign_up: "Регистрация" 
   sign_in: "Вход" 
   sign_out: "Выход" 
+  edit_reg: "Личный кабинет"
+  driver: "Водитель"
+  passenger: "Пассажир"
+  select_role: "Выберите роль:"
 
   maps:
     index:

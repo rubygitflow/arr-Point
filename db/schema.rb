@@ -32,7 +32,8 @@ ActiveRecord::Schema.define(version: 2020_10_14_205916) do
     t.enum "role", default: "Driver", as: "role_type"
     t.string "authy_id"
     t.datetime "last_sign_in_with_authy"
-    t.boolean "authy_enabled", default: true
+    t.boolean "authy_enabled", default: false
+    t.boolean "authy_hook_enabled", default: true
     t.index ["authy_id"], name: "index_users_on_authy_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

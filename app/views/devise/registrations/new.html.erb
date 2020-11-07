@@ -1,5 +1,5 @@
 <div class="columns">
-  <div class="column col-4 col-mx-auto card minw-250">
+  <div class="column col-6 col-mx-auto card">
     <div class="card-header">
       <h2><%= t('devise.registrations.title_sign_up') %></h2>
       <h6><%= t('devise.registrations.title_sign_up_attention') %></h6>
@@ -33,9 +33,9 @@
       <div class="form-group">
         <%= f.label :role, t('devise.registrations.lbl_role'), 
         class: "form-label" %>
-        <%= f.select :role, [["Driver", "Driver"], ["Passenger", "Passenger"]], 
-        {include_blank: "#{t('devise.registrations.select_role')}"}, 
-        class: "form-select" %>
+        <%= f.select :role, 
+        [[t('driver'), "Driver"], [t('passenger'), "Passenger"]], 
+        {include_blank: t('select_role')}, class: "form-select" %>
       </div>
 
       <div class="form-group">

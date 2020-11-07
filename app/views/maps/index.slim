@@ -36,6 +36,7 @@
       = link_to 'RU / EN', change_language_maps_path, id:'langbtn', data: { onclick:'changeLangFunction()'}
       - if user_signed_in?
         = link_to "#{ t('sign_out') }", destroy_user_session_path, method: :delete
+        = link_to "#{ t('edit_reg') }", edit_user_registration_path
       - else
         = link_to "#{ t('sign_in') }", new_user_session_path
         = link_to "#{ t('sign_up') }", new_user_registration_path

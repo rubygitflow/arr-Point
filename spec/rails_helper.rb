@@ -8,6 +8,7 @@ require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 require 'cancan/matchers'
+require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -39,6 +40,12 @@ RSpec.configure do |config|
 
   # You must have the chrome browser installed
   Capybara.javascript_driver = :selenium_chrome
+  # Capybara.javascript_driver = :rack_test
+  # Capybara.current_driver = :selenium
+  # Capybara.default_driver = :selenium
+  # Capybara.default_driver = :selenium
+  # available drivers: :rack_test, :selenium, :selenium_headless, 
+  #                    :selenium_chrome, :selenium_chrome_headless
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

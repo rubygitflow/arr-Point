@@ -273,7 +273,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   cancancan
-  capybara (>= 2.15)
+  capybara
   devise (~> 4.7, >= 4.7.3)
   devise-authy (~> 2.2, >= 2.2.1)
   dotenv-rails

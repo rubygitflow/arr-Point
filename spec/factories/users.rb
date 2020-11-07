@@ -8,7 +8,7 @@ FactoryBot.define do
 
   factory :user do
     email
-    name
+    name     
     phone{ '+71234567890' }
     role { 'Driver' }
     password { '12345678' }

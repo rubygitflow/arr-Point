@@ -50,18 +50,25 @@ en:
       btn_sign_up: 'Sign up'
       title_sign_up: 'Registration form'
       title_sign_up_attention: '(All fields are required)'
-      select_role: "Select role:"
       lbl_email: "Remember your login in the form of a fake <b>email</b> or enter a real <b>email</b> to get feedback from the support team."
       lbl_phone: "Phone number"
       lbl_name: "Name (full name)"
       lbl_role: "Role"
       lbl_password_conf: "Password confirmation"
+
+      title_edit_acc: 'Edit account details'
+      leave_blank_pass: "(leave blank if you don't want to change it)"
+      confirm_password: "(we need your current password to confirm your changes)"
+      btn_edit_acc: 'Update'
+      title_cancel_acc: 'Cancel my account'
+      btn_cancel_acc: "Cancel account"
+      lbl_cancel_acc: "Your entire account history will also be deleted"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."
       already_signed_out: "Signed out successfully."
 
-      title_sign_in: 'Authentication form'
+      title_sign_in: 'Log in form'
       btn_sign_in: 'Sign in'
       remember_me: 'Remember me'
     unlocks:

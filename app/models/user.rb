@@ -32,8 +32,13 @@ class User < ApplicationRecord
     @random_email ||= random_string+'@email.com'
   end
 
-  def authy_turn_off
-    update!(authy_enabled: false)
+  def authy_hook_turn_off
+    update!(authy_hook_enabled: false)
+    update!(authy_enabled: false)  
+  end
+
+  def authy_hook_turn_on
+    update!(authy_hook_enabled: true, last_sign_in_with_authy: nil)
   end
 
   def driver?
