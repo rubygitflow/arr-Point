@@ -95,7 +95,7 @@ feature 'User can register in the system', %{
       find('li', text: 'Canada (+1)').click
     end
 
-    scenario 'can request code by SMS to the phone number' do
+    scenario 'can request the code by SMS to the phone number' do
       click_button 'Принять'
       # save_and_open_page
       expect(page).to have_content 'Подтверждение своего номера телефона' 

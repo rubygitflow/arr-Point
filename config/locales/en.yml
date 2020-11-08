@@ -18,6 +18,12 @@ en:
       user:
         one: User
         other: Users
+      driver:
+        one: Driver
+        other: Drivers
+      car:
+        one: Car
+        other: Cars
     attributes:
       user:
         name: "Name"
@@ -48,6 +54,15 @@ en:
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
+      driver:
+        driver_id: Driver ID
+        license_id: License ID
+        region: Region
+        start_driving: Year of starting driving
+      car:
+        license_plate: License plate
+        model: Model
+        year_manufacture: Year of car manufacture
     
     errors:
       models:

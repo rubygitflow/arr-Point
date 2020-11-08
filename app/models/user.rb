@@ -3,6 +3,9 @@ class User < ApplicationRecord
 
   attr_accessor :role_rules_accepted
 
+  has_one :driver, dependent: :destroy
+  has_many :cars, dependent: :destroy
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :authy_authenticatable, :database_authenticatable, :registerable,

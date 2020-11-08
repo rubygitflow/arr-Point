@@ -20,6 +20,16 @@ ru:
         many: Пользователей
         one: Пользователь
         other: Пользователи
+      driver:
+        few: Водителя
+        many: Водителей
+        one: Водитель
+        other: Водители
+      car:
+        few: Автомобиля
+        many: Автомобилей
+        one: Автомобиль
+        other: Автомобили
     attributes:
       user:
         name: "Имя"
@@ -50,6 +60,15 @@ ru:
         unconfirmed_email: Неподтвержденный email
         unlock_token: Токен разблокировки
         updated_at: Дата обновления
+      driver:
+        driver_id: Водительское удостоверение
+        license_id: Разрешение водителя
+        region: Регион
+        start_driving: Год начала вождения
+      car:
+        license_plate: Гос. номер
+        model: Модель
+        year_manufacture: Год выпуска
     
     errors:
       models:

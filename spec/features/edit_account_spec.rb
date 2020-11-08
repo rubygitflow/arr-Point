@@ -27,7 +27,7 @@ feature 'User can edit his personal data', %{
 
     find(".menu-map").click
     find_link('Личный кабинет', visible: :all).click
-    expect(page).to have_content 'Править данные учётной записи'
+    expect(page).to have_content 'Обновить'
   end
 
 
@@ -48,7 +48,7 @@ feature 'User can edit his personal data', %{
 
       find('#user_current_password').set('12345678')
 
-      click_button 'Править данные учётной записи'
+      click_button 'Обновить'
       # save_and_open_page
 
       expect(page).to have_content 'Ваша учётная запись успешно изменена.'
@@ -59,7 +59,7 @@ feature 'User can edit his personal data', %{
       find('#user_name').set('')
       find('#user_current_password').set('12345678')
 
-      click_button 'Править данные учётной записи'
+      click_button 'Обновить'
 
       expect(page).to have_content "Имя не может быть пустым"
     end
@@ -68,7 +68,7 @@ feature 'User can edit his personal data', %{
       find('#user_phone').set('')
       find('#user_current_password').set('12345678')
 
-      click_button 'Править данные учётной записи'
+      click_button 'Обновить'
 
       expect(page).to have_content "Номер телефона не может быть пустым"
     end

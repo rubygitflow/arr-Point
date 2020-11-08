@@ -64,9 +64,16 @@
       </div>
 
       <div class="actions">
-        <%= f.button t('devise.registrations.title_edit_acc'), type: "submit", 
-        class: "btn btn-block btn-primary mb-2 mt-2" %>
+        <%= f.button t('devise.registrations.btn_edit_acc'), type: "submit", 
+        class: "btn btn-block btn-primary mb-2" %>
       </div>
+
+      <% if current_user.driver?%>
+        <div class="actions">
+          <%= link_to t("devise.registrations.btn_extended"), root_path,
+          class: "btn btn-block btn-lg mb-2" %>
+        </div>
+      <% end %>
     <% end %>
 
     <div class="card-footer">

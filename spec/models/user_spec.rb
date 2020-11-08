@@ -18,4 +18,10 @@ RSpec.describe User, type: :model do
   describe 'acceptance validation' do
     it { should validate_acceptance_of(:role_rules_accepted) }
   end
+
+  describe 'associations' do
+    it { should have_one(:driver).dependent(:destroy) }
+    it { should have_many(:cars).dependent(:destroy) }
+  end
 end
+
