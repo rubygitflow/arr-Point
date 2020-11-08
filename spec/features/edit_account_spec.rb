@@ -8,7 +8,7 @@ feature 'User can edit his personal data', %{
   given(:user) { create(:user, authy_hook_enabled: true) } 
   given(:registered_user) { create(:user, 
     authy_hook_enabled: true,
-    authy_id: 300959128,
+    authy_id: 321,
     last_sign_in_with_authy: '2020-11-07 15:45:36') } 
    
   background { visit root_path+'?lang=ru' }
