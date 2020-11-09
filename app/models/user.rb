@@ -51,4 +51,9 @@ class User < ApplicationRecord
   def passenger?
     role == 'Passenger'
   end
+
+  def owner?(resource)
+    puts("owner?=#{resource.inspect}")
+    resource.user_id == id
+  end
 end

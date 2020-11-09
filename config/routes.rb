@@ -11,4 +11,12 @@ Rails.application.routes.draw do
   end
 
   match '*path' => redirect('/'), via: :get
+
+  resources :drivers, shallow: true do
+    collection do
+        get :splitter
+    end
+  end
+
+  resources :attachment, only: :destroy
 end

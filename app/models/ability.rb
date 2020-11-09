@@ -30,19 +30,27 @@ class Ability
   end
 
   def user_abilities
-    can :read, :all
+    # can :read, :all
   end
 
   def driver_abilities
-    # can :create, Driver_detail
-    # can :update, Driver_detail, user_id: user.id
-    # can :destroy, Driver_detail, user_id: user.id
+    can :read, Driver, user_id: @user.id
+    # can :read, Passenger
+    can :create, Driver, user_id: @user.id
+    can :update, Driver, user_id: @user.id
+    
+    can :destroy, ActiveStorage::Attachment do |attachment|
+      puts("driver_abilities destroy attachment.record=#{attachment.record.inspect}")
+      @user.owner?(attachment.record)
+    end
   end
 
   def passenger_abilities
-    # can :create, Passenger_detail
-    # can :update, Passenger_detail, user_id: user.id
-    # can :destroy, Passenger_detail, user_id: user.id
+    can :read, Driver
+    # can :read, Passenger, user_id: @user.id
+    # can :create, Passenger, user_id: @user.id
+    # can :update, Passenger, user_id: @user.id
+    # can :destroy, Passenger, user_id: @user.id
   end
 
 end

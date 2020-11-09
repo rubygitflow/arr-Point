@@ -6,8 +6,8 @@ describe Ability, type: :model do
   describe 'for guest' do
     let(:user) { nil }
 
-    # it { should_not be_able_to :read, Driver_detail }
-    # it { should_not be_able_to :read, Passenger_detail }
+    it { should_not be_able_to :read, Driver }
+    # it { should_not be_able_to :read, Passenger }
 
     it { should_not be_able_to :manage, :all }
   end
@@ -19,47 +19,56 @@ describe Ability, type: :model do
   end
 
   describe 'for driver' do
-    let(:driver) { create :user, role: 'Driver' }
-    let(:other_driver) { create :user, role: 'Driver' }
-    let(:passenger) { create :user, role: 'Passenger' }
+    let(:user) { create :user, role: 'Driver' }
+    let(:other_user_driver) { create :user, role: 'Driver' }
+    let(:user_passenger) { create :user, role: 'Passenger' }
 
-    # let(:driver_detail_1) { create(:driver_detail, :with_files, user: driver) }
-    # let(:passenger_detail_1) { create(:passenger_detail, :with_files, user: passenger) }
+    let(:driver1) { create(:driver, :with_photo, user: user) }
+    let(:other_driver) { create(:driver, :with_photo, user: other_user_driver) }
+    # let(:passenger1) { create(:passenger, :with_pictures, user: user_passenger) }
 
-    # it { should_not be_able_to :create, create(:passenger_detail, user: driver), user: driver }
-    # it { should_not be_able_to :update, create(:passenger_detail, user: passenger), user: driver }
-    # it { should_not be_able_to :destroy, create(:passenger_detail, user: passenger), user: driver  }
+    # it { should_not be_able_to :create, create(:passenger, user: user), user: user }
+    # it { should_not be_able_to :update, create(:passenger, user: passenger1), user: user }
+    # it { should_not be_able_to :destroy, create(:passenger, user: passenger1), user: user  }
 
-    # it { should be_able_to :create, Driver_detail }
-    # it { should be_able_to :update, create(:driver_detail, user: driver), user: driver }
-    # it { should be_able_to :destroy, create(:driver_detail, user: driver), user: driver  }
-    # it { should_not be_able_to :update, create(:driver_detail, user: other_driver), user: driver }
-    # it { should_not be_able_to :destroy, create(:driver_detail, user: other_driver), user: driver }
+    it { should be_able_to :create, create(:driver, user: user) }
+    it { should be_able_to :update, create(:driver, user: user), user: user }
+    # it { should be_able_to :destroy, create(:driver, user: user), user: user  } # what happened?
+    it { should_not be_able_to :update, create(:driver, user: other_user_driver), user: user }
+    it { should_not be_able_to :destroy, create(:driver, user: other_user_driver), user: user }
 
-    # it { should_not be_able_to :read, Driver_detail }
-    # it { should be_able_to :read, Passenger_detail }
+    # it { should be_able_to :destroy, driver1.photo, user: user } # what happened?
+    it { should_not be_able_to :destroy, other_driver.photo, user: user }
+
+    it { should be_able_to :read, create(:driver, user: user) }
+    it { should_not be_able_to :read, create(:driver, user: other_user_driver) }
+    # it { should be_able_to :read, create(:passenger, user: user_passenger) }
   end
 
   describe 'for passenger' do
-    let(:driver) { create :user, role: 'Driver' }
-    let(:passenger) { create :user, role: 'Passenger' }
-    let(:other_passenger) { create :user, role: 'Passenger' }
+    let(:user) { create :user, role: 'Passenger' }
+    let(:other_user_passenger) { create :user, role: 'Passenger' }
+    let(:user_driver) { create :user, role: 'Driver' }
 
-    # let(:driver_detail_1) { create(:driver_detail, :with_files, user: driver) }
-    # let(:passenger_detail_1) { create(:passenger_detail, :with_files, user: passenger) }
+    # let(:passenger1) { create(:passenger, :with_pictures, user: user) }
+    # let(:other_passenger) { create(:passenger, :with_pictures, user: other_user_passenger) }
+    let(:driver1) { create(:driver, :with_photo, user: user_driver) }
 
-    # it { should_not be_able_to :create, create(:driver_detail, user: passenger), user: passenger }
-    # it { should_not be_able_to :update, create(:driver_detail, user: driver), user: passenger }
-    # it { should_not be_able_to :destroy, create(:driver_detail, user: driver), user: passenger  }
+    it { should_not be_able_to :create, create(:driver, user: user), user: user }
+    it { should_not be_able_to :update, create(:driver, user: user_driver), user: user }
+    it { should_not be_able_to :destroy, create(:driver, user: user_driver), user: user  }
     
-    # it { should be_able_to :create, Passenger_detail }
-    # it { should be_able_to :update, create(:passenger_detail, user: driver), user: passenger }
-    # it { should be_able_to :destroy, create(:passenger_detail, user: passenger), user: passenger }
-    # it { should_not be_able_to :update, create(:passenger_detail, user: other_passenger), user: passenger }
-    # it { should_not be_able_to :destroy, create(:passenger_detail, user: other_passenger), user: passenger }
+    # it { should be_able_to :create, create(:passenger, user: user) }
+    # it { should be_able_to :update, create(:passenger, user: user), user: user }
+    # it { should be_able_to :destroy, create(:passenger, user: user), user: user }
+    # it { should_not be_able_to :update, create(:passenger, user: other_user_passenger), user: user }
+    # it { should_not be_able_to :destroy, create(:passenger, user: other_user_passenger), user: user }
     
-    # it { should be_able_to :read, Driver_detail }
-    # it { should_not be_able_to :read, Passenger_detail }
+    # it { should be_able_to :destroy, passenger1.pictures.first }
+    # it { should_not be_able_to :destroy, other_passenger.pictures.first }
+
+    it { should be_able_to :read, create(:driver, user: user_driver) }
+    # it { should_not be_able_to :read, create(:passenger, user: other_user_passenger) }
   end
 
   describe 'for user' do
@@ -67,6 +76,6 @@ describe Ability, type: :model do
     let(:other) { create :user }
 
     it { should_not be_able_to :manage, :all }
-    it { should be_able_to :read, :all }
+    it { should_not be_able_to :read, :all }
   end
 end

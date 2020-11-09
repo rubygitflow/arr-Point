@@ -69,7 +69,11 @@ ru:
         license_plate: Гос. номер
         model: Модель
         year_manufacture: Год выпуска
-    
+    attachment:
+      photo:
+        invalid_size: "Фотография должна иметь размер менее 2 МБ"
+        invalid_content_type: "Фотография должна быть в формате GIF, PNG или JPG"
+
     errors:
       models:
         user:

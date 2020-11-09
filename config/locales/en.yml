@@ -72,3 +72,7 @@ en:
               invalid: "Invalid email format"
             role_rules_accepted:
               accepted: "You must agree to the Terms and Conditions"
+      attachment:
+        photo:
+          invalid_size: "The photo must be less than 2 MB in size"
+          invalid_content_type: "The photo must be a GIF, PNG, or JPG file"

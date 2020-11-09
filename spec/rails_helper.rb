@@ -36,13 +36,12 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include FeatureHelpers, type: :feature
-  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::ControllerHelpers, type: :controllerrequest
 
   # You must have the chrome browser installed
   Capybara.javascript_driver = :selenium_chrome
   # Capybara.javascript_driver = :rack_test
   # Capybara.current_driver = :selenium
-  # Capybara.default_driver = :selenium
   # Capybara.default_driver = :selenium
   # available drivers: :rack_test, :selenium, :selenium_headless, 
   #                    :selenium_chrome, :selenium_chrome_headless
@@ -77,6 +76,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.after(:all) do
+    FileUtils.rm_rf("#{Rails.root}/tmp/storage")
+  end
+
+
+  FactoryBot::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
+
 end
 
 Shoulda::Matchers.configure do |config|
