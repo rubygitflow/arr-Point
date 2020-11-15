@@ -1,0 +1,14 @@
+tr
+  td = lst_driver.user.id
+  td = lst_driver.id
+  td 
+    - if lst_driver.photo.present?
+      img src="#{rails_blob_url(lst_driver.photo)}" width="64" height="64" alt="photo"
+  td = lst_driver.user.name
+  td = lst_driver.user.email
+  td = lst_driver.user.phone
+  td = lst_driver.driver_id
+  td = lst_driver.license_id
+  td = lst_driver.region
+  td = lst_driver.experience
+  td = link_to ">>>", "/drivers/#{lst_driver.id}", class: "btn btn-link"

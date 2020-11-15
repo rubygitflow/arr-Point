@@ -14,4 +14,8 @@ FactoryBot.define do
       driver.photo.attach(photo)
     end
   end
+
+  trait :invalid do
+    driver_id { nil }
+  end  
 end

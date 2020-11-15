@@ -17,4 +17,9 @@ RSpec.describe Driver, type: :model do
       expect(Driver.new.photo).to be_an_instance_of(ActiveStorage::Attached::One)
     end
   end
+
+  describe 'uniqueness validation' do
+    subject { FactoryBot.create(:driver) }
+    it { should validate_uniqueness_of :user }
+  end
 end

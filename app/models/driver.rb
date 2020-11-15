@@ -4,8 +4,8 @@ class Driver < ApplicationRecord
         
   validates :driver_id, :region, :start_driving, presence: true
   validate :photo_validation
+  validates :user, uniqueness: true 
 
-  
   def experience
     @experience ||= Time.zone.now.year - start_driving
   end

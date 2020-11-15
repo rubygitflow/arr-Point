@@ -7,13 +7,40 @@ en:
   driver: "Driver"
   passenger: "Passenger"
   select_role: "Select role:"
+  back: "Back"
+
+  admin_panel:
+    btn_drivers: "Roster of drivers"
 
   maps:
     index:
       location_detection_disabled: "Location access disabled"
       menu: "Menu"
 
+  drivers:
+    my_details: 'My profile'
+    new:
+      add_your_photo: 'Add your photo'
+    form:
+      choose_file: 'Choose file'
+      def_region: "Moscow"
+      accept: 'Accept'
+    create:
+      profile_created: "Your profile successfully created."
+    show:
+      edit_details: "Edit your profile"
+      delete_details: "Delete your profile"
+    update:
+      profile_updated: "Your profile successfully updated."
+    destroy:
+      profile_deleted: 'Driver profile was successfully deleted.'
+      ban_on_deleting_a_profile: "Deletion is not available! You are not the owner of the driver profile."
+    index:
+      title_all_drivers: Drivers  
+         
   activerecord:
+    actions: Actions
+
     models:
       user:
         one: User
@@ -24,13 +51,14 @@ en:
       car:
         one: Car
         other: Cars
+
     attributes:
       user:
+        id: "User Number"
         name: "Name"
         phone: "Phone"
         role: "Role"
         role_rules_accepted: "Acceptance of the role rules"
-
         confirmation_sent_at: Confirmation sent at
         confirmation_token: Confirmation token
         confirmed_at: Confirmed at
@@ -55,10 +83,13 @@ en:
         unlock_token: Unlock token
         updated_at: Updated at
       driver:
+        id: "Profile Number"
+        photo: Photo
         driver_id: Driver ID
         license_id: License ID
         region: Region
         start_driving: Year of starting driving
+        user: User account
       car:
         license_plate: License plate
         model: Model
@@ -76,3 +107,9 @@ en:
         photo:
           invalid_size: "The photo must be less than 2 MB in size"
           invalid_content_type: "The photo must be a GIF, PNG, or JPG file"
+
+  unauthorized:
+    manage:
+      all: "You have no access to this resource"
+    read:
+      all: "You are not authorized to access this page"      

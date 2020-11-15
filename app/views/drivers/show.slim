@@ -1,0 +1,35 @@
+.columns
+  .column.col-6.col-mx-auto.card
+    .card-header
+      - if can?(:index, Driver)
+        h3 = t('activerecord.attributes.driver.id')+': '+(@driver.id).to_s
+      - else
+        h3 #{t('drivers.my_details')}
+
+    = render @driver
+
+    - if can?(:update, @driver)
+      .actions
+        = link_to t(".edit_details"), edit_driver_path,
+          class: "btn btn-block btn-lg mt-2 mb-2"
+
+    - if current_user.owner?(@driver)
+      - if can?(:destroy, @driver)
+        .actions
+          = link_to t(".delete_details"), driver_path(@driver), method: :delete,
+            data: {confirm: 'Are you sure?'}, 
+            class: "btn btn-block btn-error mb-2 mt-2 mb-2"
+
+    / h3 Cars
+    / = render @cars
+
+    / - if can?(:create, Car)
+    /   = render 'cars/form', car: @car
+
+    .card-footer
+      - if can?(:index, Driver)
+        = link_to t("admin_panel.btn_drivers"), drivers_path,
+          class: "btn btn-block btn-link"
+      - else
+        = link_to t("back"), edit_user_registration_path,
+          class: "btn btn-block btn-link"

@@ -16,6 +16,7 @@ describe Ability, type: :model do
     let(:user) { create :user, admin: true }
 
     it { should be_able_to :manage, :all }
+    it { should be_able_to :read, :all }
   end
 
   describe 'for driver' do
@@ -40,8 +41,18 @@ describe Ability, type: :model do
     # it { should be_able_to :destroy, driver1.photo, user: user } # what happened?
     it { should_not be_able_to :destroy, other_driver.photo, user: user }
 
-    it { should be_able_to :read, create(:driver, user: user) }
-    it { should_not be_able_to :read, create(:driver, user: other_user_driver) }
+    it { should_not be_able_to :index, create(:driver, user: user) }
+    it { should be_able_to :splitter, create(:driver, user: user) }
+    it { should be_able_to :show, create(:driver, user: user) }
+    it { should be_able_to :new, create(:driver, user: user) }
+    it { should be_able_to :edit, create(:driver, user: user) }
+
+    it { should_not be_able_to :index, create(:driver, user: other_user_driver) }
+    it { should be_able_to :splitter, create(:driver, user: other_user_driver) }
+    it { should_not be_able_to :show, create(:driver, user: other_user_driver) }
+    it { should_not be_able_to :new, create(:driver, user: other_user_driver) }
+    it { should_not be_able_to :edit, create(:driver, user: other_user_driver) }
+    
     # it { should be_able_to :read, create(:passenger, user: user_passenger) }
   end
 

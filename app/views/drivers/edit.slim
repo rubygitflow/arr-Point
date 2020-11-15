@@ -1,0 +1,17 @@
+.columns
+  .column.col-6.col-mx-auto.card
+    .card-header
+      - if can?(:index, Driver)
+        h3 = t('activerecord.attributes.driver.id')+': '+(@driver.id).to_s
+      - else
+        h3 #{t('drivers.my_details')}
+
+    = render 'drivers/form', driver: @driver
+
+    .card-footer
+      - if can?(:index, Driver)
+        = link_to t("admin_panel.btn_drivers"), drivers_path,
+          class: "btn btn-block btn-link"
+      - else
+        = link_to t("back"), edit_user_registration_path,
+        class: "btn btn-block btn-link"

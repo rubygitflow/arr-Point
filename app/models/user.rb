@@ -53,7 +53,6 @@ class User < ApplicationRecord
   end
 
   def owner?(resource)
-    puts("owner?=#{resource.inspect}")
     resource.user_id == id
   end
 end

@@ -1,0 +1,10 @@
+.columns
+  .column.col-6.col-mx-auto.card
+    .card-header
+      h3 #{t('drivers.my_details')}
+
+    = render 'drivers/form', driver: @driver
+
+    .card-footer
+      = link_to t("back"), edit_user_registration_path,
+        class: "btn btn-block btn-link"

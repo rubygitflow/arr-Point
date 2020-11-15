@@ -36,7 +36,8 @@ end
 RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include FeatureHelpers, type: :feature
-  config.include Devise::Test::ControllerHelpers, type: :controllerrequest
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ControllerHelpers, type: :controller
 
   # You must have the chrome browser installed
   Capybara.javascript_driver = :selenium_chrome

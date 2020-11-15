@@ -70,10 +70,18 @@
 
       <% if current_user.driver?%>
         <div class="actions">
-          <%= link_to t("devise.registrations.btn_extended"), root_path,
+          <%= link_to t("devise.registrations.btn_extended"), drivers_splitter_path,
           class: "btn btn-block btn-lg mb-2" %>
         </div>
       <% end %>
+
+      <% if can?(:index, Driver)%>
+        <div class="actions">
+          <%= link_to t("admin_panel.btn_drivers"), drivers_path,
+          class: "btn btn-block btn-lg mb-2" %>
+        </div>
+      <% end %>
+
     <% end %>
 
     <div class="card-footer">
