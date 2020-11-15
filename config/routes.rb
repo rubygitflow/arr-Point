@@ -15,5 +15,5 @@ Rails.application.routes.draw do
   get 'drivers/splitter', to: 'drivers#splitter'
   resources :drivers
 
-  resources :attachment, only: :destroy
+  resources :attachments, only: :destroy
 end

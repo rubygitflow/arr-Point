@@ -1,8 +1,15 @@
 table class="table"
   tbody
-    - if @driver.photo.present?
-      tr
+    - if @driver.photo.attached?
+      tr id="attachment-#{@driver.photo.id}"
         th  
+          - if current_user.owner?(@driver) 
+            .actions
+              = link_to t('.btn_delete_photo'), 
+                attachment_path(@driver.photo.id), 
+                method: :delete, remote: true, 
+                data: {confirm: t('are_you_sure')}, 
+                class: 'btn btn-block btn-error'
         td 
           img src="#{rails_blob_url(@driver.photo)}" width="128" height="128" alt="photo"
     tr

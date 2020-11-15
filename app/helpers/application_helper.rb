@@ -7,7 +7,7 @@ module ApplicationHelper
     end
   end
   
-  def prepare_chage_phone(phone)
+  def prepare_change_phone(phone)
     session[:mutable_phone] = phone
   end
 end

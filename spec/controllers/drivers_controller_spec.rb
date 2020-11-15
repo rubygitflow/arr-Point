@@ -203,10 +203,6 @@ RSpec.describe DriversController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    # before { login(user) }
-    # let!(:question) { create(:question, user: user) }
-    # let!(:other_question) { create(:question) }
-
     context 'author' do
       it 'deletes the question' do
         driver = create(:user, :as_driver, :authorized) 
@@ -223,7 +219,6 @@ RSpec.describe DriversController, type: :controller do
         expect(response).to redirect_to edit_user_registration_path
       end
     end
-
 
     context 'not author' do
       it "doesn't delete the question" do

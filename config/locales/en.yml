@@ -8,6 +8,7 @@ en:
   passenger: "Passenger"
   select_role: "Select role:"
   back: "Back"
+  are_you_sure: "Are you sure?"
 
   admin_panel:
     btn_drivers: "Roster of drivers"
@@ -37,6 +38,8 @@ en:
       ban_on_deleting_a_profile: "Deletion is not available! You are not the owner of the driver profile."
     index:
       title_all_drivers: Drivers  
+    driver: 
+      btn_delete_photo: 'Delete photo'
          
   activerecord:
     actions: Actions

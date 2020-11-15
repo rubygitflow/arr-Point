@@ -8,6 +8,7 @@ ru:
   passenger: "Пассажир"
   select_role: "Выберите роль:"
   back: "Назад"
+  are_you_sure: "Вы уверены?"
 
   admin_panel:
     btn_drivers: "Список водителей"
@@ -36,7 +37,9 @@ ru:
       profile_deleted: 'Профиль водителя был успешно удалён.'
       ban_on_deleting_a_profile: "Удаление недоступно! Вы не являетесь владельцем профиля водителя."
     index:
-      title_all_drivers: 'Водители'  
+      title_all_drivers: 'Водители' 
+    driver: 
+      btn_delete_photo: 'Удалить фотографию'
 
   activerecord:
     actions: Действия
