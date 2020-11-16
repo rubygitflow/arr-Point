@@ -9,6 +9,8 @@ ru:
   select_role: "Выберите роль:"
   back: "Назад"
   are_you_sure: "Вы уверены?"
+  profile: "Профиль"
+  add_payment: "Добавить платёж"
 
   admin_panel:
     btn_drivers: "Список водителей"
@@ -98,6 +100,7 @@ ru:
         region: Регион
         start_driving: Год начала вождения
         user: Учетная запись пользователя
+        experience: Стаж
       car:
         license_plate: Гос. номер
         model: Модель

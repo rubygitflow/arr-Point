@@ -16,7 +16,7 @@ feature 'Admin can manage driver profiles', %{
     visit drivers_path 
 
     expect(page).to have_content admin.driver_id
-    expect(page).to have_link '>>>'
+    expect(page).to have_link 'Профиль'
 
     driver = create(:driver, driver_id: '00 002',  user: reg_driver)
     expect(page).to_not  have_content driver.driver_id

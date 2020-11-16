@@ -135,7 +135,7 @@ feature 'User can edit his personal data', %{
 
       # save_and_open_page
       expect(page).to have_content 'Водители'
-      expect(page).to have_link '>>>'
+      expect(page).to have_link 'Профиль'
     end
   end
 end

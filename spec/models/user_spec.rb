@@ -22,6 +22,7 @@ RSpec.describe User, type: :model do
   describe 'associations' do
     it { should have_one(:driver).dependent(:destroy) }
     it { should have_many(:cars).dependent(:destroy) }
+    it { should have_many(:payments) }
   end
 end
 

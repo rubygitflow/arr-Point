@@ -11,5 +11,9 @@ tr
   td = lst_driver.license_id
   td = lst_driver.region
   td = lst_driver.experience
-  td = link_to ">>>", "/drivers/#{lst_driver.id}", class: "btn btn-link", 
-        id: "driver-#{lst_driver.id}"
+  td 
+    = link_to t('profile'), "/drivers/#{lst_driver.id}", class: "btn btn-link", 
+         id: "driver-#{lst_driver.id}"
+    br
+    = link_to t('add_payment'), "#", class: "btn btn-link", 
+      id: "driver-payment-#{lst_driver.user_id}"

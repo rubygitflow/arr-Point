@@ -9,6 +9,8 @@ en:
   select_role: "Select role:"
   back: "Back"
   are_you_sure: "Are you sure?"
+  profile: "Profile"
+  add_payment: "Add payment"
 
   admin_panel:
     btn_drivers: "Roster of drivers"
@@ -93,6 +95,7 @@ en:
         region: Region
         start_driving: Year of starting driving
         user: User account
+        experience: Experience
       car:
         license_plate: License plate
         model: Model

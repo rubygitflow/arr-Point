@@ -6,6 +6,7 @@ RSpec.describe Car, type: :model do
   describe 'associations' do
     # http://matchers.shoulda.io/docs/v4.3.0/Shoulda/Matchers/ActiveRecord.html#have_many-instance_method
     it { should belong_to(:user) }
+    it { should have_many(:rides) }
   end
 
   describe 'validations' do
