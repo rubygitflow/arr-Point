@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature "Owner of driver's profile can delete attached his photo" do
+feature "Owner of driver's profile can delete his attached photo" do
   given(:user) { create(:user, :as_driver, :authorized) }
   given(:driver) { create(:driver, user: user) }
   given(:other_driver) { create(:driver) }
@@ -23,9 +23,13 @@ feature "Owner of driver's profile can delete attached his photo" do
     end
 
     scenario "tries to delete file from other driver's profile", js: true do
+      # periodically we have
+      # Capybara::CapybaraError:
+      #   Your application server raised an error - It has been raised in your test code because Capybara.raise_server_errors == true
+
       other_driver.photo.attach(create_file_blob)
       visit driver_path(other_driver)
-      # save_and_open_page
+      save_and_open_page
       expect(page).to_not have_link 'Удалить фотографию'
     end
   end

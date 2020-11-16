@@ -10,6 +10,9 @@ feature 'User can edit his personal data', %{
     authy_hook_enabled: true,
     authy_id: 321,
     last_sign_in_with_authy: '2020-11-07 15:45:36') } 
+
+  given(:reg_driver) { create(:user, :as_driver,  :not_an_admin, :authorized) } 
+  given(:reg_admin) { create(:user, :as_driver, :admin, :authorized) } 
    
   background { visit root_path+'?lang=ru' }
 
@@ -92,6 +95,47 @@ feature 'User can edit his personal data', %{
 
       expect(page).to have_content 'Ваша учётная запись успешно удалена.'
       expect(page).to have_css('.map')
+    end
+  end
+
+  describe 'An registered driver' do  
+    background do
+      visit new_user_session_path
+      login(reg_driver)
+      visit edit_user_registration_path 
+    end
+    scenario "can add his profile on the first visit" do
+      click_link 'Профиль'
+
+      expect(page).to have_content 'Мой профиль'
+      # save_and_open_page
+      expect(page).to have_button 'Принять'
+    end
+
+    scenario "can visit his profile on the next time" do
+      driver = create(:driver, user: reg_driver)
+      click_link 'Профиль'
+
+      # save_and_open_page
+      expect(page).to have_content 'Мой профиль'
+      expect(page).to have_link 'Отредактировать профиль'
+    end
+  end
+
+  describe 'The registered admin' do  
+    background do
+      visit new_user_session_path
+      login(reg_admin)
+      visit edit_user_registration_path 
+    end
+    scenario "can visit Roster of drivers page" do
+      driver = create(:driver, user: reg_admin)
+      expect(page).to have_link 'Список водителей'
+      click_link 'Список водителей'
+
+      # save_and_open_page
+      expect(page).to have_content 'Водители'
+      expect(page).to have_link '>>>'
     end
   end
 end
