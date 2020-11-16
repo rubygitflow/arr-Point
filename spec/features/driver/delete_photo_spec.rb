@@ -29,7 +29,7 @@ feature "Owner of driver's profile can delete his attached photo" do
 
       other_driver.photo.attach(create_file_blob)
       visit driver_path(other_driver)
-      save_and_open_page
+      # save_and_open_page
       expect(page).to_not have_link 'Удалить фотографию'
     end
   end

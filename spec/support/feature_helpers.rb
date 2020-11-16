@@ -21,6 +21,10 @@ module FeatureHelpers
     click_on 'Войти в аккаунт'
   end
 
+  def logout(user)
+    click_on 'Выход'
+  end
+
   def fill_driver_profile
     attach_file 'Фотография', "#{Rails.root}/spec/fixtures/files/example1.jpg"
     find('#driver_driver_id').set('00 00 123456')
