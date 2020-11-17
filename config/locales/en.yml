@@ -27,12 +27,14 @@ en:
     form:
       choose_file: 'Choose file'
       def_region: "Moscow"
-      accept: 'Accept'
+      btn_accept: 'Accept'
     create:
       profile_created: "Your profile successfully created."
     show:
       edit_details: "Edit your profile"
       delete_details: "Delete your profile"
+      title_cars: "Cars"
+      title_create_new_car: "Add new car information"
     update:
       profile_updated: "Your profile successfully updated."
     destroy:
@@ -42,6 +44,16 @@ en:
       title_all_drivers: Drivers  
     driver: 
       btn_delete_photo: 'Delete photo'
+
+  cars:
+    car:
+      workhorse: "Workhorse"
+      btn_workhorse: "Make it a workhorse"
+      btn_edit_car_description: 'Edit car description'
+      btn_delete_car_description: 'Delete car description'
+      btn_delete_picture: 'Delete picture'
+    form:
+      btn_accept: 'Accept'
          
   activerecord:
     actions: Actions

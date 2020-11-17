@@ -1,2 +1,1 @@
-let node = document.getElementById("attachment-<%= @attachment.id %>");
-node.parentElement.removeChild(node);
+$('#attachment-<%= @attachment.id %>').detach();

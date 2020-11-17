@@ -27,12 +27,14 @@ ru:
     form:
       choose_file: 'Выберите файл'
       def_region: "Москва"
-      accept: 'Принять'
+      btn_accept: 'Принять'
     create:
       profile_created: "Ваш профиль успешно создан."
     show:
-      edit_details: "Отредактировать профиль"
-      delete_details: "Удалить профиль"
+      btn_edit_details: "Отредактировать профиль"
+      btn_delete_details: "Удалить профиль"
+      title_cars: "Автомобили"
+      title_create_new_car: "Добавить информацию о новом автомобиле"
     update:
       profile_updated: "Ваш профиль успешно обновлен."
     destroy:
@@ -42,6 +44,16 @@ ru:
       title_all_drivers: 'Водители' 
     driver: 
       btn_delete_photo: 'Удалить фотографию'
+
+  cars:
+    car:
+      title_workhorse: "Рабочая лошадка"
+      btn_workhorse: "Сделать рабочей лошадкой"
+      btn_edit_car_description: 'Редактировать описание автомобиля'
+      btn_delete_car_description: 'Удалить описание автомобиля'
+      btn_delete_picture: 'Удалить изображение'
+    form:
+      btn_accept: 'Принять'
 
   activerecord:
     actions: Действия

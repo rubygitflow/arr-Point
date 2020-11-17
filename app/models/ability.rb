@@ -35,19 +35,23 @@ class Ability
 
   def driver_abilities
     can [:splitter], Driver
-    can [:show, :new, :edit], Driver, user: @user
-    # can :read, Passenger
-    can :create, Driver, user: @user
-    can :update, Driver, user: @user
-    can :destroy, Driver, user: @user
+    can [:index], Car
+    can [:show, :new, :edit], [Driver, Car], user: @user
+    can :create, [Driver, Car], user: @user
+    can :update, [Driver, Car], user: @user
+    can :destroy, [Driver, Car], user: @user
+    can :select_workhorse, Car, user: @user
 
     can :destroy, ActiveStorage::Attachment do |attachment|
       @user.owner?(attachment.record)
     end
+    
+    # can :read, Passenger
   end
 
   def passenger_abilities
     can :read, Driver
+    can :read, Car
     # can :read, Passenger, user: @user.id
     # can :create, Passenger, user: @user.id
     # can :update, Passenger, user: @user.id

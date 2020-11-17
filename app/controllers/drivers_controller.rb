@@ -20,7 +20,7 @@ class DriversController < ApplicationController
   end
 
   def show
-    # @cars = current_user.cars
+    @car = @driver.user.cars.build
   end
 
   def new
@@ -28,21 +28,29 @@ class DriversController < ApplicationController
   end
 
   def create
-    @driver = Driver.new(driver_params)
-    @driver.user = current_user
-    params[:id] = @driver.id
-    @driver.save
+    if current_user.driver?
+      @driver = Driver.new(driver_params)
+      @driver.user = current_user
+      params[:id] = @driver.id
+      @driver.save
+    else
+      head(:forbidden)
+    end
   end
 
   def edit
   end
 
   def update
-    @driver.update(driver_params)
+    if current_user.owner?(@driver) || current_user.admin
+      @driver.update(driver_params)
+    else
+      head(:forbidden)
+    end
   end
 
   def destroy
-    if current_user.owner?(@driver)
+    if current_user.owner?(@driver) || current_user.admin
       @driver.destroy
       redirect_to edit_user_registration_path, notice: t('.profile_deleted')
     else

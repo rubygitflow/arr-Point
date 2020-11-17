@@ -5,6 +5,7 @@ class AttachmentsController < ApplicationController
   def destroy
     @attachment = ActiveStorage::Attachment.find(params[:id])
     authorize! :destroy, @attachment
-    @attachment.purge if current_user.owner?(@attachment.record)
+    @attachment.purge if current_user.owner?(@attachment.record) || 
+    					 current_user.admin
   end
 end

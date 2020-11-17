@@ -34,7 +34,7 @@ describe Ability, type: :model do
 
     it { should be_able_to :create, create(:driver, user: user) }
     it { should be_able_to :update, create(:driver, user: user), user: user }
-    # it { should be_able_to :destroy, create(:driver, user: user), user: user  } # what happened?
+    it { should be_able_to :destroy, create(:driver, user: user), user: user  } # what happened?
     it { should_not be_able_to :update, create(:driver, user: other_user_driver), user: user }
     it { should_not be_able_to :destroy, create(:driver, user: other_user_driver), user: user }
 
@@ -53,6 +53,22 @@ describe Ability, type: :model do
     it { should_not be_able_to :new, create(:driver, user: other_user_driver) }
     it { should_not be_able_to :edit, create(:driver, user: other_user_driver) }
     
+    it { should be_able_to :show, create(:car, user: user) }
+    it { should be_able_to :new, create(:car, user: user) }
+    it { should be_able_to :edit, create(:car, user: user) }
+    it { should be_able_to :create, create(:car, user: user) }
+    it { should be_able_to :update, create(:car, user: user), user: user }
+    it { should be_able_to :destroy, create(:car, user: user), user: user  } # what happened?
+    it { should be_able_to :select_workhorse, create(:car, user: user) }
+
+    it { should_not be_able_to :show, create(:car, user: other_user_driver) }
+    it { should_not be_able_to :new, create(:car, user: other_user_driver) }
+    it { should_not be_able_to :edit, create(:car, user: other_user_driver) }
+    it { should_not be_able_to :create, create(:car, user: other_user_driver) }
+    it { should_not be_able_to :update, create(:car, user: other_user_driver) }
+    it { should_not be_able_to :destroy, create(:car, user: other_user_driver)  } # what happened?
+    it { should_not be_able_to :select_workhorse, create(:car, user: other_user_driver) }
+
     # it { should be_able_to :read, create(:passenger, user: user_passenger) }
   end
 
@@ -68,6 +84,10 @@ describe Ability, type: :model do
     it { should_not be_able_to :create, create(:driver, user: user), user: user }
     it { should_not be_able_to :update, create(:driver, user: user_driver), user: user }
     it { should_not be_able_to :destroy, create(:driver, user: user_driver), user: user  }
+
+    it { should_not be_able_to :create, create(:car, user: user), user: user }
+    it { should_not be_able_to :update, create(:car, user: user_driver), user: user }
+    it { should_not be_able_to :destroy, create(:car, user: user_driver), user: user  }
     
     # it { should be_able_to :create, create(:passenger, user: user) }
     # it { should be_able_to :update, create(:passenger, user: user), user: user }
@@ -79,6 +99,7 @@ describe Ability, type: :model do
     # it { should_not be_able_to :destroy, other_passenger.pictures.first }
 
     it { should be_able_to :read, create(:driver, user: user_driver) }
+    it { should be_able_to :read, create(:car, user: user_driver) }
     # it { should_not be_able_to :read, create(:passenger, user: other_user_passenger) }
   end
 

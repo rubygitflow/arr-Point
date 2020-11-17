@@ -7,6 +7,8 @@ require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+// https://www.botreetechnologies.com/blog/introducing-jquery-in-rails-6-using-webpacker
+require("jquery")
 
 import "@fortawesome/fontawesome-free/css/all.css"
 import "spectre.css"

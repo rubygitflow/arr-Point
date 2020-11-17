@@ -13,7 +13,15 @@ Rails.application.routes.draw do
   # match '*path' => redirect('/'), via: :get
 
   get 'drivers/splitter', to: 'drivers#splitter'
-  resources :drivers
+  # resources :drivers
+
+  resources :drivers, shallow: true do
+    resources :cars, shallow: true do
+      member do
+        post :select_workhorse
+      end
+    end
+  end
 
   resources :attachments, only: :destroy
 end

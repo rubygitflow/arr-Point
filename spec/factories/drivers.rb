@@ -5,17 +5,17 @@ FactoryBot.define do
     license_id { '8999999' }
     region { 'Moscow' }
     start_driving { '2010' }
-  end
 
-  trait :with_photo do
-    after :create do |driver|
-      photo_path = Rails.root.join('app', 'assets', 'images', 'incognito.jpg')
-      photo = fixture_file_upload(photo_path, 'image/jpeg')
-      driver.photo.attach(photo)
+    trait :invalid do
+      driver_id { nil }
+    end  
+
+    trait :with_photo do
+      after :create do |driver|
+        photo_path = Rails.root.join('app', 'assets', 'images', 'incognito.jpg')
+        photo = fixture_file_upload(photo_path, 'image/jpeg')
+        driver.photo.attach(photo)
+      end
     end
   end
-
-  trait :invalid do
-    driver_id { nil }
-  end  
 end
