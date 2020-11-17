@@ -10,13 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_16_215403) do
+ActiveRecord::Schema.define(version: 2020_11_17_224933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   # These are custom enum types that must be created before they can be used in the schema definition
   create_enum "role_type", ["Driver", "Passenger"]
+  create_enum "status_type", ["Scheduled", "Execution", "Completed", "Interrupted", "Rejected"]
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -76,8 +77,12 @@ ActiveRecord::Schema.define(version: 2020_11_16_215403) do
 
   create_table "rides", force: :cascade do |t|
     t.bigint "car_id", null: false
+    t.decimal "cost"
+    t.string "arrival"
+    t.string "departure"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.enum "status", default: "Scheduled", as: "status_type"
     t.index ["car_id"], name: "index_rides_on_car_id"
   end
 
@@ -97,6 +102,7 @@ ActiveRecord::Schema.define(version: 2020_11_16_215403) do
     t.datetime "last_sign_in_with_authy"
     t.boolean "authy_enabled", default: false
     t.boolean "authy_hook_enabled", default: true
+    t.boolean "lock", default: false
     t.index ["authy_id"], name: "index_users_on_authy_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

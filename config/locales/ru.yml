@@ -74,6 +74,17 @@ ru:
         many: Автомобилей
         one: Автомобиль
         other: Автомобили
+      payment:
+        few: Платежа
+        many: Платежей
+        one: Платеж
+        other: Платежи
+      ride:
+        few: Поездки
+        many: Поездок
+        one: Поездка
+        other: Поездки
+
     attributes:
       user:
         id: № пользователя
@@ -104,6 +115,7 @@ ru:
         unconfirmed_email: Неподтвержденный email
         unlock_token: Токен разблокировки
         updated_at: Дата обновления
+        lock: "Блокировка"
       driver:
         id: № профиля
         photo: Фотография
@@ -117,10 +129,16 @@ ru:
         license_plate: Гос. номер
         model: Модель
         year_manufacture: Год выпуска
-    attachment:
-      photo:
-        invalid_size: "Фотография должна иметь размер менее 2 МБ"
-        invalid_content_type: "Фотография должна быть в формате GIF, PNG или JPG"
+      payments:
+        rate: "Ставка сделки"
+        tariff: "Тариф"
+        price: "Цена услуги"
+        paid_up: "Оплачено"
+      rides:
+        cost: "Стоимость"
+        arrival: "Прибытие"
+        departure: "Отправление"
+        status: "Статус"
 
     errors:
       models:
@@ -130,6 +148,10 @@ ru:
               invalid: "Недопустимый формат электронной почты"
             role_rules_accepted:
               accepted: "Вы должны выразить согласие с Условиями и Положениями"
+      attachment:
+        photo:
+          invalid_size: "Фотография должна иметь размер менее 2 МБ"
+          invalid_content_type: "Фотография должна быть в формате GIF, PNG или JPG"
 
   unauthorized:
     manage:

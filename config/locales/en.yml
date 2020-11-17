@@ -68,6 +68,12 @@ en:
       car:
         one: Car
         other: Cars
+      payment:
+        one: Payment
+        other: Payments
+      ride:
+        one: Ride
+        other: Rides
 
     attributes:
       user:
@@ -99,6 +105,7 @@ en:
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
+        lock: "Lock"
       driver:
         id: "Profile Number"
         photo: Photo
@@ -112,7 +119,17 @@ en:
         license_plate: License plate
         model: Model
         year_manufacture: Year of car manufacture
-    
+      payments:
+        rate: Transaction value
+        tariff: Tariff
+        price: Service price
+        paid_up: Paid up
+      rides:
+        cost: Cost
+        arrival: Arrival
+        departure: Departure
+        status: Status
+ 
     errors:
       models:
         user:
