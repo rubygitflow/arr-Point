@@ -65,6 +65,8 @@ en:
       lbl_cancel_acc: "Your entire account history will also be deleted"
       btn_extended: "Profile"
       title_extended: "Licenses, ID cards, photo"
+
+      restricted_access: "Restricted access to the resource due to financial blocking"
     sessions:
       signed_in: "Signed in successfully."
       signed_out: "Signed out successfully."

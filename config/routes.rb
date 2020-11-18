@@ -17,10 +17,9 @@ Rails.application.routes.draw do
 
   resources :drivers, shallow: true do
     resources :cars, shallow: true do
-      member do
-        post :select_workhorse
-      end
+      patch :select_workhorse, on: :member
     end
+    patch :lock, on: :member
   end
 
   resources :attachments, only: :destroy

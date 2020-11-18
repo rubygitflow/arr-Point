@@ -44,6 +44,13 @@ en:
       title_all_drivers: Drivers  
     driver: 
       btn_delete_photo: 'Delete photo'
+    lst_driver:
+      drivers_lock_changed: "Driver lock status changed."
+    lst_driver:
+      driver_locked: "Unlock"
+      driver_unlocked: "Lock"
+    lock:
+      admin_lock_ignored: "The user's blocking status is not available for the administrator"
 
   cars:
     car:

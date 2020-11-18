@@ -56,4 +56,8 @@ class User < ApplicationRecord
   def owner?(resource)
     resource.user_id == id
   end
+
+  def toggle!
+    update!(lock: !lock)  
+  end
 end

@@ -19,7 +19,7 @@
                         data: {confirm: t('are_you_sure')}, 
                         class: 'btn btn-block btn-error'
                 td 
-                  img src="#{rails_blob_url(file)}" width="128" height="96" alt="photo"
+                  img src="#{rails_blob_url(file)}" width="120" height="80" alt="photo" class="img-fit-cover"
           tr
             th #{t('activerecord.attributes.car.license_plate')} 
             td = car.license_plate
@@ -47,7 +47,7 @@
       - if can?(:select_workhorse, car)
         - unless car.workhorse?
           = link_to t('.btn_workhorse'), select_workhorse_car_path(car), 
-          class: 'btn btn-block btn-primary', method: :post, remote: true
+          class: 'btn btn-block btn-primary', method: :patch, remote: true
 
     javascript: 
       $(document).on('turbolinks:load', function () {

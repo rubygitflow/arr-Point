@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
-  layout :false, only: %i[create update]
+  layout :false, only: %i[create update lock]
   before_action :authenticate_user!
-  before_action :load_driver, only: %i[show edit update destroy]
+  before_action :load_driver, only: %i[show edit update destroy lock]
 
   authorize_resource
 
@@ -57,6 +57,20 @@ class DriversController < ApplicationController
       return redirect_to driver_path, 
       notice: t('.ban_on_deleting_a_profile') 
     end
+  end
+
+  def lock
+    if current_user.admin && !@driver.user.admin
+      @driver.user.toggle!
+    else
+      if current_user.admin
+        flash[:error] = t('.admin_lock_ignored')
+        redirect_to drivers_path
+        # return redirect_to drivers_path, notice: t('.admin_lock_ignored')        
+      else
+        head(:forbidden)
+      end
+    end      
   end
 
   private

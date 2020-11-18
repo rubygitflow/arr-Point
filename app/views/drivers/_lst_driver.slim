@@ -1,5 +1,5 @@
 tr
-  td = lst_driver.user.id
+  td = lst_driver.user_id
   td = lst_driver.id
   td 
     - if lst_driver.photo.present?
@@ -17,3 +17,13 @@ tr
     br
     = link_to t('add_payment'), "#", class: "btn btn-link", 
       id: "driver-payment-#{lst_driver.user_id}"
+    - if current_user.admin
+      br
+      - if lst_driver.user.lock 
+        = link_to t('.driver_locked'), lock_driver_path(lst_driver.id), 
+          class: "btn btn-link bg-warning", method: :patch, remote: true, 
+          id: "drivers-lock-#{lst_driver.user_id}"
+      - else
+        = link_to t('.driver_unlocked'), lock_driver_path(lst_driver.id), 
+          class: "btn btn-link bg-success", method: :patch, remote: true, 
+          id: "drivers-lock-#{lst_driver.user_id}"

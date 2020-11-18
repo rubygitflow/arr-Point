@@ -44,6 +44,12 @@ ru:
       title_all_drivers: 'Водители' 
     driver: 
       btn_delete_photo: 'Удалить фотографию'
+    lst_driver:
+      driver_locked: "Разблокировать"
+      driver_unlocked: "Заблокировать"
+    lock:
+      admin_lock_ignored: "Статус блокировки пользователя недоступен для администратора"
+      drivers_lock_changed: "Статус блокировки водителя был изменён"
 
   cars:
     car:

@@ -34,16 +34,18 @@ class Ability
   end
 
   def driver_abilities
-    can [:splitter], Driver
-    can [:index], Car
-    can [:show, :new, :edit], [Driver, Car], user: @user
-    can :create, [Driver, Car], user: @user
-    can :update, [Driver, Car], user: @user
-    can :destroy, [Driver, Car], user: @user
-    can :select_workhorse, Car, user: @user
+    unless @user.lock
+      can [:splitter], Driver
+      can [:index], Car
+      can [:show, :new, :edit], [Driver, Car], user: @user
+      can :create, [Driver, Car], user: @user
+      can :update, [Driver, Car], user: @user
+      can :destroy, [Driver, Car], user: @user
+      can :select_workhorse, Car, user: @user
 
-    can :destroy, ActiveStorage::Attachment do |attachment|
-      @user.owner?(attachment.record)
+      can :destroy, ActiveStorage::Attachment do |attachment|
+        @user.owner?(attachment.record)
+      end
     end
     
     # can :read, Passenger
