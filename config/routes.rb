@@ -31,6 +31,7 @@ Rails.application.routes.draw do
       patch :select_workhorse, on: :member
     end
     patch :lock, on: :member
+    get :car_stats, on: :member
   end
 
   resources :attachments, only: :destroy

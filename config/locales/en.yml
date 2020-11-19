@@ -34,8 +34,8 @@ en:
     create:
       profile_created: "Your profile successfully created."
     show:
-      edit_details: "Edit your profile"
-      delete_details: "Delete your profile"
+      btn_edit_details: "Edit your profile"
+      btn_delete_details: "Delete your profile"
       title_cars: "Cars"
       title_create_new_car: "Add new car information"
     update:
@@ -48,16 +48,17 @@ en:
     driver: 
       btn_delete_photo: 'Delete photo'
     lst_driver:
-      drivers_lock_changed: "Driver lock status changed."
-    lst_driver:
       driver_locked: "Unlock"
       driver_unlocked: "Lock"
     lock:
       admin_lock_ignored: "The user's blocking status is not available for the administrator"
+      drivers_lock_changed: "Driver lock status changed."
+    car_stats:
+      empty_car_list: 'The driver has no cars registered'
 
   cars:
     car:
-      workhorse: "Workhorse"
+      title_workhorse: "Workhorse"
       btn_workhorse: "Make it a workhorse"
       btn_edit_car_description: 'Edit car description'
       btn_delete_car_description: 'Delete car description'
@@ -70,7 +71,7 @@ en:
       take_a_new_order: "Take a new order"
       statistics: Statistics
     ride:
-      here_goes: "Here goes!"
+      btn_here_goes: "Here goes!"
       btn_to_complete: "Complete"
       btn_to_abort: "Aborted by client"
       btn_to_reject: "Rejected by me"
@@ -80,6 +81,7 @@ en:
       empty_field: 'empty'
     index:
       title_all_rides: "History of rides"
+      other_cars_stat: "Statistics on other cars:"
       
   activerecord:
     actions: Actions
@@ -145,7 +147,7 @@ en:
         license_plate: License plate
         model: Model
         year_manufacture: Year of car manufacture
-      rides:
+      ride:
         cost: Cost
         arrival: Arrival
         departure: Departure
@@ -154,10 +156,10 @@ en:
         scheduled: "scheduled"
         execution: "execution"
         completed: "completed"
-        interrupted: "interrupted" 
+        aborted: "interrupted" 
         rejected: "rejected"
         created_at: Creation date
-      payments:
+      payment:
         rate: Transaction value
         tariff: Tariff
         price: Service price

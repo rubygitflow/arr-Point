@@ -19,6 +19,7 @@ class RidesController < ApplicationController
   def index
     if @car.present?
       @rides = @car.rides
+      @cars = @car.user.cars
     else
       head(:forbidden)
     end

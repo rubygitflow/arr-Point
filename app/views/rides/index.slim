@@ -8,7 +8,7 @@
             td rowspan="2" 
               img.img-fit-cover src="#{rails_blob_url(file)}" width="120" height="80" alt="photo" 
           td.px-2 colspan="4" 
-            h3.px-2 = t('.title_all_rides') 
+            h3.px-2 = "#{t('.title_all_rides')}: #{@car.license_plate}" 
         tr.text-gray
           td.px-1  
           td.px-2 = @car.user.name 
@@ -40,4 +40,10 @@
         class: "btn btn-block btn-link"
 
     = link_to t("lnk_payment_details"), "/docs/pd4sb_fill.pdf",
-      target: "_blank", class: "btn btn-block btn-link btn-lg mt-2 mb-2"
+      target: "_blank", class: "btn btn-block btn-lg mt-2 mb-2"
+
+    h5 = t('.other_cars_stat')
+    .column.col-12
+      - @cars.each do |car|
+        = link_to car.license_plate, car_rides_url(car), 
+          class: "float-left btn mx-1"

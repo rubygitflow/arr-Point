@@ -1,7 +1,7 @@
 class DriversController < ApplicationController
   layout :false, only: %i[create update lock]
   before_action :authenticate_user!
-  before_action :load_driver, only: %i[show edit update destroy lock]
+  before_action :load_driver, only: %i[show edit update destroy lock car_stats]
 
   authorize_resource
 
@@ -71,6 +71,11 @@ class DriversController < ApplicationController
         head(:forbidden)
       end
     end      
+  end
+
+  def car_stats
+    @cars = @driver.user.cars
+    redirect_to car_rides_path(@cars.first) if @cars.present?
   end
 
   private

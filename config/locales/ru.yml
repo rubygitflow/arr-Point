@@ -53,6 +53,8 @@ ru:
     lock:
       admin_lock_ignored: "Статус блокировки пользователя недоступен для администратора"
       drivers_lock_changed: "Статус блокировки водителя был изменён"
+    car_stats:
+      empty_car_list: 'У водителя нет зарегистрированных автомобилей'
 
   cars:
     car:
@@ -79,6 +81,7 @@ ru:
       empty_field: "пусто"
     index:
       title_all_rides: "История поездок"
+      other_cars_stat: "Статистика по другим автомобилям:"
 
   activerecord:
     actions: Действия
