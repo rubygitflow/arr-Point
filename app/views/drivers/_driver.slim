@@ -11,7 +11,7 @@ table class="table"
                 data: {confirm: t('are_you_sure')}, 
                 class: 'btn btn-block btn-error'
         td 
-          img src="#{rails_blob_url(@driver.photo)}" width="128" height="128" alt="photo"
+          img.img-fit-cover src="#{rails_blob_url(@driver.photo)}" width="96" height="96" alt="photo"
     tr
       th #{t('activerecord.attributes.driver.driver_id')} 
       td = @driver.driver_id

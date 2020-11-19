@@ -17,10 +17,22 @@ Rails.application.routes.draw do
 
   resources :drivers, shallow: true do
     resources :cars, shallow: true do
+      resources :rides, shallow: true do
+        collection do
+          get :menu
+        end
+        member do
+          patch :execute
+          patch :complete
+          patch :abort
+          patch :reject
+        end
+      end
       patch :select_workhorse, on: :member
     end
     patch :lock, on: :member
   end
 
   resources :attachments, only: :destroy
+
 end

@@ -11,6 +11,6 @@ Open project of the private taxi support service.
 - User registration is based on two-factor authorization via SMS-provider Twilio
 - The system implements differentiation of user access rights to information about other users depending on their role and administrative powers
 - The system implements complicated schemes for editing and deleting resources by the administrator
-- The service is ~100% covered by tests
+- The service is ~50% covered by tests
 
 The recommended platform for using the web application is a tablet.

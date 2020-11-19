@@ -5,6 +5,7 @@ class CreateRides < ActiveRecord::Migration[6.0]
       t.decimal :cost
       t.string  :arrival
       t.string  :departure
+      t.string  :when
 
       t.timestamps
     end

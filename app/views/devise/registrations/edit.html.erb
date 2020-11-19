@@ -72,6 +72,14 @@
         <h1 class="text-error text-center">
           <%= t("devise.registrations.restricted_access") %>
         </h1>
+        <h3 class="text-error text-center">
+          <%= t("amount_to_pay") %>: 0.0 руб
+        </h3>
+        <div class="actions">
+          <%= link_to t("lnk_payment_details"), "/docs/pd4sb_fill.pdf", 
+          target: "_blank", class: "btn btn-block btn-lg mt-2 mb-2" %>
+        </div>
+
       <% else %>
         <% if current_user.driver? %>
           <div class="actions">

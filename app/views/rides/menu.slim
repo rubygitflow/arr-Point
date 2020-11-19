@@ -1,0 +1,34 @@
+.columns
+  .column.col-6.col-mx-auto.card
+    .card-header
+      h3 = t('.title_ride_management')
+
+    .card-body
+    - if @car.present?
+      - if @car.pictures.attached?
+        .text-center
+          - file = @car.pictures.first
+          img.img-fit-cover src="#{rails_blob_url(file)}" width="120" height="80" alt="photo"
+        .divider
+
+      - if can?(:menu, Ride)
+        .rides id="rides-#{@car.user_id}"
+          = render @rides
+
+      - if can?(:create, Ride)
+        .divider
+        h5 = t('.take_a_new_order')
+        = render 'rides/form', ride: @ride
+
+      = link_to t(".statistics"), car_rides_url,
+        class: "btn btn-block btn-lg mt-2 mb-2"
+
+
+    - else
+      = link_to t("set_car"), drivers_splitter_url, 
+        class: "btn btn-block btn-link"
+         
+ 
+    .card-footer
+      = link_to t("back"), driver_url(@car.user.driver),
+        class: "btn btn-block btn-link"

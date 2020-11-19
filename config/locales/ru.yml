@@ -4,6 +4,7 @@ ru:
   sign_in: "Вход" 
   sign_out: "Выход" 
   edit_reg: "Личный кабинет"
+  edit_ride: "Поездки"
   driver: "Водитель"
   passenger: "Пассажир"
   select_role: "Выберите роль:"
@@ -11,6 +12,9 @@ ru:
   are_you_sure: "Вы уверены?"
   profile: "Профиль"
   add_payment: "Добавить платёж"
+  btn_accept: 'Принять'
+  lnk_payment_details: 'Реквизиты для оплаты'
+  amount_to_pay: "Сумма к оплате"
 
   admin_panel:
     btn_drivers: "Список водителей"
@@ -27,7 +31,6 @@ ru:
     form:
       choose_file: 'Выберите файл'
       def_region: "Москва"
-      btn_accept: 'Принять'
     create:
       profile_created: "Ваш профиль успешно создан."
     show:
@@ -58,8 +61,24 @@ ru:
       btn_edit_car_description: 'Редактировать описание автомобиля'
       btn_delete_car_description: 'Удалить описание автомобиля'
       btn_delete_picture: 'Удалить изображение'
-    form:
-      btn_accept: 'Принять'
+      btn_go_rides: "Регистрация заказов перевозок"
+
+  rides:
+    menu:
+      title_ride_management: "Управление поездками"
+      take_a_new_order: "Принять новый заказ"
+      statistics: "Статистика"
+    ride:
+      btn_here_goes: "Поехали!"
+      btn_to_complete: "Завершить"
+      btn_to_abort: "Отклонено клиентом"
+      btn_to_reject: "Отклонено мной"
+      btn_return_to_map: "Вернуться к карте"
+      btn_edit_ride_description: "Редактировать описание поездки"
+      btn_delete_ride_description: "Удалить описание поездки"
+      empty_field: "пусто"
+    index:
+      title_all_rides: "История поездок"
 
   activerecord:
     actions: Действия
@@ -135,17 +154,24 @@ ru:
         license_plate: Гос. номер
         model: Модель
         year_manufacture: Год выпуска
-      payments:
+      ride:
+        cost: "Стоимость"
+        arrival: "Прибытие"
+        departure: "Отправление"
+        when: "Время"
+        status: "Статус"
+        scheduled: "Запланировано"
+        execution: "Исполнение"
+        completed: "Завершено"
+        aborted: "Прервано" 
+        rejected: "Отклонено"
+        created_at: "Дата создания"
+      payment:
         rate: "Ставка сделки"
         tariff: "Тариф"
         price: "Цена услуги"
         paid_up: "Оплачено"
-      rides:
-        cost: "Стоимость"
-        arrival: "Прибытие"
-        departure: "Отправление"
-        status: "Статус"
-
+          
     errors:
       models:
         user:
@@ -163,4 +189,4 @@ ru:
     manage:
       all: "У вас нет доступа к этому ресурсу"
     read:
-      all: "У вас нет прав доступа к этой странице"      
+      all: "У вас нет прав доступа к этой странице" 

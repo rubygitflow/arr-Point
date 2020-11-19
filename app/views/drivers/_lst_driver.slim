@@ -3,7 +3,7 @@ tr
   td = lst_driver.id
   td 
     - if lst_driver.photo.present?
-      img src="#{rails_blob_url(lst_driver.photo)}" width="64" height="64" alt="photo"
+      img.img-fit-cover src="#{rails_blob_url(lst_driver.photo)}" width="80" height="80" alt="photo"
   td = lst_driver.user.name
   td = lst_driver.user.email
   td = lst_driver.user.phone

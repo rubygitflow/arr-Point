@@ -3,6 +3,9 @@
     - if car.workhorse?
       .card-header 
         h3 class='card-title text-error text-right' = t('.title_workhorse')
+        .actions
+          = link_to t('.btn_go_rides'), menu_car_rides_path(car), 
+          class: 'btn btn-block mb-2'
 
     .card-body
       table class="table"
@@ -19,7 +22,7 @@
                         data: {confirm: t('are_you_sure')}, 
                         class: 'btn btn-block btn-error'
                 td 
-                  img src="#{rails_blob_url(file)}" width="120" height="80" alt="photo" class="img-fit-cover"
+                  img.img-fit-cover src="#{rails_blob_url(file)}" width="120" height="80" alt="photo"
           tr
             th #{t('activerecord.attributes.car.license_plate')} 
             td = car.license_plate
@@ -37,7 +40,7 @@
       - if can?(:update, car)
         .actions
           = link_to t('.btn_edit_car_description'), '#', 
-          class: 'edit-car-link btn btn-block', data: { car_id: car.id }
+          class: 'edit-car-link btn btn-block mt-2', data: { car_id: car.id }
       - if can?(:destroy, car)
         .actions
           = link_to t('.btn_delete_car_description'), car_path(car), 
@@ -47,15 +50,4 @@
       - if can?(:select_workhorse, car)
         - unless car.workhorse?
           = link_to t('.btn_workhorse'), select_workhorse_car_path(car), 
-          class: 'btn btn-block btn-primary', method: :patch, remote: true
-
-    javascript: 
-      $(document).on('turbolinks:load', function () {
-        $('.cars').on('click', '.edit-car-link', function (event) {
-          event.preventDefault();
-          $(this).hide();
-          const carId = $(this).data('carId');
-          
-          $(`#edit-car-${carId}`).removeClass('hidden');
-        })
-      })
+          class: 'btn btn-block btn-primary mb-2', method: :patch, remote: true

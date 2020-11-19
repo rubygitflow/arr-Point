@@ -1,9 +1,16 @@
 .columns
   .column.col-6.col-mx-auto.card
-    .card-header
-      - if can?(:index, Driver)
+    - if can?(:index, Driver)
+      .card-header
         h3 = t('activerecord.attributes.driver.id')+': '+(@driver.id).to_s
-      - else
+        .text-gray 
+          table
+            tr
+              td = @driver.user.name 
+              td ,
+              td.px-2 = @driver.user.email
+    - else
+      .card-header
         h3 #{t('drivers.my_details')}
 
     = render @driver

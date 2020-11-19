@@ -1,0 +1,9 @@
+tr
+  td = lst_ride.created_at
+  td = lst_ride.departure ? lst_ride.departure : ''
+  td = lst_ride.arrival ? lst_ride.arrival : ''
+  td = lst_ride.when ? lst_ride.when : ''
+  td = lst_ride.cost ? lst_ride.cost : ''
+  td = lst_ride.status
+  - if current_user.admin
+    td 

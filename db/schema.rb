@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_224933) do
 
   # These are custom enum types that must be created before they can be used in the schema definition
   create_enum "role_type", ["Driver", "Passenger"]
-  create_enum "status_type", ["Scheduled", "Execution", "Completed", "Interrupted", "Rejected"]
+  create_enum "status_type", ["Scheduled", "Execution", "Completed", "Aborted", "Rejected"]
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 2020_11_17_224933) do
     t.decimal "cost"
     t.string "arrival"
     t.string "departure"
+    t.string "when"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.enum "status", default: "Scheduled", as: "status_type"

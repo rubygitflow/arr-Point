@@ -28,18 +28,21 @@
       map.setLang(lang);
     })
 
-  .title = link_to "«#{ t('service_name') }»", root_path, id:'service_name' 
+  .title = link_to "«#{ t('service_name') }»", root_url, id:'service_name' 
   div class="menu-map" title="#{ t('.menu') }" 
     .dropbtn onclick="dropFunction()"
       i class="fas fa-bars fa-3x"
     .dropup-content#menuDropup
-      = link_to 'RU / EN', change_language_maps_path, id:'langbtn', data: { onclick:'changeLangFunction()'}
+      = link_to 'RU / EN', change_language_maps_url, id:'langbtn', data: { onclick:'changeLangFunction()'}
       - if user_signed_in?
-        = link_to "#{ t('sign_out') }", destroy_user_session_path, method: :delete
-        = link_to "#{ t('edit_reg') }", edit_user_registration_path
+        = link_to "#{ t('sign_out') }", destroy_user_session_url, method: :delete
+        - if params[:car].present?
+          = link_to "#{ t('edit_ride') }", menu_car_rides_url(car_id: params[:car])
+        - else
+          = link_to "#{ t('edit_reg') }", edit_user_registration_url
       - else
-        = link_to "#{ t('sign_in') }", new_user_session_path
-        = link_to "#{ t('sign_up') }", new_user_registration_path
+        = link_to "#{ t('sign_in') }", new_user_session_url
+        = link_to "#{ t('sign_up') }", new_user_registration_url
 
     javascript: 
       function dropFunction() {

@@ -4,6 +4,7 @@ en:
   sign_in: "Sign in" 
   sign_out: "Sign out" 
   edit_reg: "Account"
+  edit_ride: "Rides"
   driver: "Driver"
   passenger: "Passenger"
   select_role: "Select role:"
@@ -11,6 +12,9 @@ en:
   are_you_sure: "Are you sure?"
   profile: "Profile"
   add_payment: "Add payment"
+  btn_accept: 'Accept'
+  lnk_payment_details: 'Payment details'
+  amount_to_pay: "Amount to pay"
 
   admin_panel:
     btn_drivers: "Roster of drivers"
@@ -27,7 +31,6 @@ en:
     form:
       choose_file: 'Choose file'
       def_region: "Moscow"
-      btn_accept: 'Accept'
     create:
       profile_created: "Your profile successfully created."
     show:
@@ -59,9 +62,25 @@ en:
       btn_edit_car_description: 'Edit car description'
       btn_delete_car_description: 'Delete car description'
       btn_delete_picture: 'Delete picture'
-    form:
-      btn_accept: 'Accept'
-         
+      btn_go_rides: "Registration of transportation orders"
+
+  rides:
+    menu:
+      title_ride_management: "Ride management"
+      take_a_new_order: "Take a new order"
+      statistics: Statistics
+    ride:
+      here_goes: "Here goes!"
+      btn_to_complete: "Complete"
+      btn_to_abort: "Aborted by client"
+      btn_to_reject: "Rejected by me"
+      btn_return_to_map: "Return to map"
+      btn_edit_ride_description: 'Edit ride description'
+      btn_delete_ride_description: 'Delete ride description'
+      empty_field: 'empty'
+    index:
+      title_all_rides: "History of rides"
+      
   activerecord:
     actions: Actions
 
@@ -126,16 +145,23 @@ en:
         license_plate: License plate
         model: Model
         year_manufacture: Year of car manufacture
+      rides:
+        cost: Cost
+        arrival: Arrival
+        departure: Departure
+        when: Time
+        status: "Status"
+        scheduled: "scheduled"
+        execution: "execution"
+        completed: "completed"
+        interrupted: "interrupted" 
+        rejected: "rejected"
+        created_at: Creation date
       payments:
         rate: Transaction value
         tariff: Tariff
         price: Service price
         paid_up: Paid up
-      rides:
-        cost: Cost
-        arrival: Arrival
-        departure: Departure
-        status: Status
  
     errors:
       models:
@@ -154,4 +180,4 @@ en:
     manage:
       all: "You have no access to this resource"
     read:
-      all: "You are not authorized to access this page"      
+      all: "You are not authorized to access this page"    

@@ -1,6 +1,6 @@
 class AddStatusToRides < ActiveRecord::Migration[6.0]
   def up
-    create_enum "status_type", %w[Scheduled Execution Completed Interrupted Rejected]
+    create_enum "status_type", %w[Scheduled Execution Completed Aborted Rejected]
 
     change_table :rides do |t|
       t.enum :status, as: "status_type", default: "Scheduled"
