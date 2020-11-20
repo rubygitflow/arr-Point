@@ -18,7 +18,7 @@ class RidesController < ApplicationController
 
   def index
     if @car.present?
-      @rides = @car.rides
+      @rides_payments = @car.rides.with_payments(@car.id)
       @cars = @car.user.cars
     else
       head(:forbidden)
@@ -64,7 +64,13 @@ class RidesController < ApplicationController
   def complete
     @ride.update!(status: 'Completed')
     # Here some kind of special processing 
-    redirect_to root_path
+    service = DriverPaymentService.new(@ride, current_user)
+    result = service.call
+    if result
+      redirect_to accept_payments_path+"?pc=#{result}"
+    else
+      return redirect_to root_path, notice: t('.driver_payment_service_error')
+    end
   end
 
   def abort

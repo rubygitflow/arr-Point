@@ -29,15 +29,28 @@
           | #{break_by_words(t('activerecord.attributes.ride.cost'))}
         th class="text-center"
           | #{break_by_words(t('activerecord.attributes.ride.status'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.rate'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.tariff'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.price'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.paid_up'))}
         - if current_user.admin
           th class="text-center"
             | #{break_by_words(t('activerecord.actions'))}
       tbody
-        = render partial: "lst_ride", collection: @rides
+        = render partial: "lst_ride", collection: @rides_payments
  
     .card-footer
       = link_to t("back"), menu_car_rides_url(@car),
         class: "btn btn-block btn-link"
+
+      - if can?(:index, Driver)
+        = link_to t("admin_panel.btn_drivers"), drivers_path,
+          class: "btn btn-block btn-lg mb-2"
+        
 
     = link_to t("lnk_payment_details"), "/docs/pd4sb_fill.pdf",
       target: "_blank", class: "btn btn-block btn-lg mt-2 mb-2"

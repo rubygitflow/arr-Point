@@ -13,7 +13,6 @@ Rails.application.routes.draw do
   # match '*path' => redirect('/'), via: :get
 
   get 'drivers/splitter', to: 'drivers#splitter'
-  # resources :drivers
 
   resources :drivers, shallow: true do
     resources :cars, shallow: true do
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
         end
         member do
           patch :execute
-          patch :complete
+          post  :complete
           patch :abort
           patch :reject
         end
@@ -32,6 +31,11 @@ Rails.application.routes.draw do
     end
     patch :lock, on: :member
     get :car_stats, on: :member
+  end
+
+  resources :payments do
+    get :accept, on: :collection
+    patch :pay_off, on: :member
   end
 
   resources :attachments, only: :destroy

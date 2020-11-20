@@ -65,12 +65,14 @@ ActiveRecord::Schema.define(version: 2020_11_17_224933) do
   create_table "payments", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "ride_id", null: false
+    t.string "payment_confirmation"
     t.decimal "rate"
     t.decimal "tariff"
     t.decimal "price"
     t.datetime "paid_up"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["payment_confirmation"], name: "index_payments_on_payment_confirmation", unique: true
     t.index ["ride_id"], name: "index_payments_on_ride_id"
     t.index ["user_id"], name: "index_payments_on_user_id"
   end

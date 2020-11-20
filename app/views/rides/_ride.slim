@@ -24,7 +24,7 @@
           class: "btn btn-block", method: :patch
       - elsif ride.started?
         = link_to t(".btn_to_complete"), complete_ride_path(ride),
-          class: "btn btn-block btn-success", method: :patch
+          class: "btn btn-block btn-success", method: :post
         = link_to t(".btn_return_to_map"), root_path+"?car=#{ride.car_id}",
           class: "btn btn-block"
       - elsif ride.finished?

@@ -1,5 +1,5 @@
 ru:
-  service_name: "Точка прибытия"
+  service_name: "АВТОМОБИЛЬ НА ХОДУ"
   sign_up: "Регистрация" 
   sign_in: "Вход" 
   sign_out: "Выход" 
@@ -15,6 +15,7 @@ ru:
   btn_accept: 'Принять'
   lnk_payment_details: 'Реквизиты для оплаты'
   amount_to_pay: "Сумма к оплате"
+  statistics: "Статистика"
 
   admin_panel:
     btn_drivers: "Список водителей"
@@ -69,7 +70,6 @@ ru:
     menu:
       title_ride_management: "Управление поездками"
       take_a_new_order: "Принять новый заказ"
-      statistics: "Статистика"
     ride:
       btn_here_goes: "Поехали!"
       btn_to_complete: "Завершить"
@@ -79,9 +79,16 @@ ru:
       btn_edit_ride_description: "Редактировать описание поездки"
       btn_delete_ride_description: "Удалить описание поездки"
       empty_field: "пусто"
+      pay_off: "погасить"
     index:
       title_all_rides: "История поездок"
       other_cars_stat: "Статистика по другим автомобилям:"
+    complete:
+      driver_payment_service_error: "Что-то пошло не так, обратитесь к администратору."
+
+  payments:
+    accept:
+      title_payment_acceptence: "Сделка учтена"
 
   activerecord:
     actions: Действия

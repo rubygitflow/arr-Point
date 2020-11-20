@@ -60,8 +60,4 @@ class User < ApplicationRecord
   def toggle!
     update!(lock: !lock)  
   end
-    
-  def ability
-    @ability ||= Ability.new(self)
-  end
 end

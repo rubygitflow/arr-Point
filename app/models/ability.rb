@@ -45,7 +45,8 @@ class Ability
       can [:menu, :show, :new, :edit, :execute, :complete, :abort, :reject,
            :create, :update, :destroy], Ride do |ride|
         @user.id == ride.car.user_id
-      end    
+      end 
+      can [:accept], Payment, user: @user
 
       can :destroy, ActiveStorage::Attachment do |attachment|
         @user.owner?(attachment.record)

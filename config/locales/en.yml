@@ -15,6 +15,7 @@ en:
   btn_accept: 'Accept'
   lnk_payment_details: 'Payment details'
   amount_to_pay: "Amount to pay"
+  statistics: Statistics
 
   admin_panel:
     btn_drivers: "Roster of drivers"
@@ -69,7 +70,6 @@ en:
     menu:
       title_ride_management: "Ride management"
       take_a_new_order: "Take a new order"
-      statistics: Statistics
     ride:
       btn_here_goes: "Here goes!"
       btn_to_complete: "Complete"
@@ -79,9 +79,17 @@ en:
       btn_edit_ride_description: 'Edit ride description'
       btn_delete_ride_description: 'Delete ride description'
       empty_field: 'empty'
+    lst_ride:
+      pay_off: "pay off"
     index:
       title_all_rides: "History of rides"
       other_cars_stat: "Statistics on other cars:"
+    complete:
+      driver_payment_service_error: "Somsing went wrong, contact your administrator."
+
+  payments:
+    accept:
+      title_payment_acceptence: "Deal accounted for"
       
   activerecord:
     actions: Actions
