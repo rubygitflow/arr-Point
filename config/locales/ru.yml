@@ -1,28 +1,132 @@
 ru:
-  service_name: "точка Прибытия"
+  service_name: "АВТОМОБИЛЬ НА ХОДУ"
   sign_up: "Регистрация" 
   sign_in: "Вход" 
   sign_out: "Выход" 
+  edit_reg: "Личный кабинет"
+  edit_ride: "Поездки"
+  driver: "Водитель"
+  passenger: "Пассажир"
+  select_role: "Выберите роль:"
+  back: "Назад"
+  are_you_sure: "Вы уверены?"
+  profile: "Профиль"
+  add_payment: "Добавить платёж"
+  btn_accept: 'Принять'
+  lnk_payment_details: 'Реквизиты для оплаты'
+  amount_to_pay: "Сумма к оплате"
+  statistics: "Статистика"
+
+  admin_panel:
+    btn_drivers: "Список водителей"
 
   maps:
     index:
       location_detection_disabled: "Доступ к определению местоположения отключён"
       menu: "Меню"
 
+  drivers:
+    my_details: 'Мой профиль'
+    new:
+      add_your_photo: 'Добавьте вашу фотографию'
+    form:
+      choose_file: 'Выберите файл'
+      def_region: "Москва"
+    create:
+      profile_created: "Ваш профиль успешно создан."
+    show:
+      btn_edit_details: "Отредактировать профиль"
+      btn_delete_details: "Удалить профиль"
+      title_cars: "Автомобили"
+      title_create_new_car: "Добавить информацию о новом автомобиле"
+    update:
+      profile_updated: "Ваш профиль успешно обновлен."
+    destroy:
+      profile_deleted: 'Профиль водителя был успешно удалён.'
+      ban_on_deleting_a_profile: "Удаление недоступно! Вы не являетесь владельцем профиля водителя."
+    index:
+      title_all_drivers: 'Водители' 
+    driver: 
+      btn_delete_photo: 'Удалить фотографию'
+    lst_driver:
+      driver_locked: "Разблокировать"
+      driver_unlocked: "Заблокировать"
+    lock:
+      admin_lock_ignored: "Статус блокировки пользователя недоступен для администратора"
+      drivers_lock_changed: "Статус блокировки водителя был изменён"
+    car_stats:
+      empty_car_list: 'У водителя нет зарегистрированных автомобилей'
+
+  cars:
+    car:
+      title_workhorse: "Рабочая лошадка"
+      btn_workhorse: "Сделать рабочей лошадкой"
+      btn_edit_car_description: 'Редактировать описание автомобиля'
+      btn_delete_car_description: 'Удалить описание автомобиля'
+      btn_delete_picture: 'Удалить изображение'
+      btn_go_rides: "Регистрация заказов перевозок"
+
+  rides:
+    menu:
+      title_ride_management: "Управление поездками"
+      take_a_new_order: "Принять новый заказ"
+    ride:
+      btn_here_goes: "Поехали!"
+      btn_to_complete: "Завершить"
+      btn_to_abort: "Отклонено клиентом"
+      btn_to_reject: "Отклонено мной"
+      btn_return_to_map: "Вернуться к карте"
+      btn_edit_ride_description: "Редактировать описание поездки"
+      btn_delete_ride_description: "Удалить описание поездки"
+      empty_field: "пусто"
+      pay_off: "погасить"
+    index:
+      title_all_rides: "История поездок"
+      other_cars_stat: "Статистика по другим автомобилям:"
+    complete:
+      driver_payment_service_error: "Что-то пошло не так, обратитесь к администратору."
+
+  payments:
+    accept:
+      title_payment_acceptence: "Сделка учтена"
+
   activerecord:
+    actions: Действия
+
     models:
       user:
         few: Пользователя
         many: Пользователей
         one: Пользователь
         other: Пользователи
+      driver:
+        few: Водителя
+        many: Водителей
+        one: Водитель
+        other: Водители
+      car:
+        few: Автомобиля
+        many: Автомобилей
+        one: Автомобиль
+        other: Автомобили
+      payment:
+        few: Платежа
+        many: Платежей
+        one: Платеж
+        other: Платежи
+      ride:
+        few: Поездки
+        many: Поездок
+        one: Поездка
+        other: Поездки
+
     attributes:
       user:
+        id: № пользователя
         name: "Имя"
         phone: "Номер телефона"
         role: "Роль"
         role_rules_accepted: "Согласие с правилами сервиса"
-
         confirmation_sent_at: Дата отправки подтверждения
         confirmation_token: Код подтверждения email
         confirmed_at: Дата подтверждения
@@ -46,7 +150,38 @@ ru:
         unconfirmed_email: Неподтвержденный email
         unlock_token: Токен разблокировки
         updated_at: Дата обновления
-    
+        lock: "Блокировка"
+      driver:
+        id: № профиля
+        photo: Фотография
+        driver_id: № водительского удостоверения
+        license_id: № разрешения водителя
+        region: Регион
+        start_driving: Год начала вождения
+        user: Учетная запись пользователя
+        experience: Стаж
+      car:
+        license_plate: Гос. номер
+        model: Модель
+        year_manufacture: Год выпуска
+      ride:
+        cost: "Стоимость"
+        arrival: "Прибытие"
+        departure: "Отправление"
+        when: "Время"
+        status: "Статус"
+        scheduled: "Запланировано"
+        execution: "Исполнение"
+        completed: "Завершено"
+        aborted: "Прервано" 
+        rejected: "Отклонено"
+        created_at: "Дата создания"
+      payment:
+        rate: "Ставка сделки"
+        tariff: "Тариф"
+        price: "Цена услуги"
+        paid_up: "Оплачено"
+          
     errors:
       models:
         user:
@@ -55,3 +190,13 @@ ru:
               invalid: "Недопустимый формат электронной почты"
             role_rules_accepted:
               accepted: "Вы должны выразить согласие с Условиями и Положениями"
+      attachment:
+        photo:
+          invalid_size: "Фотография должна иметь размер менее 2 МБ"
+          invalid_content_type: "Фотография должна быть в формате GIF, PNG или JPG"
+
+  unauthorized:
+    manage:
+      all: "У вас нет доступа к этому ресурсу"
+    read:
+      all: "У вас нет прав доступа к этой странице" 

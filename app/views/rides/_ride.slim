@@ -1,0 +1,45 @@
+- if ride.persisted?
+  .card id="ride-#{ride.id}" data-ride-id=@ride.id
+    .card-body
+      table class="table"
+        tr
+          th = "#{t('activerecord.attributes.ride.departure')}:" 
+          td = "#{ride.departure.present? ? ride.departure : t('.empty_field')}"
+        tr
+          th = "#{t('activerecord.attributes.ride.arrival')}:" 
+          td = "#{ride.arrival.present? ? ride.arrival : t('.empty_field')}"
+        tr
+          th = "#{t('activerecord.attributes.ride.when')}:"
+          td = "#{ride.when.present? ? ride.when : t('.empty_field')}"
+        tr
+          th = "#{t('activerecord.attributes.ride.cost')}:" 
+          td = "#{ride.cost.present? ? ride.cost : t('.empty_field')}"
+
+      - if ride.scheduled?
+        = link_to t(".btn_here_goes"), execute_ride_path(ride),
+          class: "btn btn-block", method: :patch
+        = link_to t(".btn_to_abort"), abort_ride_path(ride),
+          class: "btn btn-block", method: :patch
+        = link_to t(".btn_to_reject"), reject_ride_path(ride),
+          class: "btn btn-block", method: :patch
+      - elsif ride.started?
+        = link_to t(".btn_to_complete"), complete_ride_path(ride),
+          class: "btn btn-block btn-success", method: :post
+        = link_to t(".btn_return_to_map"), root_path+"?car=#{ride.car_id}",
+          class: "btn btn-block"
+      - elsif ride.finished?
+        strong = ride.status
+
+      - if can?(:update, Ride)
+        = render 'rides/form', ride: ride
+
+    .card-footer
+      - if can?(:update, Ride, current_user)
+        .actions
+          = link_to t('.btn_edit_ride_description'), '#', 
+          class: 'edit-ride-link btn btn-block mt-2', data: { ride_id: ride.id }
+      - if can?(:destroy, Ride, current_user)
+        .actions
+          = link_to t('.btn_delete_ride_description'), ride_path(ride), 
+          method: :delete, remote: true, data: {confirm: t('are_you_sure')}, 
+          class: 'btn btn-block btn-error mb-2' 

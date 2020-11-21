@@ -1,0 +1,19 @@
+tr
+  td = lst_ride.created_at
+  td = lst_ride.departure.present? ? lst_ride.departure : ''
+  td = lst_ride.arrival.present? ? lst_ride.arrival : ''
+  td = lst_ride.when.present? ? lst_ride.when : ''
+  td = lst_ride.cost.present? ? lst_ride.cost : ''
+  td = lst_ride.status
+  td = lst_ride.rate.present? ? lst_ride.rate : ''
+  td = lst_ride.tariff.present? ? lst_ride.tariff : ''
+  td = lst_ride.price.present? ? lst_ride.price : ''
+  td id="paid-time-#{lst_ride.paid_id}" 
+  	span = lst_ride.paid_up.present? ? lst_ride.paid_up : ''
+  - if current_user.admin
+    td 
+      - if lst_ride.price.present? && !lst_ride.paid_up
+        = link_to t('.pay_off'), pay_off_payment_path(lst_ride.paid_id), 
+          class: "btn btn-link bg-warning", method: :patch, remote: true, 
+          id: "paid-control-#{lst_ride.paid_id}"
+

@@ -3,6 +3,10 @@ class User < ApplicationRecord
 
   attr_accessor :role_rules_accepted
 
+  has_one :driver, dependent: :destroy
+  has_many :cars, dependent: :destroy
+  has_many :payments
+  
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :authy_authenticatable, :database_authenticatable, :registerable,
@@ -32,7 +36,28 @@ class User < ApplicationRecord
     @random_email ||= random_string+'@email.com'
   end
 
-  def authy_turn_off
-    update!(authy_enabled: false)
+  def authy_hook_turn_off
+    update!(authy_hook_enabled: false)
+    update!(authy_enabled: false)  
+  end
+
+  def authy_hook_turn_on
+    update!(authy_hook_enabled: true, last_sign_in_with_authy: nil)
+  end
+
+  def driver?
+    role == 'Driver'
+  end
+
+  def passenger?
+    role == 'Passenger'
+  end
+
+  def owner?(resource)
+    resource.user_id == id
+  end
+
+  def toggle!
+    update!(lock: !lock)  
   end
 end

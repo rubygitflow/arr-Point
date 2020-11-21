@@ -1,0 +1,23 @@
+.columns
+  .column.col-6.col-mx-auto.card
+    .card-header
+      h3 = t('.title_payment_acceptence')
+    .card-body
+      table class="table"
+        tr
+          th = "#{t('activerecord.attributes.payment.rate')} (руб):" 
+          td = "#{@payment.rate}"
+        tr
+          th = "#{t('activerecord.attributes.payment.tariff')} (%):" 
+          td = "#{@payment.tariff * 100}"
+        tr
+          th = "#{t('activerecord.attributes.payment.price')} (руб):"
+          td = "#{@payment.price}"
+
+
+      = link_to t("statistics"), car_rides_url(@car),
+        class: "btn btn-block btn-lg mt-2 mb-2"
+ 
+    .card-footer
+      = link_to t("back"), menu_car_rides_url(@car),
+        class: "btn btn-block btn-link"

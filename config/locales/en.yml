@@ -3,24 +3,121 @@ en:
   sign_up: "Sign up" 
   sign_in: "Sign in" 
   sign_out: "Sign out" 
+  edit_reg: "Account"
+  edit_ride: "Rides"
+  driver: "Driver"
+  passenger: "Passenger"
+  select_role: "Select role:"
+  back: "Back"
+  are_you_sure: "Are you sure?"
+  profile: "Profile"
+  add_payment: "Add payment"
+  btn_accept: 'Accept'
+  lnk_payment_details: 'Payment details'
+  amount_to_pay: "Amount to pay"
+  statistics: Statistics
+
+  admin_panel:
+    btn_drivers: "Roster of drivers"
 
   maps:
     index:
       location_detection_disabled: "Location access disabled"
       menu: "Menu"
 
+  drivers:
+    my_details: 'My profile'
+    new:
+      add_your_photo: 'Add your photo'
+    form:
+      choose_file: 'Choose file'
+      def_region: "Moscow"
+    create:
+      profile_created: "Your profile successfully created."
+    show:
+      btn_edit_details: "Edit your profile"
+      btn_delete_details: "Delete your profile"
+      title_cars: "Cars"
+      title_create_new_car: "Add new car information"
+    update:
+      profile_updated: "Your profile successfully updated."
+    destroy:
+      profile_deleted: 'Driver profile was successfully deleted.'
+      ban_on_deleting_a_profile: "Deletion is not available! You are not the owner of the driver profile."
+    index:
+      title_all_drivers: Drivers  
+    driver: 
+      btn_delete_photo: 'Delete photo'
+    lst_driver:
+      driver_locked: "Unlock"
+      driver_unlocked: "Lock"
+    lock:
+      admin_lock_ignored: "The user's blocking status is not available for the administrator"
+      drivers_lock_changed: "Driver lock status changed."
+    car_stats:
+      empty_car_list: 'The driver has no cars registered'
+
+  cars:
+    car:
+      title_workhorse: "Workhorse"
+      btn_workhorse: "Make it a workhorse"
+      btn_edit_car_description: 'Edit car description'
+      btn_delete_car_description: 'Delete car description'
+      btn_delete_picture: 'Delete picture'
+      btn_go_rides: "Registration of transportation orders"
+
+  rides:
+    menu:
+      title_ride_management: "Ride management"
+      take_a_new_order: "Take a new order"
+    ride:
+      btn_here_goes: "Here goes!"
+      btn_to_complete: "Complete"
+      btn_to_abort: "Aborted by client"
+      btn_to_reject: "Rejected by me"
+      btn_return_to_map: "Return to map"
+      btn_edit_ride_description: 'Edit ride description'
+      btn_delete_ride_description: 'Delete ride description'
+      empty_field: 'empty'
+    lst_ride:
+      pay_off: "pay off"
+    index:
+      title_all_rides: "History of rides"
+      other_cars_stat: "Statistics on other cars:"
+    complete:
+      driver_payment_service_error: "Somsing went wrong, contact your administrator."
+
+  payments:
+    accept:
+      title_payment_acceptence: "Deal accounted for"
+      
   activerecord:
+    actions: Actions
+
     models:
       user:
         one: User
         other: Users
+      driver:
+        one: Driver
+        other: Drivers
+      car:
+        one: Car
+        other: Cars
+      payment:
+        one: Payment
+        other: Payments
+      ride:
+        one: Ride
+        other: Rides
+
     attributes:
       user:
+        id: "User Number"
         name: "Name"
         phone: "Phone"
         role: "Role"
         role_rules_accepted: "Acceptance of the role rules"
-
         confirmation_sent_at: Confirmation sent at
         confirmation_token: Confirmation token
         confirmed_at: Confirmed at
@@ -44,7 +141,38 @@ en:
         unconfirmed_email: Unconfirmed email
         unlock_token: Unlock token
         updated_at: Updated at
-    
+        lock: "Lock"
+      driver:
+        id: "Profile Number"
+        photo: Photo
+        driver_id: Driver ID
+        license_id: License ID
+        region: Region
+        start_driving: Year of starting driving
+        user: User account
+        experience: Experience
+      car:
+        license_plate: License plate
+        model: Model
+        year_manufacture: Year of car manufacture
+      ride:
+        cost: Cost
+        arrival: Arrival
+        departure: Departure
+        when: Time
+        status: "Status"
+        scheduled: "scheduled"
+        execution: "execution"
+        completed: "completed"
+        aborted: "interrupted" 
+        rejected: "rejected"
+        created_at: Creation date
+      payment:
+        rate: Transaction value
+        tariff: Tariff
+        price: Service price
+        paid_up: Paid up
+ 
     errors:
       models:
         user:
@@ -53,3 +181,13 @@ en:
               invalid: "Invalid email format"
             role_rules_accepted:
               accepted: "You must agree to the Terms and Conditions"
+      attachment:
+        photo:
+          invalid_size: "The photo must be less than 2 MB in size"
+          invalid_content_type: "The photo must be a GIF, PNG, or JPG file"
+
+  unauthorized:
+    manage:
+      all: "You have no access to this resource"
+    read:
+      all: "You are not authorized to access this page"    

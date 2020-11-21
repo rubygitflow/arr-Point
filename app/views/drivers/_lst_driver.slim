@@ -1,0 +1,29 @@
+tr
+  td = lst_driver.user_id
+  td = lst_driver.id
+  td 
+    - if lst_driver.photo.present?
+      img.img-fit-cover src="#{rails_blob_url(lst_driver.photo)}" width="80" height="80" alt="photo"
+  td = lst_driver.user.name
+  td = lst_driver.user.email
+  td = lst_driver.user.phone
+  td = lst_driver.driver_id
+  td = lst_driver.license_id
+  td = lst_driver.region
+  td = lst_driver.experience
+  td 
+    = link_to t('profile'), "/drivers/#{lst_driver.id}", 
+      class: "btn btn-link", id: "driver-#{lst_driver.id}"
+    br
+    = link_to t('add_payment'), car_stats_driver_path(lst_driver.id), 
+      class: "btn btn-link", id: "driver-payment-#{lst_driver.user_id}"
+    - if current_user.admin
+      br
+      - if lst_driver.user.lock 
+        = link_to t('.driver_locked'), lock_driver_path(lst_driver.id), 
+          class: "btn btn-link bg-warning", method: :patch, remote: true, 
+          id: "drivers-lock-#{lst_driver.user_id}"
+      - else
+        = link_to t('.driver_unlocked'), lock_driver_path(lst_driver.id), 
+          class: "btn btn-link bg-success", method: :patch, remote: true, 
+          id: "drivers-lock-#{lst_driver.user_id}"

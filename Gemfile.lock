@@ -70,6 +70,7 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.4)
     byebug (11.1.3)
+    cancancan (3.1.0)
     capybara (3.33.0)
       addressable
       mini_mime (>= 0.1.3)
@@ -271,7 +272,8 @@ DEPENDENCIES
   activerecord-pg_enum
   bootsnap (>= 1.4.2)
   byebug
-  capybara (>= 2.15)
+  cancancan
+  capybara
   devise (~> 4.7, >= 4.7.3)
   devise-authy (~> 2.2, >= 2.2.1)
   dotenv-rails

@@ -1,0 +1,62 @@
+.columns
+  .column.col-mx-auto.card
+    .card-header
+      - file = @car.pictures.first
+      table
+        tr
+          - if file.present?
+            td rowspan="2" 
+              img.img-fit-cover src="#{rails_blob_url(file)}" width="120" height="80" alt="photo" 
+          td.px-2 colspan="4" 
+            h3.px-2 = "#{t('.title_all_rides')}: #{@car.license_plate}" 
+        tr.text-gray
+          td.px-1  
+          td.px-2 = @car.user.name 
+          td  ,
+          td.px-2 = @car.user.email
+
+    table class="table table-striped table-scroll"
+      thead
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.ride.created_at'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.ride.departure'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.ride.arrival'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.ride.when'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.ride.cost'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.ride.status'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.rate'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.tariff'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.price'))}
+        th class="text-center"
+          | #{break_by_words(t('activerecord.attributes.payment.paid_up'))}
+        - if current_user.admin
+          th class="text-center"
+            | #{break_by_words(t('activerecord.actions'))}
+      tbody
+        = render partial: "lst_ride", collection: @rides_payments
+ 
+    .card-footer
+      = link_to t("back"), menu_car_rides_url(@car),
+        class: "btn btn-block btn-link"
+
+      - if can?(:index, Driver)
+        = link_to t("admin_panel.btn_drivers"), drivers_path,
+          class: "btn btn-block btn-lg mb-2"
+        
+
+    = link_to t("lnk_payment_details"), "/docs/pd4sb_fill.pdf",
+      target: "_blank", class: "btn btn-block btn-lg mt-2 mb-2"
+
+    h5 = t('.other_cars_stat')
+    .column.col-12
+      - @cars.each do |car|
+        = link_to car.license_plate, car_rides_url(car), 
+          class: "float-left btn mx-1"

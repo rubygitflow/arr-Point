@@ -6,8 +6,8 @@ feature 'User can log in to the system', %{
   on the interactive map.
 } do
   
-  given(:user) { create(:user, authy_enabled: false) }
-  given(:unconfirmed_user) { create(:user, authy_enabled: true) }
+  given(:user) { create(:user, authy_hook_enabled: false) }
+  given(:unconfirmed_user) { create(:user, authy_hook_enabled: true) }
   background do 
     visit root_path+'?lang=ru'
     visit new_user_session_path
@@ -19,7 +19,7 @@ feature 'User can log in to the system', %{
       expect(page).to have_content 'Активировать аккаунт по номеру телефона'
     end
 
-    scenario 'with a confirmed phone number' do
+    scenario 'with the confirmed phone number' do
       login(user)
       expect(page).to have_css('.map')
       expect(page).to have_content 'Вход в аккаунт выполнен.'

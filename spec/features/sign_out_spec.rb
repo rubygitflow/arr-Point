@@ -5,7 +5,7 @@ feature 'User can log out', %(
 ) do
   background { visit root_path+'?lang=ru' }
 
-  given(:user) { create(:user, authy_enabled: false) }
+  given(:user) { create(:user, authy_hook_enabled: false) }
 
   scenario 'Authenticated user logs out' do
     visit new_user_session_path

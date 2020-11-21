@@ -7,6 +7,9 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'rspec/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 
+require 'cancan/matchers'
+require 'capybara/rspec'
+
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -34,9 +37,16 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   config.include FeatureHelpers, type: :feature
   config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include ControllerHelpers, type: :controller
+  config.include ActiveStorageHelpers
 
   # You must have the chrome browser installed
   Capybara.javascript_driver = :selenium_chrome
+  # Capybara.javascript_driver = :rack_test
+  # Capybara.current_driver = :selenium
+  # Capybara.default_driver = :selenium
+  # available drivers: :rack_test, :selenium, :selenium_headless, 
+  #                    :selenium_chrome, :selenium_chrome_headless
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
@@ -68,6 +78,16 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.after(:all) do
+    FileUtils.rm_rf("#{Rails.root}/tmp/storage")
+  end
+
+
+  FactoryBot::SyntaxRunner.class_eval do
+    include ActionDispatch::TestProcess
+  end
+
 end
 
 Shoulda::Matchers.configure do |config|

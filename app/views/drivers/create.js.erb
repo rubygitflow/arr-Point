@@ -1,0 +1,7 @@
+<% if @driver.errors.blank? %>
+  <% flash[:notice] = t('.profile_created') %>
+  window.location.href = "<%= '/drivers/' + @driver.id.to_s %>";
+<% else %>
+  document.getElementById("driver-errors").innerHTML = 
+    "<%= j render 'shared/errors', resource: @driver %>"
+<% end %>

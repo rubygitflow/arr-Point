@@ -1,0 +1,5 @@
+<% if @car.errors.blank? %>
+  $('#car-<%= @car.id %>').replaceWith('<%= j render @car %>');
+<% else %>
+  $('#car-<%= @car.id %>-errors').html('<%= j render 'shared/short_errors', resource: @car %>');
+<% end %>

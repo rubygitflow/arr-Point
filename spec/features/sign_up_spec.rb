@@ -79,7 +79,6 @@ feature 'User can register in the system', %{
     scenario 'sees his phone number' do
       phone = find_field(id: 'authy-cellphone').value
       phone = PhonyRails.normalize_number(phone)
-      puts("#{phone.inspect}")
       expect(user.phone).to eq(phone)
       user_phone_code = PhonyRails.country_code_from_number(user.phone)
       code = find_field(id: "authy-countries").value
@@ -96,8 +95,9 @@ feature 'User can register in the system', %{
       find('li', text: 'Canada (+1)').click
     end
 
-    scenario 'can request an SMS to the phone number' do
+    scenario 'can request the code by SMS to the phone number' do
       click_button 'Принять'
+      # save_and_open_page
       expect(page).to have_content 'Подтверждение своего номера телефона' 
       find_link(id: 'authy-request-sms-link').visible?
       expect(page).to have_link(nil, href: '/users/request-sms')

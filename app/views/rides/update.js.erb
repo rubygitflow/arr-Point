@@ -1,0 +1,5 @@
+<% if @ride.errors.blank? %>
+  $('#ride-<%= @ride.id %>').replaceWith('<%= j render @ride %>');
+<% else %>
+  $('#ride-<%= @ride.id %>-errors').html('<%= j render 'shared/short_errors', resource: @ride %>');
+<% end %>
