@@ -1,14 +1,16 @@
 en:
-  service_name: "arrival Point"
+  service_name: "CAR ON THE MOVE"
   sign_up: "Sign up" 
   sign_in: "Sign in" 
   sign_out: "Sign out" 
-  edit_reg: "Account"
+  go_to_profile: "My profile"
   edit_ride: "Rides"
   driver: "Driver"
   passenger: "Passenger"
-  select_role: "Select role:"
+  select_role: "Choose one of the options"
   back: "Back"
+  back_to_account_edition: "Go to edit your account"
+  back_to_profile: "Go to profile"
   are_you_sure: "Are you sure?"
   profile: "Profile"
   add_payment: "Add payment"
@@ -59,8 +61,8 @@ en:
 
   cars:
     car:
-      title_workhorse: "Workhorse"
-      btn_workhorse: "Make it a workhorse"
+      title_workhorse: "On the route"
+      btn_workhorse: "Put on the route"
       btn_edit_car_description: 'Edit car description'
       btn_delete_car_description: 'Delete car description'
       btn_delete_picture: 'Delete picture'
@@ -156,15 +158,15 @@ en:
         model: Model
         year_manufacture: Year of car manufacture
       ride:
-        cost: Cost
-        arrival: Arrival
-        departure: Departure
-        when: Time
-        status: "Status"
+        cost: Cost of ride
+        arrival: Point of arrival
+        departure: Point of departure
+        when: Departure time
+        status: "Service status"
         scheduled: "scheduled"
         execution: "execution"
         completed: "completed"
-        aborted: "interrupted" 
+        aborted: "aborted" 
         rejected: "rejected"
         created_at: Creation date
       payment:

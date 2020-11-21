@@ -2,7 +2,8 @@
   .column.col-6.col-mx-auto.card
     - if can?(:index, Driver)
       .card-header
-        h3 = t('activerecord.attributes.driver.id')+': '+(@driver.id).to_s
+        h3
+          strong = t('activerecord.attributes.driver.id')+': '+(@driver.id).to_s
         .text-gray 
           table
             tr
@@ -11,7 +12,8 @@
               td.px-2 = @driver.user.email
     - else
       .card-header
-        h3 #{t('drivers.my_details')}
+        h3
+          strong #{t('drivers.my_details')}
 
     = render @driver
 
@@ -20,16 +22,10 @@
         = link_to t(".btn_edit_details"), edit_driver_path,
           class: "btn btn-block btn-lg mt-2 mb-2"
 
-    - if current_user.owner?(@driver)
-      - if can?(:destroy, @driver)
-        .actions
-          = link_to t(".btn_delete_details"), driver_path(@driver), method: :delete,
-            data: {confirm: t('are_you_sure')}, id: "delete-details",
-            class: "btn btn-block btn-error mb-2 mt-2"
-
     .divider
-    h3.card-header = t('.title_cars')
-    .cars id="cars-#{@driver.id}"
+    h3.card-header
+      strong = t('.title_cars')
+    .cars.strong id="cars-#{@driver.id}"
       = render @driver.user.cars
 
     - if can?(:create, Car)
@@ -37,10 +33,17 @@
       h5 = t('.title_create_new_car')
       = render 'cars/form', car: @car
 
+    - if current_user.owner?(@driver)
+      - if can?(:destroy, @driver)
+        .actions
+          = link_to t(".btn_delete_details"), driver_path(@driver), method: :delete,
+            data: {confirm: t('are_you_sure')}, id: "delete-details",
+            class: "btn btn-block btn-error mb-2 mt-2"
+
     .card-footer
       - if can?(:index, Driver)
         = link_to t("admin_panel.btn_drivers"), drivers_path,
           class: "btn btn-block btn-lg mb-2"
 
-      = link_to t("back"), edit_user_registration_path,
+      = link_to t("back_to_account_edition"), edit_user_registration_path,
         class: "btn btn-block btn-link"

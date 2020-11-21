@@ -4,7 +4,9 @@
 
 <% if @car.persisted? %>
   $('.cars').append('<%= j render @car  %>');
+  $('.new-car #car_pictures').val([]);
   $('.new-car #car_license_plate').val('');
   $('.new-car #car_model').val('');
   $('.new-car #car_year_manufacture').val('');
+  $(".new-car #car_pictures").prop('disabled', false);
 <% end %>

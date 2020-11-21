@@ -3,25 +3,30 @@ table class="table"
     - if @driver.photo.attached?
       tr id="attachment-#{@driver.photo.id}"
         th  
-          - if current_user.owner?(@driver) 
-            .actions
-              = link_to t('.btn_delete_photo'), 
-                attachment_path(@driver.photo.id), 
-                method: :delete, remote: true, 
-                data: {confirm: t('are_you_sure')}, 
-                class: 'btn btn-block btn-error'
+          / - if current_user.owner?(@driver) 
+          /   .actions
+          /     = link_to t('.btn_delete_photo'), 
+          /       attachment_path(@driver.photo.id), 
+          /       method: :delete, remote: true, 
+          /       data: {confirm: t('are_you_sure')}, 
+          /       class: 'btn btn-block btn-error'
         td 
-          img.img-fit-cover src="#{rails_blob_url(@driver.photo)}" width="96" height="96" alt="photo"
+          .float-right
+            img.img-fit-cover src="#{rails_blob_url(@driver.photo)}" width="144" height="144" alt="photo"
     tr
       th #{t('activerecord.attributes.driver.driver_id')} 
-      td = @driver.driver_id
+      td
+        .float-right = @driver.driver_id
     tr
       th #{t('activerecord.attributes.driver.license_id')} 
-      td = @driver.license_id
+      td
+        .float-right = @driver.license_id
     tr
       th #{t('activerecord.attributes.driver.region')} 
-      td = @driver.region
+      td
+        .float-right = @driver.region
     tr
       th #{t('activerecord.attributes.driver.start_driving')} 
-      td = @driver.start_driving
+      td
+        .float-right = @driver.start_driving
 

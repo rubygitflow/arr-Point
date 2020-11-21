@@ -1,7 +1,8 @@
 .columns
   .column.col-6.col-mx-auto.card
     .card-header
-      h3 = t('.title_ride_management')
+      h3.text-center
+        b = t('.title_ride_management')
 
     .card-body
     - if @car.present?
@@ -20,7 +21,8 @@
         h5 = t('.take_a_new_order')
         = render 'rides/form', ride: @ride
 
-      = link_to t("statistics"), car_rides_url,
+      .actions
+        strong = link_to t("statistics"), car_rides_url,
         class: "btn btn-block btn-lg mt-2 mb-2"
 
 
@@ -30,5 +32,5 @@
          
  
     .card-footer
-      = link_to t("back"), driver_url(@car.user.driver),
+      = link_to t("back_to_profile"), driver_url(@car.user.driver),
         class: "btn btn-block btn-link"

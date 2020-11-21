@@ -4,7 +4,7 @@ class User < ApplicationRecord
   attr_accessor :role_rules_accepted
 
   has_one :driver, dependent: :destroy
-  has_many :cars, dependent: :destroy
+  has_many :cars, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :payments
   
   # Include default devise modules. Others available are:

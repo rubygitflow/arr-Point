@@ -1,21 +1,23 @@
 ru:
   service_name: "АВТОМОБИЛЬ НА ХОДУ"
   sign_up: "Регистрация" 
-  sign_in: "Вход" 
-  sign_out: "Выход" 
-  edit_reg: "Личный кабинет"
+  sign_in: "Авторизация" 
+  sign_out: "Выйти" 
+  go_to_profile: "Мой&nbsp;профиль"
   edit_ride: "Поездки"
   driver: "Водитель"
   passenger: "Пассажир"
-  select_role: "Выберите роль:"
+  select_role: "Выбрать один из вариантов"
   back: "Назад"
+  back_to_account_edition: "Перейти к редактированию учётной записи"
+  back_to_profile: "Перейти в профиль"
   are_you_sure: "Вы уверены?"
   profile: "Профиль"
   add_payment: "Добавить платёж"
   btn_accept: 'Принять'
   lnk_payment_details: 'Реквизиты для оплаты'
   amount_to_pay: "Сумма к оплате"
-  statistics: "Статистика"
+  statistics: "Статистика / История поездок"
 
   admin_panel:
     btn_drivers: "Список водителей"
@@ -59,12 +61,12 @@ ru:
 
   cars:
     car:
-      title_workhorse: "Рабочая лошадка"
-      btn_workhorse: "Сделать рабочей лошадкой"
+      title_workhorse: "На маршруте"
+      btn_workhorse: "Поставить на маршрут"
       btn_edit_car_description: 'Редактировать описание автомобиля'
       btn_delete_car_description: 'Удалить описание автомобиля'
       btn_delete_picture: 'Удалить изображение'
-      btn_go_rides: "Регистрация заказов перевозок"
+      btn_go_rides: "Регистрация заказа"
 
   rides:
     menu:
@@ -134,7 +136,7 @@ ru:
         current_password: Текущий пароль
         current_sign_in_at: Дата текущего входа
         current_sign_in_ip: IP текущего входа
-        email: Адрес Email
+        email: Email
         encrypted_password: Зашифрованный пароль
         failed_attempts: Неудачные попытки
         last_sign_in_at: Дата последнего входа
@@ -165,11 +167,11 @@ ru:
         model: Модель
         year_manufacture: Год выпуска
       ride:
-        cost: "Стоимость"
-        arrival: "Прибытие"
-        departure: "Отправление"
-        when: "Время"
-        status: "Статус"
+        cost: "Стоимость<br>поездки"
+        arrival: "Пункт прибытия"
+        departure: "Пункт отправления"
+        when: "Время отправления"
+        status: "Статус услуги"
         scheduled: "Запланировано"
         execution: "Исполнение"
         completed: "Завершено"
@@ -178,9 +180,9 @@ ru:
         created_at: "Дата создания"
       payment:
         rate: "Ставка сделки"
-        tariff: "Тариф"
-        price: "Цена услуги"
-        paid_up: "Оплачено"
+        tariff: "Тариф<br>%"
+        price: "Цена<br>услуги"
+        paid_up: "Факт<br>оплаты"
           
     errors:
       models:

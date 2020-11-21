@@ -7,9 +7,13 @@
       var lang = "#{ I18n.locale }";
       map = DG.map('map', {
         center: DG.latLng(55.75, 37.6245),
-        fullscreenControl: false,
-        zoom: 20
+        fullscreenControl: true,
+        zoom: 17
       })
+
+      DG.marker([55.754841394666, 37.6202483514509]).addTo(map).bindPopup('Водитель со стажем');
+      DG.popup() .setLatLng([55.7540, 37.6230]) .setContent('Автомобиль на ходу') .addTo(map);
+
       DG.control.scale({position: 'topright'}).addTo(map);
       DG.control.ruler({position: 'topright'}).addTo(map);
       DG.control.traffic({position: 'topright'}).addTo(map);  
@@ -39,10 +43,11 @@
         - if params[:car].present?
           = link_to "#{ t('edit_ride') }", menu_car_rides_url(car_id: params[:car])
         - else
-          = link_to "#{ t('edit_reg') }", edit_user_registration_url
+          = link_to t("go_to_profile").html_safe, drivers_splitter_path
+
       - else
-        = link_to "#{ t('sign_in') }", new_user_session_url
         = link_to "#{ t('sign_up') }", new_user_registration_url
+        = link_to "#{ t('sign_in') }", new_user_session_url
 
     javascript: 
       function dropFunction() {

@@ -1,6 +1,6 @@
 class Car < ApplicationRecord
   belongs_to :user
-  has_many :rides
+  has_many :rides, -> { order(created_at: :desc) }
   has_many_attached :pictures
 
   validates :license_plate, :model, :year_manufacture, presence: true
