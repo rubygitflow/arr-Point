@@ -9,7 +9,7 @@
           center: [55.7508, 37.6177],
           zoom: 10
       });
-      DG.marker([55.8558, 37.7227]).addTo(map).bindPopup('msk 2132'); // объявление контрольного маркера
+      DG.marker([55.8558, 37.7227]).addTo(map).bindPopup('msk 2132'); // объявление контрольного маркера - всегда видим его
 
       marker = DG.marker([55.7558, 37.6177]).addTo(map).bindPopup('uyy7765'); // объявление маркера
 
@@ -36,7 +36,7 @@
             if (car[0].coordinates) { // извлекаем объект с координатами для отображени
 
               // всё началось с того, что строчка ниже ничего не отображает
-              DG.marker(car[0].coordinates).addTo(map).bindPopup(car[0].license_plate); //
+              // DG.marker(car[0].coordinates).addTo(map).bindPopup(car[0].license_plate); // - никогда не видим его
 
               console.log('car[0].coordinates',car[0].coordinates);  // удостоверяемся в получении данных
               console.log('car[0].coordinates[0]',car[0].coordinates[0]); // 
