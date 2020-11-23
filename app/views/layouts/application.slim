@@ -6,11 +6,10 @@ html lang="#{I18n.locale}"
     = csrf_meta_tags
     = csp_meta_tag
 
+    = Gon::Base.render_data
+    
     = stylesheet_link_tag  "application", 'data-turbolinks-track': 'reload', media: 'all'
     = javascript_pack_tag  "application", 'data-turbolinks-track': 'reload'
-
-    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
-    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
 
   body
     - if controller.controller_name != "maps"

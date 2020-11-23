@@ -13,7 +13,11 @@ class Car < ApplicationRecord
   def select_workhorse!
     Car.transaction do
       user.cars.update_all(workhorse:false)
-      update!(workhorse: true)
+
+      # TODO: Подключение GPS-датчика
+      x = (55.7558+rand()).round(5)
+      y = (37.6177+rand()).round(5)
+      update!(workhorse: true, coordinates: [x, y])
     end
   end
 

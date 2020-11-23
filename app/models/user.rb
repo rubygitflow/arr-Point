@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_one :driver, dependent: :destroy
   has_many :cars, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :payments
+
+  scope :available_cars, -> { where(role: 'Driver', lock: false).joins(:cars)
+    .where( cars: { workhorse: true} ) }
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
