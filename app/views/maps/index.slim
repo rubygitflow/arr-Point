@@ -6,62 +6,75 @@
           marker;
 
       map = DG.map('map', {
-          center: [55.7558, 37.6177],
-          zoom: 13
+          center: [55.7508, 37.6177],
+          zoom: 10
       });
+      DG.marker([55.8558, 37.7227]).addTo(map).bindPopup('msk 2132'); // объявление контрольного маркера
 
-      marker = DG.marker([55.7558, 37.6177]).addTo(map).bindPopup('uyy7765   ');;
+      marker = DG.marker([55.7558, 37.6177]).addTo(map).bindPopup('uyy7765'); // объявление маркера
 
-      var increment1 = 0.001;
-      var increment2 = 0.002;
+      var increment1 = -0.005, 
+          increment2 = 0.005; // объявление КОНСТАНТ для смещения координаты по-умолчанию в новую позицию 
 
-      console.log('increment1',typeof(increment1));
-      console.log('increment2',typeof(increment2));
+      console.log('increment1',typeof(increment1)); // отображаем тип статического смещения 
+      console.log('increment2',typeof(increment2)); // отображаем тип статического смещения
 
       function move() {
-          if (!map.getBounds().contains(marker.getLatLng())) {
-              increment1 *= -1;
-              increment2 *= -1;
-          }
+        if (!map.getBounds().contains(marker.getLatLng())) {
+            increment1 *= -1;
+            increment2 *= -1;
+        }  // сюда не попадём, просто оставлен код из демки
 
 
-          if (gon.drivers) {
+        if (gon.drivers) { // удостоверяемся, что данные подгружены извне
 
 
-            gon.drivers.forEach(function(driver) {
-              var car = driver.cars.filter(function(car){
-                return car.workhorse == true;
-              });
-              if (car[0].coordinates) {
-                console.log('car[0].coordinates',car[0].coordinates);
-                console.log('car[0].coordinates[0]',car[0].coordinates[0]);
-                console.log('car[0].coordinates[1]',car[0].coordinates[1]);
+          gon.drivers.forEach(function(driver) {  
+            var car = driver.cars.filter(function(car){
+              return car.workhorse == true;
+            }); // извлекаем объект с координатами для отображения
+            if (car[0].coordinates) { // извлекаем объект с координатами для отображени
 
-                var increment3 = car[0].coordinates[0] - marker.getLatLng().lat;
-                var increment4 = car[0].coordinates[1] - marker.getLatLng().lng;
+              // всё началось с того, что строчка ниже ничего не отображает
+              DG.marker(car[0].coordinates).addTo(map).bindPopup(car[0].license_plate); //
 
-                console.log('increment3',typeof(increment3));
-                console.log('increment4',typeof(increment4));
+              console.log('car[0].coordinates',car[0].coordinates);  // удостоверяемся в получении данных
+              console.log('car[0].coordinates[0]',car[0].coordinates[0]); // 
+              console.log('car[0].coordinates[1]',car[0].coordinates[1]); // отображаем тип динамического смещения
+ 
+
+              var increment3 = car[0].coordinates[0] - marker.getLatLng().lat,
+                  increment4 = car[0].coordinates[1] - marker.getLatLng().lng; // объявление ПЕРЕМЕННЫХ для смещения координаты по-умолчанию в новую позицию 
+
+              console.log('increment3',typeof(increment3)); 
+              console.log('increment4',typeof(increment4));  // отображаем тип вычисленных смещений
 
 
-                var newLat = marker.getLatLng().lat + increment3,
-                    newLng = marker.getLatLng().lng + increment4;
+              // отображаем так и ВИДИМ МЕТКУ
+              // var newLat = marker.getLatLng().lat + increment1, 
+              //     newLng = marker.getLatLng().lng + increment2;  // новые координаты со смещением из констант
+
+              // ИЛИ отображаем так и НЕ ВИДИМ МЕТКУ
+              var newLat = marker.getLatLng().lat + increment3,
+                  newLng = marker.getLatLng().lng + increment4; // новые координаты с вычисленным смещением из  координат в базе данных
 
 
-                console.log('newLat',newLat);
-                console.log('newLng',newLng);
+              // убеждаемся, что новые значения реальные
+              console.log('newLat',newLat); 
+              console.log('newLng',newLng);
 
-                marker.setLatLng([newLat, newLng]);
+              // собственно переназначение координат МЕТКИ
+              marker.setLatLng([newLat, newLng]);
 
-              }
-            });
+            }
+          });
 
-          }
+        }
 
-          clearInterval(intervalID);
+        clearInterval(intervalID); // останавливаем таймер
       }
 
-      var intervalID = setInterval(move, 60);
+      var intervalID = setInterval(move, 60); // запускаем таймер
     });
 
 
