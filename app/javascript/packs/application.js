@@ -11,6 +11,8 @@ require("channels")
 require("jquery")
 require("packs/cars")
 require("packs/rides")
+require("packs/maps")
+require("packs/devise_authy")
 
 import "@fortawesome/fontawesome-free/css/all.css"
 import "spectre.css"
@@ -21,3 +23,17 @@ import "2gis-maps"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+function hideFunction() {
+  document.getElementById("up_container").style.display = "none";
+};
+
+window.addEventListener('load', function() {
+  let flash = "#{flash.inspect}"; 
+  let is_flash = ("#{flash.any?}" == "true"); 
+  if (is_flash) {
+    document.getElementById("up_container").style.display = "block";
+  } else {
+    document.getElementById("up_container").style.display = "none";
+  };
+});

@@ -15,8 +15,8 @@ class Car < ApplicationRecord
       user.cars.update_all(workhorse:false)
 
       # TODO: Подключение GPS-датчика
-      x = (55.7558+rand()).round(5)
-      y = (37.6177+rand()).round(5)
+      x = (55.7558+(rand()/10)).round(5)
+      y = (37.6177+(rand()/10)).round(5)
       update!(workhorse: true, coordinates: [x, y])
     end
   end

@@ -11,6 +11,9 @@ html lang="#{I18n.locale}"
     = stylesheet_link_tag  "application", 'data-turbolinks-track': 'reload', media: 'all'
     = javascript_pack_tag  "application", 'data-turbolinks-track': 'reload'
 
+    = javascript_include_tag "https://www.authy.com/form.authy.min.js"
+    = stylesheet_link_tag "https://www.authy.com/form.authy.min.css"
+
   body
     - if controller.controller_name != "maps"
       header class="navbar"
@@ -35,18 +38,3 @@ html lang="#{I18n.locale}"
           - flash.each do |level, text|
             div class="#{flash_class(level)}"
               p = text 
-         
-      javascript: 
-        function hideFunction() {
-          document.getElementById("up_container").style.display = "none";
-        };
-
-        window.addEventListener('load', function() {
-          let flash = "#{flash.inspect}"; 
-          let is_flash = ("#{flash.any?}" == "true"); 
-          if (is_flash) {
-            document.getElementById("up_container").style.display = "block";
-          } else {
-            document.getElementById("up_container").style.display = "none";
-          };
-        });
