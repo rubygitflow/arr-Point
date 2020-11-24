@@ -6,18 +6,18 @@
     .dropbtn onclick="dropFunction()"
       i class="fas fa-bars fa-3x"
     .dropup-content#menuDropup
-      = link_to 'RU / EN', change_language_maps_url, id:'langbtn', 
+      = link_to t('locale_select'), locales_change_url, id:'langbtn', 
         data: { onclick:'changeLangFunction()'}
       - if user_signed_in?
-        = link_to "#{ t('sign_out') }", destroy_user_session_url, method: :delete
+        = link_to t('sign_out'), destroy_user_session_url, method: :delete
         - if params[:car].present?
           = link_to "#{ t('edit_ride') }", menu_car_rides_url(car_id: params[:car])
         - else
           = link_to t("go_to_profile").html_safe, drivers_splitter_path
 
       - else
-        = link_to "#{ t('sign_up') }", new_user_registration_url
-        = link_to "#{ t('sign_in') }", new_user_session_url
+        = link_to t('sign_up'), new_user_registration_url
+        = link_to t('sign_in'), new_user_session_url
 
     javascript:
       function dropFunction() {

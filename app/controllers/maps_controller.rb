@@ -1,10 +1,10 @@
 class MapsController < ApplicationController
   include Maps
 
-  before_action :authenticate_user!, except: %i[index change_language]
+  before_action :authenticate_user!, except: %i[index]
   before_action :set_gon_reg_users
 
-  skip_authorization_check :only => [:index, :change_language]
+  skip_authorization_check :only => [:index]
 
   def index
     if user_signed_in? && 
@@ -13,11 +13,6 @@ class MapsController < ApplicationController
     elsif user_signed_in? && current_user.is_still_need_phone_authorization?
       redirect_to user_verify_authy_installation_path
     end
-  end
-
-  def change_language
-    session[:locale] = I18n.locale==:en ?  "ru" : "en"
-    return redirect_to root_path
   end
 
   private

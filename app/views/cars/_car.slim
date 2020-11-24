@@ -7,20 +7,19 @@
             - car.pictures.each do |file|
               tr id="attachment-#{file.id}"
                 th  
-                  / - if current_user.owner?(car) || current_user.admin
-                  /   .actions
-                  /     = link_to t('.btn_delete_picture'), 
-                  /       attachment_path(file), 
-                  /       method: :delete, remote: true, 
-                  /       data: {confirm: t('are_you_sure')}, 
-                  /       class: 'btn btn-block btn-error'
                   - if car.workhorse?
                     h3 class='card-title text-error text-left' = t('.title_workhorse')
 
+                td
+                  - if car.pictures.attached?
+                    .float-right
+                      img.img-fit-cover src="#{rails_blob_url(file)}" width="180" height="120" alt="photo"
+          - elsif car.workhorse?
+            tr 
+              th  
+                h3 class='card-title text-error text-left' = t('.title_workhorse')
 
                 td
-                  .float-right
-                    img.img-fit-cover src="#{rails_blob_url(file)}" width="180" height="120" alt="photo"
           tr
             th #{t('activerecord.attributes.car.license_plate')} 
             td
@@ -48,10 +47,6 @@
           class: 'btn btn-block btn-primary mb-2', method: :patch, remote: true
 
     .card-footer
-      / - if can?(:update, car)
-      /   .actions
-      /     = link_to t('.btn_edit_car_description'), '#', 
-      /     class: 'edit-car-link btn btn-block mt-2', data: { car_id: car.id }
       - if can?(:destroy, car)
         .actions
           = link_to t('.btn_delete_car_description'), car_path(car), 

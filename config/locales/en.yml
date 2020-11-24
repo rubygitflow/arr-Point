@@ -1,5 +1,6 @@
 en:
   service_name: "CAR ON THE MOVE"
+  locale_select: 'EN / RU'
   sign_up: "Sign up" 
   sign_in: "Sign in" 
   sign_out: "Sign out" 

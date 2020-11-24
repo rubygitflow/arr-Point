@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception, prepend: true
   include Maps
   before_action :set_locale
   before_action :oathy_confirmation
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_back_url
 
   helper_method :is_root_path?
 
@@ -48,7 +50,13 @@ class ApplicationController < ActionController::Base
     end
 
   end
-  
+
+  def store_back_url
+    # Pattern matching is experimental, and the behavior may change in future versions of Ruby
+    if are_available_routes?
+      session[:previous_request_url] = request.url  
+    end
+  end
 
   protected
 
@@ -59,4 +67,9 @@ class ApplicationController < ActionController::Base
       keys: [:name, :phone])
   end
 
+  def are_available_routes?
+    request.get? && 
+    self.controller_name != "locales" && 
+    self.action_name != 'accept'
+  end
 end

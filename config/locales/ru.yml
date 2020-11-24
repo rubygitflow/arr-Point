@@ -1,5 +1,6 @@
 ru:
   service_name: "АВТОМОБИЛЬ НА ХОДУ"
+  locale_select: 'RU / EN'
   sign_up: "Регистрация" 
   sign_in: "Авторизация" 
   sign_out: "Выйти" 
