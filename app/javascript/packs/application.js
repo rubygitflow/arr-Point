@@ -24,10 +24,6 @@ import "2gis-maps"
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-function hideFunction() {
-  document.getElementById("up_container").style.display = "none";
-};
-
 window.addEventListener('load', function() {
   let flash = "#{flash.inspect}"; 
   let is_flash = ("#{flash.any?}" == "true"); 

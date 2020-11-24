@@ -22,12 +22,3 @@ $(document).on('turbolinks:load', function () {
 
   }
 });
-
-function dropFunction() {
-  var elem = document.getElementById("menuDropup");
-  if (elem.style.display=="block") {
-    elem.style.display = "none";
-  } else {
-    elem.style.display = "block";
-  }        
-}

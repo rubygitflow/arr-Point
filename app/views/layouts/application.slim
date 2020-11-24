@@ -38,3 +38,8 @@ html lang="#{I18n.locale}"
           - flash.each do |level, text|
             div class="#{flash_class(level)}"
               p = text 
+
+      javascript:
+        function hideFunction() {
+          document.getElementById("up_container").style.display = "none";
+        };

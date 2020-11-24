@@ -63,4 +63,20 @@ class User < ApplicationRecord
   def toggle!
     update!(lock: !lock)  
   end
+
+  def does_hook_before_full_phone_authorization?
+   authy_hook_enabled && !authy_id && !last_sign_in_with_authy 
+  end
+
+  def is_still_need_phone_authorization?
+    authy_hook_enabled && authy_id && !last_sign_in_with_authy
+  end
+
+  def is_passenger_with_permissions?
+   !authy_hook_enabled && passenger? && !lock
+  end
+
+  def finished_phone_authorization?
+    authy_hook_enabled && last_sign_in_with_authy
+  end
 end

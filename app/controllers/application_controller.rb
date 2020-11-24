@@ -38,15 +38,12 @@ class ApplicationController < ActionController::Base
   end
 
   def oathy_confirmation
-    if user_signed_in? && current_user.authy_hook_enabled && 
-    current_user.last_sign_in_with_authy
-      current_user.authy_hook_turn_off
-    else
-      if current_user
-        if session[:mutable_phone] && session[:mutable_phone] != current_user.phone
-          session[:mutable_phone] = current_user.phone
-          current_user.authy_hook_turn_on
-        end
+    if user_signed_in? 
+      if current_user.finished_phone_authorization?
+        current_user.authy_hook_turn_off
+      elsif session[:mutable_phone] && session[:mutable_phone] != current_user.phone
+        session[:mutable_phone] = current_user.phone
+        current_user.authy_hook_turn_on
       end
     end
 

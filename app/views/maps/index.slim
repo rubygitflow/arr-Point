@@ -18,3 +18,13 @@
       - else
         = link_to "#{ t('sign_up') }", new_user_registration_url
         = link_to "#{ t('sign_in') }", new_user_session_url
+
+    javascript:
+      function dropFunction() {
+        var elem = document.getElementById("menuDropup");
+        if (elem.style.display=="block") {
+          elem.style.display = "none";
+        } else {
+          elem.style.display = "block";
+        }        
+      };

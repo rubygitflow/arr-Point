@@ -7,11 +7,10 @@ class MapsController < ApplicationController
   skip_authorization_check :only => [:index, :change_language]
 
   def index
-    if user_signed_in? && current_user.authy_hook_enabled && 
-    !current_user.authy_id && !current_user.last_sign_in_with_authy
+    if user_signed_in? && 
+    current_user.does_hook_before_full_phone_authorization?
       redirect_to user_enable_authy_path
-    elsif user_signed_in? && current_user.authy_hook_enabled && 
-    current_user.authy_id && !current_user.last_sign_in_with_authy
+    elsif user_signed_in? && current_user.is_still_need_phone_authorization?
       redirect_to user_verify_authy_installation_path
     end
   end
@@ -24,8 +23,7 @@ class MapsController < ApplicationController
   private
 
   def set_gon_reg_users
-    if user_signed_in? && !current_user.authy_hook_enabled && 
-    current_user.passenger? && !current_user.lock
+    if user_signed_in? && current_user.is_passenger_with_permissions?
       gon.user = current_user.as_json
       gon.drivers = SelectDriversService.new.call
     end
