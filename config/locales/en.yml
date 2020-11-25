@@ -186,8 +186,8 @@ en:
               accepted: "You must agree to the Terms and Conditions"
       attachment:
         photo:
-          invalid_size: "The photo must be less than 2 MB in size"
-          invalid_content_type: "The photo must be a GIF, PNG, or JPG file"
+          invalid_size: "The resource must be less than 2 MB in size"
+          invalid_content_type: "The resource must be a GIF, PNG, JPG, or WEBP file"
 
   unauthorized:
     manage:

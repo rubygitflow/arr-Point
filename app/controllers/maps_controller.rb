@@ -1,5 +1,4 @@
 class MapsController < ApplicationController
-  include Maps
 
   before_action :authenticate_user!, except: %i[index]
   before_action :set_gon_reg_users

@@ -195,8 +195,8 @@ ru:
               accepted: "Вы должны выразить согласие с Условиями и Положениями"
       attachment:
         photo:
-          invalid_size: "Фотография должна иметь размер менее 2 МБ"
-          invalid_content_type: "Фотография должна быть в формате GIF, PNG или JPG"
+          invalid_size: "Ресурс должен иметь размер менее 2 МБ"
+          invalid_content_type: "Ресурс должен быть в формате GIF, PNG, JPG, WEBP"
 
   unauthorized:
     manage:

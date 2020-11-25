@@ -4,7 +4,7 @@
   .new-car
     .form-group
       = f.label :pictures, class: "form-label"
-      = f.file_field :pictures, accept: 'image/png,image/gif,image/jpeg', 
+      = f.file_field :pictures, accept: 'image/png,image/gif,image/jpeg,image/webp', 
         class: "form-input", multiple: true, direct_upload: true
     .form-group
       = f.label :license_plate, class: "form-label" 

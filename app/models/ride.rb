@@ -30,6 +30,8 @@ class Ride < ApplicationRecord
   end
 
   def finished?
-    status == 'Completed' || 'Aborted' || 'Rejected' 
+    status == 'Completed' or 
+    status == 'Aborted' or 
+    status == 'Rejected' 
   end
 end

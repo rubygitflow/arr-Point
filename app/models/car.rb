@@ -21,18 +21,20 @@ class Car < ApplicationRecord
     end
   end
 
+  private
+
   def pictures_validation
     # https://github.com/rails/rails/issues/31656
     if pictures.attached?
       pictures.each do |file|
         if file.blob.byte_size > 2.megabytes
-          file.purge
-          errors.add(file.filename, 
-            I18n.t('activerecord.errors.attachment.photo.invalid_size'))
+          errors.add(:file, 
+            I18n.t('activerecord.errors.attachment.photo.invalid_size')
+          )
         elsif !file.blob.content_type.starts_with?('image/')
-          file.purge
-          errors.add(file.filename, 
-            I18n.t('activerecord.errors.attachment.photo.invalid_content_type'))
+          errors.add(:file, 
+            I18n.t('activerecord.errors.attachment.photo.invalid_content_type')
+          )
         end
       end
     end

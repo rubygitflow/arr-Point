@@ -20,5 +20,53 @@ FactoryBot.define do
         car.pictures.attach(picture1, picture2)
       end
     end
+
+    trait :with_jpg do
+      after :create do |car|
+        picture_path = Rails.root.join('app', 'assets', 'images', 'car456.jpg')
+        picture = fixture_file_upload(picture_path, 'image/jpeg')
+        car.pictures.attach(picture)
+      end
+    end
+
+    trait :with_png do
+      after :create do |car|
+        picture_path = Rails.root.join('app', 'assets', 'images', 'car234.png')
+        picture = fixture_file_upload(picture_path, 'image/png')
+        car.pictures.attach(picture)
+      end
+    end
+
+    trait :with_gif do
+      after :create do |car|
+        picture_path = Rails.root.join('app', 'assets', 'images', 'car345.gif')
+        picture = fixture_file_upload(picture_path, 'image/gif')
+        car.pictures.attach(picture)
+      end
+    end
+
+    trait :with_unknown_image do
+      after :create do |car|
+        picture_path = Rails.root.join('app', 'assets', 'images', 'car123.webp')
+        picture = fixture_file_upload(picture_path, 'image')
+        car.pictures.attach(picture)
+      end
+    end
+
+    trait :with_big_image do
+      after :create do |car|
+        picture_path = Rails.root.join('app', 'assets', 'images', 'big_car_image.png')
+        picture = fixture_file_upload(picture_path, 'image/png')
+        car.pictures.attach(picture)
+      end
+    end
+
+    trait :with_not_an_image do
+      after :create do |car|
+        picture_path = Rails.root.join('app', 'assets', 'config', 'manifest.js')
+        picture = fixture_file_upload(picture_path, 'image')
+        car.pictures.attach(picture)
+      end
+    end
   end
 end

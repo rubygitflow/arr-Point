@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
 
   protect_from_forgery with: :exception, prepend: true
-  include Maps
+
   before_action :set_locale
   before_action :oathy_confirmation
   before_action :configure_permitted_parameters, if: :devise_controller?
@@ -71,5 +71,14 @@ class ApplicationController < ActionController::Base
     request.get? && 
     self.controller_name != "locales" && 
     self.action_name != 'accept'
+  end
+
+  def store_locale
+    # https://api.rubyonrails.org/classes/ActionDispatch/Cookies.html
+    cookies[:locale] = {value: I18n.locale.to_s, expires: 7.days.from_now}
+  end
+
+  def recover_locale
+    I18n.locale = cookies[:locale].to_sym if cookies[:locale]
   end
 end
