@@ -1,11 +1,11 @@
 <% if @ride.persisted? && @ride.errors.present? %>
   $('#new-ride-errors').html('<%= j render 'shared/errors', resource: @ride %>');
-<% end %>
-
-<% if @ride.persisted? %>
-  $('.rides').append('<%= j render @ride  %>');
-  $('.new-ride #ride_departure').val('');
-  $('.new-ride #ride_arrival').val('');
-  $('.new-ride #ride_cost').val('');
-  $('.new-ride #ride_when').val('');
+<% else %>
+	<% if @ride.persisted? %>
+	  $('.rides').append('<%= j render @ride  %>');
+	  $('#new-ride #ride_departure').val('');
+	  $('#new-ride #ride_arrival').val('');
+	  $('#new-ride #ride_cost').val('');
+	  $('#new-ride #ride_what_time').val('');
+  <% end %>
 <% end %>

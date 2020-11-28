@@ -4,6 +4,7 @@ FactoryBot.define do
     license_plate { 'С123МВ 77' }
     model { 'Moscvich' }
     year_manufacture { '2010' }
+    workhorse { false }
 
     trait :invalid do
       license_plate { '' }

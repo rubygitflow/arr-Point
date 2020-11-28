@@ -4,14 +4,14 @@
       - file = @car.pictures.first
       table
         tr
-          - if file.present?
-            td rowspan="2" 
+          td rowspan="2" 
+            - if file.present?
               img.img-fit-cover src="#{rails_blob_url(file)}" width="120" height="80" alt="photo" 
           td.px-2 colspan="4" 
             h3.px-2 
               strong
                 = "#{t('.title_all_rides')}: #{@car.license_plate}" 
-          tr.text-gray
+        tr.text-gray
           td.px-1  
           td.px-2 = @car.user.name 
           td  ,
@@ -30,10 +30,10 @@
             | #{break_by_words(t('activerecord.attributes.ride.arrival'))}
         th class="text-center text-tiny" 
           h6
-            | #{break_by_words(t('activerecord.attributes.ride.when'))}
+            | #{break_by_words(t('activerecord.attributes.ride.what_time'))}
         th class="text-center text-tiny" 
           h6
-            | #{break_by_words(t('activerecord.attributes.ride.cost'))}
+            | #{break_by_words(t('activerecord.attributes.ride.short_cost'))}
         th class="text-center text-tiny" 
           h6
             | #{break_by_words(t('activerecord.attributes.ride.status'))}
@@ -42,7 +42,7 @@
             | #{break_by_words(t('activerecord.attributes.payment.rate'))}
         th class="text-center text-tiny" 
           h6
-            | #{break_by_words(t('activerecord.attributes.payment.tariff'))}
+            | #{break_by_words(t('activerecord.attributes.payment.short_tariff'))}
         th class="text-center text-tiny" 
           h6
             | #{break_by_words(t('activerecord.attributes.payment.price'))}

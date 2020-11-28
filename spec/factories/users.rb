@@ -30,7 +30,7 @@ FactoryBot.define do
   end
 
   trait :as_passager do
-    role { 'Passager' }
+    role { 'Passenger' }
   end
 
   trait :unauthorized do

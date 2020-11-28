@@ -88,6 +88,7 @@ ru:
       other_cars_stat: "Статистика по другим автомобилям:"
     complete:
       driver_payment_service_error: "Что-то пошло не так, обратитесь к администратору."
+      driver_payment_service_accepted: "Поездка уже закрыта"
 
   payments:
     accept:
@@ -168,10 +169,11 @@ ru:
         model: Модель
         year_manufacture: Год выпуска
       ride:
-        cost: "Стоимость<br>поездки"
+        short_cost: "Стоимость<br>поездки"
+        cost: "Стоимость поездки"
         arrival: "Пункт прибытия"
         departure: "Пункт отправления"
-        when: "Время отправления"
+        what_time: "Время отправления"
         status: "Статус услуги"
         scheduled: "Запланировано"
         execution: "Исполнение"
@@ -181,9 +183,10 @@ ru:
         created_at: "Дата создания"
       payment:
         rate: "Ставка сделки"
-        tariff: "Тариф<br>%"
-        price: "Цена<br>услуги"
-        paid_up: "Факт<br>оплаты"
+        tariff: "Тариф"
+        short_tariff: "Тариф (Доля&nbsp;ставки)"
+        price: "Цена услуги"
+        paid_up: "Факт оплаты"
           
     errors:
       models:

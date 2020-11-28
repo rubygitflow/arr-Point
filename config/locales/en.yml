@@ -89,6 +89,7 @@ en:
       other_cars_stat: "Statistics on other cars:"
     complete:
       driver_payment_service_error: "Somsing went wrong, contact your administrator."
+      driver_payment_service_accepted: "The ride is already closed"
 
   payments:
     accept:
@@ -159,10 +160,11 @@ en:
         model: Model
         year_manufacture: Year of car manufacture
       ride:
+        short_cost: Cost<br>of ride
         cost: Cost of ride
         arrival: Point of arrival
         departure: Point of departure
-        when: Departure time
+        what_time: Departure time
         status: "Service status"
         scheduled: "scheduled"
         execution: "execution"
@@ -173,6 +175,7 @@ en:
       payment:
         rate: Transaction value
         tariff: Tariff
+        short_tariff: "Tariff (Bid&nbsp;shares)"
         price: Service price
         paid_up: Paid up
  

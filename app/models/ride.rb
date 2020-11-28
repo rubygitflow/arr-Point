@@ -4,10 +4,13 @@ class Ride < ApplicationRecord
 
   validates :cost, numericality: { greater_than_or_equal_to: 0 }
 
+  scope :in_processing, -> (carId) { where(car_id: carId)
+    .where(status: ['Scheduled','Execution']) }
   scope :with_payments, -> (carId) { where(car_id: carId)
     .joins("LEFT OUTER JOIN payments ON (rides.id = payments.ride_id)")
-    .select("rides.*, payments.rate as rate, payments.tariff as tariff, 
-      payments.price as price, payments.paid_up as paid_up, payments.id as paid_id") }
+    .select("rides.*, payments.rate AS rate, payments.tariff AS tariff, 
+      payments.price AS price, payments.paid_up AS paid_up, 
+      payments.id AS paid_id") }
 
   def scheduled?
     status == 'Scheduled'

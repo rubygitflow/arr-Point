@@ -28,18 +28,21 @@ describe Ability, type: :model do
     let(:other_driver) { create(:driver, :with_photo, user: other_user_driver) }
     # let(:passenger1) { create(:passenger, :with_pictures, user: user_passenger) }
 
+    let(:car) { create(:car, :with_pictures, user: user) }
+    let(:other_car) { create(:car, :with_pictures, user: other_user_driver) }
+
     # it { should_not be_able_to :create, create(:passenger, user: user), user: user }
     # it { should_not be_able_to :update, create(:passenger, user: passenger1), user: user }
     # it { should_not be_able_to :destroy, create(:passenger, user: passenger1), user: user  }
 
     it { should be_able_to :create, create(:driver, user: user) }
     it { should be_able_to :update, create(:driver, user: user), user: user }
-    it { should be_able_to :destroy, create(:driver, user: user), user: user  } # what happened?
+    it { should be_able_to :destroy, create(:driver, user: user), user: user  } 
     it { should_not be_able_to :update, create(:driver, user: other_user_driver), user: user }
     it { should_not be_able_to :destroy, create(:driver, user: other_user_driver), user: user }
 
     # it { should be_able_to :destroy, driver1.photo, user: user } # what happened?
-    it { should_not be_able_to :destroy, other_driver.photo, user: user }
+    it { should_not be_able_to :destroy, driver1.photo, user: other_user_driver }
 
     it { should_not be_able_to :index, create(:driver, user: user) }
     it { should be_able_to :splitter, create(:driver, user: user) }
@@ -58,7 +61,7 @@ describe Ability, type: :model do
     it { should be_able_to :edit, create(:car, user: user) }
     it { should be_able_to :create, create(:car, user: user) }
     it { should be_able_to :update, create(:car, user: user), user: user }
-    it { should be_able_to :destroy, create(:car, user: user), user: user  } # what happened?
+    it { should be_able_to :destroy, create(:car, user: user), user: user  } 
     it { should be_able_to :select_workhorse, create(:car, user: user) }
 
     it { should_not be_able_to :show, create(:car, user: other_user_driver) }
@@ -66,9 +69,18 @@ describe Ability, type: :model do
     it { should_not be_able_to :edit, create(:car, user: other_user_driver) }
     it { should_not be_able_to :create, create(:car, user: other_user_driver) }
     it { should_not be_able_to :update, create(:car, user: other_user_driver) }
-    it { should_not be_able_to :destroy, create(:car, user: other_user_driver)  } # what happened?
+    it { should_not be_able_to :destroy, create(:car, user: other_user_driver)  } 
     it { should_not be_able_to :select_workhorse, create(:car, user: other_user_driver) }
 
+    it { should be_able_to :accept, create(:payment, user: user), user: user}
+    it { should_not be_able_to :accept, create(:payment, user: other_user_driver), user: user}
+    it { should_not be_able_to :pay_off, create(:payment, user: user), user: user}
+
+    it { should be_able_to :manage, create(:ride, car: car), user: user }
+    it { should be_able_to :read, create(:ride, car: car), user: user }
+    it { should_not be_able_to :manage, create(:ride, car: other_car), user: user }
+    it { should_not be_able_to :read, create(:ride, car: other_car), user: user }
+          
     # it { should be_able_to :read, create(:passenger, user: user_passenger) }
   end
 
@@ -98,8 +110,11 @@ describe Ability, type: :model do
     # it { should be_able_to :destroy, passenger1.pictures.first }
     # it { should_not be_able_to :destroy, other_passenger.pictures.first }
 
-    it { should be_able_to :read, create(:driver, user: user_driver) }
-    it { should be_able_to :read, create(:car, user: user_driver) }
+    it { should be_able_to :read, create(:driver, user: user_driver), user: user }
+    it { should be_able_to :read, create(:car, user: user_driver), user: user }
+
+    it { should_not be_able_to :manage, create(:driver, user: user_driver), user: user }
+    it { should_not be_able_to :manage, create(:car, user: user_driver), user: user }
     # it { should_not be_able_to :read, create(:passenger, user: other_user_passenger) }
   end
 

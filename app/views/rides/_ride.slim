@@ -1,5 +1,5 @@
 - if ride.persisted?
-  .card id="ride-#{ride.id}" data-ride-id=@ride.id
+  .card id="ride-#{ride.id}" data-ride-id=ride.id
     .card-body
       table class="table"
         tr
@@ -9,8 +9,8 @@
           th = "#{t('activerecord.attributes.ride.arrival')}:" 
           td = "#{ride.arrival.present? ? ride.arrival : t('.empty_field')}"
         tr
-          th = "#{t('activerecord.attributes.ride.when')}:"
-          td = "#{ride.when.present? ? ride.when : t('.empty_field')}"
+          th = "#{t('activerecord.attributes.ride.what_time')}:"
+          td = "#{ride.what_time.present? ? ride.what_time : t('.empty_field')}"
         tr
           th = "#{t('activerecord.attributes.ride.cost')}:" 
           td = "#{ride.cost.present? ? ride.cost : t('.empty_field')}"
@@ -30,15 +30,15 @@
       - elsif ride.finished?
         strong = ride.status
 
-      - if can?(:update, Ride)
+      - if can?(:update, ride)
         = render 'rides/form', ride: ride
 
     .card-footer
-      - if can?(:update, Ride, current_user)
+      - if can?(:update, ride)
         .actions
           = link_to t('.btn_edit_ride_description'), '#', 
           class: 'edit-ride-link btn btn-block mt-2', data: { ride_id: ride.id }
-      - if can?(:destroy, Ride, current_user)
+      - if can?(:destroy, ride) && ride.scheduled?
         .actions
           = link_to t('.btn_delete_ride_description'), ride_path(ride), 
           method: :delete, remote: true, data: {confirm: t('are_you_sure')}, 

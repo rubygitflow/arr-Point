@@ -23,6 +23,14 @@ class ApplicationController < ActionController::Base
 
   check_authorization unless: :devise_controller?
 
+  def back_url
+    if session[:previous_request_url]
+      session[:previous_request_url]
+    else
+      root_url
+    end
+  end
+
   private
 
   def set_locale

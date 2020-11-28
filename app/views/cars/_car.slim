@@ -1,5 +1,5 @@
 - if car.persisted?
-  .card id="car-#{car.id}" data-car-id=@car.id
+  .card id="car-#{car.id}" data-car-id=car.id
     .card-body
       table class="table"
         tbody
@@ -33,7 +33,7 @@
             td
               .float-right = car.year_manufacture
 
-      - if can?(:update, Car)
+      - if can?(:update, car)
         = render 'cars/form', car: car
 
       - if car.workhorse?
