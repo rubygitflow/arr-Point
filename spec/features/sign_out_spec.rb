@@ -12,7 +12,7 @@ feature 'User can log out', %(
     login(user)
     visit root_path
     find(".menu-map").click
-    find_link('Выход', visible: :all).click
-    expect(page).to have_content 'Выход из аккаунта выполнен.'
+    find_link('Выйти', visible: :all).click
+    expect(page).to have_content 'Учётная запись деактивирована.'
   end
 end

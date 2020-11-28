@@ -2,7 +2,7 @@ ru:
   devise:
     submit_token: 'Проверить код'
     submit_token_title: 'Запросите на телефон и введите здесь код аутентификации:'
-    authy_register_title: 'Активировать аккаунт по номеру телефона'
+    authy_register_title: 'Активировать учётную запись по номеру телефона'
     enable_authy: 'Принять'
     cellphone: 'Проверьте номер вашего телефона'
     country: 'Проверьте код страны'
@@ -12,7 +12,7 @@ ru:
     request_to_login: 'Запрос на вход в систему'
 
     authy_verify_installation_title: 'Подтверждение своего номера телефона'
-    enable_my_account: 'Активировать мой аккаунт'
+    enable_my_account: 'Активировать мою учётную запись'
 
     authy_qr_code_alt: 'QR код для сканирования приложением authenticator с вашего устройства.'
     authy_qr_code_instructions: 'Отсканируйте этот QR-код с помощью своего приложения-аутентификатора и введите код ниже.'

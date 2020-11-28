@@ -18,7 +18,7 @@ feature 'User can edit his personal data', %{
 
   scenario "The gest couldn't open edit account page" do
     visit edit_user_registration_path 
-    expect(page).to have_content 'Вход в систему'   
+    expect(page).to have_content 'Авторизация'   
   end
 
   scenario 'An authenticated user can open edit page'  do
@@ -26,11 +26,12 @@ feature 'User can edit his personal data', %{
     visit new_user_session_path
     login(registered_user)
     visit root_path
-    # save_and_open_page
 
     find(".menu-map").click
-    find_link('Личный кабинет', visible: :all).click
-    expect(page).to have_content 'Обновить'
+    find_link('профиль', visible: :all).click
+    # save_and_open_page
+    expect(page).to have_content 'Мой профиль'
+    expect(page).to have_button 'Принять'
   end
 
 
@@ -55,7 +56,7 @@ feature 'User can edit his personal data', %{
       # save_and_open_page
 
       expect(page).to have_content 'Ваша учётная запись успешно изменена.'
-      expect(page).to have_content 'Активировать аккаунт по номеру телефона'
+      expect(page).to have_content 'Активировать учётную запись по номеру телефона'
     end
 
     scenario "but couldn't delete name" do
@@ -98,14 +99,15 @@ feature 'User can edit his personal data', %{
     end
   end
 
-  describe 'An registered driver' do  
+  describe 'The registered driver' do  
     background do
       visit new_user_session_path
       login(reg_driver)
       visit edit_user_registration_path 
     end
+
     scenario "can add his profile on the first visit" do
-      click_link 'Профиль'
+      click_link 'Перейти в профиль'
 
       expect(page).to have_content 'Мой профиль'
       # save_and_open_page
@@ -114,7 +116,7 @@ feature 'User can edit his personal data', %{
 
     scenario "can visit his profile on the next time" do
       driver = create(:driver, user: reg_driver)
-      click_link 'Профиль'
+      click_link 'Перейти в профиль'
 
       # save_and_open_page
       expect(page).to have_content 'Мой профиль'

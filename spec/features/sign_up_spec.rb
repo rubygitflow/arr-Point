@@ -10,19 +10,12 @@ feature 'User can register in the system', %{
   describe 'The user opens Sign_up page' do
     background { visit new_user_registration_path }
 
-    scenario 'has random Email adress' do
-      email = find_field(id: 'user_email').value
-      expect(email).not_to eq('')
-      expect(email).not_to eq(nil)
-    end
-
-    scenario 'and can change it to your email address' do
+    scenario 'and can input email address' do
       find('#user_email').set('new_user_1@test.com')
-      click_button 'Создать аккаунт'
+      click_button 'Создать учётную запись'
       email = find_field(id: 'user_email').value
       expect(email).to eq('new_user_1@test.com')
     end
-    # click_on 'Выход'
   end
 
   describe 'The user registers on the service' do   
@@ -31,15 +24,14 @@ feature 'User can register in the system', %{
     scenario 'with the correct data' do
       fill_passenger_reg_data
       find("#user_role_rules_accepted").set(true)
-      click_button 'Создать аккаунт'
+      click_button 'Создать учётную запись'
 
       expect(page).to have_content 'Добро пожаловать!'   
       expect(page).to have_content 'Вы успешно зарегистрировались.'      
-      # click_on 'Выход'
     end
 
     scenario 'with an errors' do
-      click_button 'Создать аккаунт'
+      click_button 'Создать учётную запись'
       expect(page).to have_content "Имя не может быть пустым"
       expect(page).to have_content "Пароль не может быть пустым"
       expect(page).to have_content "Номер телефона не может быть пустым"
@@ -48,13 +40,13 @@ feature 'User can register in the system', %{
     scenario 'and fixes an input error' do
       find('#user_email').set('new_user_2@test.com')
       fill_driver_reg_data
-      click_button 'Создать аккаунт'
+      click_button 'Создать учётную запись'
       expect(page).to have_content "Вы должны выразить согласие с Условиями и"
 
       find('#user_password').set('12345678')
       find('#user_password_confirmation').set('12345678')
       find("#user_role_rules_accepted").set(true)
-      click_button 'Создать аккаунт'
+      click_button 'Создать учётную запись'
       expect(page).to have_content 'Добро пожаловать!'   
       expect(page).to have_content 'Вы успешно зарегистрировались.'      
     end
@@ -63,9 +55,9 @@ feature 'User can register in the system', %{
       they pass two-factor authentication' do
       fill_driver_reg_data
       find("#user_role_rules_accepted").set(true)
-      click_button 'Создать аккаунт'
+      click_button 'Создать учётную запись'
       expect(page).not_to have_css('.map')
-      expect(page).to have_content 'Активировать аккаунт по номеру телефона'  
+      expect(page).to have_content 'Активировать учётную запись по номеру телефона'  
     end
   end
 

@@ -10,10 +10,13 @@
         data: { onclick:'changeLangFunction()'}
       - if user_signed_in?
         = link_to t('sign_out'), destroy_user_session_url, method: :delete
-        - if params[:car].present?
-          = link_to "#{ t('edit_ride') }", menu_car_rides_url(car_id: params[:car])
+        - if current_user.lock
+          = link_to t("go_to_profile").html_safe, edit_user_registration_path
         - else
-          = link_to t("go_to_profile").html_safe, drivers_splitter_path
+          - if params[:car].present?
+            = link_to "#{ t('edit_ride') }", menu_car_rides_url(car_id: params[:car])
+          - else
+            = link_to t("go_to_profile").html_safe, drivers_splitter_path
 
       - else
         = link_to t('sign_up'), new_user_registration_url
@@ -28,3 +31,16 @@
           elem.style.display = "block";
         }        
       };
+
+      window.addEventListener('load', function() {
+        let flash = "#{flash.inspect}"; 
+        let is_flash = ("#{flash.any?}" == "true"); 
+        let up_container = document.getElementById("up_container"); 
+        if (up_container !== null) {
+          if (is_flash) {
+            up_container.style.display = "block";
+          } else {
+            up_container.style.display = "none";
+          };
+        }
+      });

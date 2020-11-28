@@ -3,52 +3,70 @@ require 'rails_helper'
 feature 'The driver can view his profile', %q(
   To have access to controls
 ) do
-  given(:user) { create(:user, :as_driver, :authorized) }
-  given(:other_user) { create(:user, :as_driver, :authorized) }
 
-  background do
-    visit new_user_session_path
-    login(user) 
-  end
+  describe "As unblocked user" do  
+    given(:user) { create(:user, :as_driver, :authorized) }
+    given(:other_user) { create(:user, :as_driver, :authorized) }
 
-  scenario 'The driver views his details' do
-    driver = create(:driver, :with_photo, user: user)
-    visit driver_path(driver)
+    background do
+      visit new_user_session_path
+      login(user) 
+    end
 
-    expect(page).to have_link 'Удалить фотографию'
-    expect(page).to have_link 'Отредактировать профиль'
-    expect(page).to have_link 'Удалить профиль'
+    scenario 'The driver views his details' do
+      driver = create(:driver, :with_photo, user: user)
+      visit driver_path(driver)
 
-    expect(page).to have_content 'Мой профиль'
-    expect(page).to have_content '№ водительского удостоверения'
-    expect(page).to have_content '№ разрешения водителя'
-    expect(page).to have_content 'Регион'
-    expect(page).to have_content 'Год начала'
-  end
+      expect(page).to have_link 'Удалить фотографию'
+      expect(page).to have_link 'Отредактировать профиль'
+      expect(page).to have_link 'Удалить профиль'
 
-  scenario 'The driver can open edit profile window', js: true do
-    driver = create(:driver, :with_photo, user: user)
-    visit driver_path(driver)
+      expect(page).to have_content 'Мой профиль'
+      expect(page).to have_content '№ водительского удостоверения'
+      expect(page).to have_content '№ разрешения водителя'
+      expect(page).to have_content 'Регион'
+      expect(page).to have_content 'Год начала'
+    end
 
-    click_on 'Отредактировать профиль'
+    scenario 'The driver can open edit profile window', js: true do
+      driver = create(:driver, :with_photo, user: user)
+      visit driver_path(driver)
 
-    expect(page).to have_content '№ водительского удостоверения'
-    expect(page).to have_content '№ разрешения водителя'
-    expect(page).to have_content 'Регион'
-    expect(page).to have_content 'Год начала'
+      click_on 'Отредактировать профиль'
 
-    expect(page).to have_button 'Принять'
-  end
+      expect(page).to have_content '№ водительского удостоверения'
+      expect(page).to have_content '№ разрешения водителя'
+      expect(page).to have_content 'Регион'
+      expect(page).to have_content 'Год начала'
 
-  scenario "Driver can't view оther driver's details" do
-    driver = create(:driver, :with_photo, user: user)
-    logout(user) 
+      expect(page).to have_button 'Принять'
+    end
 
-    visit new_user_session_path
-    login(other_user) 
+    scenario "Driver can't view оther driver's details" do
+      driver = create(:driver, :with_photo, user: user)
+      logout(user) 
 
-    visit driver_path(driver)
+      visit new_user_session_path
+      login(other_user) 
 
-    expect(page).to have_content 'У вас нет прав доступа к этой странице'
-  end
+      visit driver_path(driver)
+
+      expect(page).to have_content 'У вас нет прав доступа к этой странице'
+    end
+  end 
+
+  describe "As blocked user" do  
+    given(:user) { create(:user, :as_driver, :blocked, :authorized) }
+    given(:driver) { create(:driver, user: user) }
+
+    background do
+      visit new_user_session_path
+      login(user) 
+    end
+
+    scenario "Driver doesn't have access to his profile" do
+      visit driver_path(driver)
+      expect(page).to have_content 'У вас нет прав доступа к этой странице'
+    end
+  end 
 end

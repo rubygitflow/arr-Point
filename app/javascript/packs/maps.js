@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function () {
   if (document.location.pathname == '/') {
     DG.then(function() {
       var map;
-      var location_detection_disabled = "#{ t('.location_detection_disabled') }";
+      var location_detection_disabled = gon.location_detection_disabled;
       var lang = "#{ I18n.locale }";
 
       map = DG.map('map', {

@@ -16,20 +16,20 @@ feature 'User can log in to the system', %{
   describe 'The user is registered in the system' do
     scenario 'with an UNconfirmed phone number' do
       login(unconfirmed_user)
-      expect(page).to have_content 'Активировать аккаунт по номеру телефона'
+      expect(page).to have_content 'Активировать учётную запись по номеру телефона'
     end
 
     scenario 'with the confirmed phone number' do
       login(user)
       expect(page).to have_css('.map')
-      expect(page).to have_content 'Вход в аккаунт выполнен.'
+      expect(page).to have_content 'Учётная запись активирована.'
     end
   end
 
   scenario 'An unregistered user is trying to log in' do
     find('#user_email').set('wrong@test.com')
     find('#user_password').set('12345678')
-    click_on 'Войти в аккаунт'
-    expect(page).to have_content 'Неверный Адрес Email или пароль.'
+    click_on 'Войти в личный кабинет'
+    expect(page).to have_content 'Неверный Email или пароль.'
   end
 end

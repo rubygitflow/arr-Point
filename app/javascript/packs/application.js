@@ -23,16 +23,3 @@ import "2gis-maps"
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
-
-window.addEventListener('load', function() {
-  let flash = "#{flash.inspect}"; 
-  let is_flash = ("#{flash.any?}" == "true"); 
-  let up_container = document.getElementById("up_container"); 
-  if (up_container !== null) {
-    if (is_flash) {
-      up_container.style.display = "block";
-    } else {
-      up_container.style.display = "none";
-    };
-  }
-});

@@ -28,11 +28,14 @@
 
       <div class="form-group" >
         <label class="form-radio form-inline">
-          <%= f.radio_button :role, "Driver", :checked=>"checked" %><i class="form-icon"></i> 
+          <%= f.radio_button :role, "Driver", :checked=>"checked", 
+          id: "user_driver" %>
+            <i class="form-icon"></i> 
             <%= t('driver') %> 
         </label>
         <label class="form-radio form-inline">
-          <%= f.radio_button :role, "Passenger" %><i class="form-icon"></i> 
+          <%= f.radio_button :role, "Passenger", id: "user_passenger" %>
+            <i class="form-icon"></i> 
             <%= t('passenger') %> 
         </label>
       </div>
