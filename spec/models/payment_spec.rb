@@ -16,7 +16,7 @@ RSpec.describe Payment, type: :model do
 
 
     it 'has accepted payment' do
-    	payment = create(:payment, ride: ride, user: user) 
+      payment = create(:payment, ride: ride, user: user) 
 
       expect(payment.paid_up).to eq(nil) 
       payment.to_pay!

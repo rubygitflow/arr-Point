@@ -12,6 +12,10 @@ FactoryBot.define do
       year_manufacture { '' }
     end  
 
+    trait :workhorse do
+      workhorse { true }
+    end  
+
     trait :with_pictures do
       after :create do |car|
         picture_path1 = Rails.root.join('app', 'assets', 'images', '1234567777.jpg')

@@ -33,8 +33,9 @@ $(document).on('turbolinks:load', function () {
           var car = driver.cars.filter(function(car){
             return car.workhorse == true;
           }); // извлекаем объект с координатами для отображения
-          if (car[0].coordinates) { // извлекаем объект с координатами для отображени
-            DG.marker([car[0].coordinates[0],car[0].coordinates[1]]).addTo(map).bindPopup(car[0].license_plate); // - никогда не видим его
+          if (car[0].coordinates) { // извлекаем координаты для отображени
+            DG.marker([car[0].coordinates[0],car[0].coordinates[1]]).addTo(map)
+              .bindPopup('License plate number:'+car[0].license_plate); 
           }
         });
       }
