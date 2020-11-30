@@ -6,25 +6,40 @@ RSpec.describe PaymentsController, type: :controller do
     @driver= create(:user, :as_driver, :authorized)
     login(@driver)
     car = create(:car,  user: @driver)
-    ride = create(:ride,  car: car)
-    @payment = create(:payment,  user: @driver,  ride: ride)
+    @ride = create(:ride,  car: car)
   end
   
   describe "GET #accept" do
-    before do 
-      get :accept
+    context "be incorrect http-params" do
+      before do 
+        get :accept 
+      end
+
+      it "returns http success" do
+        expect(response).to have_http_status(:forbidden)
+      end
     end
 
-    it "returns http success" do
-      expect(response).to have_http_status(:success)
-    end
+    context "be correct http-params" do
+      # before do 
+      #   get :accept,  :params => { :pc => '12345' }
+      # end
 
-    it 'renders accept view' do
-      expect(response).to render_template :accept
-    end
+      # it "returns http success" do
+      #   expect(response).to have_http_status(:success)
+      # end
+
+      # it 'renders accept view' do
+      #   expect(response).to render_template :accept
+      # end
+    end 
   end
   
   describe "PATCH #pay_off" do
+    before(:each) do 
+      @payment = create(:payment,  user: @driver,  ride: @ride)
+    end
+
     context 'applicable for admin' do
       before(:each) do 
         logout(@driver)
