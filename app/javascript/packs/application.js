@@ -11,6 +11,8 @@ require("channels")
 require("jquery")
 require("packs/cars")
 require("packs/rides")
+require("packs/maps")
+require("packs/devise_authy")
 
 import "@fortawesome/fontawesome-free/css/all.css"
 import "spectre.css"

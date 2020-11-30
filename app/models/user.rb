@@ -4,8 +4,11 @@ class User < ApplicationRecord
   attr_accessor :role_rules_accepted
 
   has_one :driver, dependent: :destroy
-  has_many :cars, dependent: :destroy
+  has_many :cars, -> { order(created_at: :desc) }, dependent: :destroy
   has_many :payments
+
+  scope :available_cars, -> { where(role: 'Driver', lock: false).joins(:cars)
+    .where( cars: { workhorse: true} ) }
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
@@ -59,5 +62,21 @@ class User < ApplicationRecord
 
   def toggle!
     update!(lock: !lock)  
+  end
+
+  def does_hook_before_full_phone_authorization?
+   authy_hook_enabled && !authy_id && !last_sign_in_with_authy 
+  end
+
+  def is_still_need_phone_authorization?
+    authy_hook_enabled && authy_id && !last_sign_in_with_authy
+  end
+
+  def is_passenger_with_permissions?
+   !authy_hook_enabled && passenger? && !lock
+  end
+
+  def finished_phone_authorization?
+    authy_hook_enabled && last_sign_in_with_authy
   end
 end

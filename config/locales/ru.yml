@@ -1,21 +1,24 @@
 ru:
   service_name: "АВТОМОБИЛЬ НА ХОДУ"
+  locale_select: 'RU / EN'
   sign_up: "Регистрация" 
-  sign_in: "Вход" 
-  sign_out: "Выход" 
-  edit_reg: "Личный кабинет"
+  sign_in: "Авторизация" 
+  sign_out: "Выйти" 
+  go_to_profile: "Мой&nbsp;профиль"
   edit_ride: "Поездки"
   driver: "Водитель"
   passenger: "Пассажир"
-  select_role: "Выберите роль:"
+  select_role: "Выбрать один из вариантов"
   back: "Назад"
+  back_to_account_edition: "Перейти к редактированию учётной записи"
+  back_to_profile: "Перейти в профиль"
   are_you_sure: "Вы уверены?"
   profile: "Профиль"
   add_payment: "Добавить платёж"
   btn_accept: 'Принять'
   lnk_payment_details: 'Реквизиты для оплаты'
   amount_to_pay: "Сумма к оплате"
-  statistics: "Статистика"
+  statistics: "Статистика / История поездок"
 
   admin_panel:
     btn_drivers: "Список водителей"
@@ -59,12 +62,12 @@ ru:
 
   cars:
     car:
-      title_workhorse: "Рабочая лошадка"
-      btn_workhorse: "Сделать рабочей лошадкой"
+      title_workhorse: "На маршруте"
+      btn_workhorse: "Поставить на маршрут"
       btn_edit_car_description: 'Редактировать описание автомобиля'
       btn_delete_car_description: 'Удалить описание автомобиля'
       btn_delete_picture: 'Удалить изображение'
-      btn_go_rides: "Регистрация заказов перевозок"
+      btn_go_rides: "Регистрация заказа"
 
   rides:
     menu:
@@ -85,6 +88,7 @@ ru:
       other_cars_stat: "Статистика по другим автомобилям:"
     complete:
       driver_payment_service_error: "Что-то пошло не так, обратитесь к администратору."
+      driver_payment_service_accepted: "Поездка уже закрыта"
 
   payments:
     accept:
@@ -134,7 +138,7 @@ ru:
         current_password: Текущий пароль
         current_sign_in_at: Дата текущего входа
         current_sign_in_ip: IP текущего входа
-        email: Адрес Email
+        email: Email
         encrypted_password: Зашифрованный пароль
         failed_attempts: Неудачные попытки
         last_sign_in_at: Дата последнего входа
@@ -165,11 +169,12 @@ ru:
         model: Модель
         year_manufacture: Год выпуска
       ride:
-        cost: "Стоимость"
-        arrival: "Прибытие"
-        departure: "Отправление"
-        when: "Время"
-        status: "Статус"
+        short_cost: "Стоимость<br>поездки"
+        cost: "Стоимость поездки"
+        arrival: "Пункт прибытия"
+        departure: "Пункт отправления"
+        what_time: "Время отправления"
+        status: "Статус услуги"
         scheduled: "Запланировано"
         execution: "Исполнение"
         completed: "Завершено"
@@ -179,8 +184,9 @@ ru:
       payment:
         rate: "Ставка сделки"
         tariff: "Тариф"
+        short_tariff: "Тариф (Доля&nbsp;ставки)"
         price: "Цена услуги"
-        paid_up: "Оплачено"
+        paid_up: "Факт оплаты"
           
     errors:
       models:
@@ -192,8 +198,8 @@ ru:
               accepted: "Вы должны выразить согласие с Условиями и Положениями"
       attachment:
         photo:
-          invalid_size: "Фотография должна иметь размер менее 2 МБ"
-          invalid_content_type: "Фотография должна быть в формате GIF, PNG или JPG"
+          invalid_size: "Ресурс должен иметь размер менее 2 МБ"
+          invalid_content_type: "Ресурс должен быть в формате GIF, PNG, JPG, WEBP"
 
   unauthorized:
     manage:

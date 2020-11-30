@@ -1,14 +1,17 @@
 en:
-  service_name: "arrival Point"
+  service_name: "CAR ON THE MOVE"
+  locale_select: 'EN / RU'
   sign_up: "Sign up" 
   sign_in: "Sign in" 
   sign_out: "Sign out" 
-  edit_reg: "Account"
+  go_to_profile: "My profile"
   edit_ride: "Rides"
   driver: "Driver"
   passenger: "Passenger"
-  select_role: "Select role:"
+  select_role: "Choose one of the options"
   back: "Back"
+  back_to_account_edition: "Go to edit your account"
+  back_to_profile: "Go to profile"
   are_you_sure: "Are you sure?"
   profile: "Profile"
   add_payment: "Add payment"
@@ -59,8 +62,8 @@ en:
 
   cars:
     car:
-      title_workhorse: "Workhorse"
-      btn_workhorse: "Make it a workhorse"
+      title_workhorse: "On the route"
+      btn_workhorse: "Put on the route"
       btn_edit_car_description: 'Edit car description'
       btn_delete_car_description: 'Delete car description'
       btn_delete_picture: 'Delete picture'
@@ -86,6 +89,7 @@ en:
       other_cars_stat: "Statistics on other cars:"
     complete:
       driver_payment_service_error: "Somsing went wrong, contact your administrator."
+      driver_payment_service_accepted: "The ride is already closed"
 
   payments:
     accept:
@@ -156,20 +160,22 @@ en:
         model: Model
         year_manufacture: Year of car manufacture
       ride:
-        cost: Cost
-        arrival: Arrival
-        departure: Departure
-        when: Time
-        status: "Status"
+        short_cost: Cost<br>of ride
+        cost: Cost of ride
+        arrival: Point of arrival
+        departure: Point of departure
+        what_time: Departure time
+        status: "Service status"
         scheduled: "scheduled"
         execution: "execution"
         completed: "completed"
-        aborted: "interrupted" 
+        aborted: "aborted" 
         rejected: "rejected"
         created_at: Creation date
       payment:
         rate: Transaction value
         tariff: Tariff
+        short_tariff: "Tariff (Bid&nbsp;shares)"
         price: Service price
         paid_up: Paid up
  
@@ -183,8 +189,8 @@ en:
               accepted: "You must agree to the Terms and Conditions"
       attachment:
         photo:
-          invalid_size: "The photo must be less than 2 MB in size"
-          invalid_content_type: "The photo must be a GIF, PNG, or JPG file"
+          invalid_size: "The resource must be less than 2 MB in size"
+          invalid_content_type: "The resource must be a GIF, PNG, JPG, or WEBP file"
 
   unauthorized:
     manage:

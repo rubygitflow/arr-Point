@@ -6,6 +6,8 @@ html lang="#{I18n.locale}"
     = csrf_meta_tags
     = csp_meta_tag
 
+    = Gon::Base.render_data
+    
     = stylesheet_link_tag  "application", 'data-turbolinks-track': 'reload', media: 'all'
     = javascript_pack_tag  "application", 'data-turbolinks-track': 'reload'
 
@@ -16,11 +18,12 @@ html lang="#{I18n.locale}"
     - if controller.controller_name != "maps"
       header class="navbar"
         section class="navbar-section"
+          = link_to t('locale_select'), locales_change_url
         section class="navbar-section navbar-center"
           = link_to "«#{ t('service_name') }»", root_path, class:"navbar-brand"
         section class="navbar-section"
           - if user_signed_in? 
-            = link_to "#{ t('sign_out') }", destroy_user_session_path, method: :delete 
+            = link_to t('sign_out'), destroy_user_session_path, method: :delete 
 
       main class="container"
         - flash.each do |level, text|
@@ -36,18 +39,8 @@ html lang="#{I18n.locale}"
           - flash.each do |level, text|
             div class="#{flash_class(level)}"
               p = text 
-         
-      javascript: 
+
+      javascript:
         function hideFunction() {
           document.getElementById("up_container").style.display = "none";
         };
-
-        window.addEventListener('load', function() {
-          let flash = "#{flash.inspect}"; 
-          let is_flash = ("#{flash.any?}" == "true"); 
-          if (is_flash) {
-            document.getElementById("up_container").style.display = "block";
-          } else {
-            document.getElementById("up_container").style.display = "none";
-          };
-        });

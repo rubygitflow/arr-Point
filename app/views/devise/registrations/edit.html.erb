@@ -1,7 +1,11 @@
 <div class="columns">
   <div class="column col-6 col-mx-auto card">
     <div class="card-header">
-      <h3><%= t('devise.registrations.title_edit_acc') %></h3>
+      <h3 class="text-center">
+        <strong>
+          <%= t('devise.registrations.title_edit_acc').html_safe %>
+        </strong>  
+      </h3>
     </div>
     <% prepare_change_phone(resource.phone) %>
 
@@ -35,17 +39,14 @@
 
       <div class="form-group">
         <%= f.label :password, class: "form-label" do %>
-          <%= t("devise.shared.lbl_password") %> 
-          <i><%= t("devise.registrations.leave_blank_pass") %></i>
+          <%= t("devise.shared.lbl_new_password") %> 
+          <% if @minimum_password_length %>
+            <%= t('devise.shared.minimum_password_length', 
+            count: @minimum_password_length) %>
+          <% end %>
         <% end %>
         <%= f.password_field :password, autocomplete: "new-password", 
           class: "form-input" %>
-          <% if @minimum_password_length %>
-            <em>
-              <%= t('devise.shared.minimum_password_length', 
-              count: @minimum_password_length) %>
-            </em>
-          <% end %>
       </div>
 
       <div class="form-group">
@@ -56,8 +57,8 @@
 
       <div class="form-group">
         <%= f.label :current_password, class: "form-label" do %>
-          <%= t("devise.shared.lbl_password") %> 
-          <i><%= t("devise.registrations.confirm_password") %></i>
+          <%= t("devise.shared.lbl_old_password") %> 
+          <%= t("devise.registrations.confirm_old_password") %>
         <% end %>
         <%= f.password_field :current_password, 
           autocomplete: "current-password", class: "form-input" %>
@@ -83,10 +84,12 @@
       <% else %>
         <% if current_user.driver? %>
           <div class="actions">
-            <%= link_to t("devise.registrations.btn_extended"), 
-            drivers_splitter_path, 
-            title: t("devise.registrations.title_extended"),
-            class: "btn btn-block btn-lg mb-2" %>
+            <b>
+              <%= link_to t("devise.registrations.btn_extended"), 
+              drivers_splitter_path, 
+              title: t("devise.registrations.title_extended"),
+              class: "btn btn-block btn-lg mb-2" %>
+            </b>
           </div>
         <% end %>
       <% end %>
@@ -94,7 +97,7 @@
       <% if can?(:index, Driver)%>
         <div class="actions">
           <%= link_to t("admin_panel.btn_drivers"), drivers_path,
-          class: "btn btn-block btn-lg mb-2" %>
+          class: "btn btn-block btn-lg" %>
         </div>
       <% end %>
 
@@ -102,18 +105,17 @@
 
     <div class="card-footer">
       <% unless current_user.lock %>
-        <h4><%= t('devise.registrations.title_cancel_acc') %></h4>
-
-        <p><%= t('devise.registrations.lbl_cancel_acc') %></p> 
         <%= button_to t('devise.registrations.btn_cancel_acc'), 
         registration_path(resource_name), method: :delete, 
         data: { confirm: t('are_you_sure') }, 
-        class: "btn btn-block btn-error mb-2" 
+        class: "btn btn-block btn-error" 
         %>
       <% end %>
-
-      <%= link_to t("devise.shared.links.back"), root_path,
-      class: "btn btn-block btn-link" %>
+      <br>
+      <b>
+        <%= link_to t("devise.shared.links.back_main_page"), root_path,
+        class: "btn btn-block btn-lg btn-link" %>
+      </b>
     </div>
   </div>
 </div>

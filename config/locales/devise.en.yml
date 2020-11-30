@@ -48,22 +48,24 @@ en:
 
       rules_accepted: "By creating this account, you agree to the company's Terms and Conditions and Privacy Policy."
       btn_sign_up: 'Sign up'
-      title_sign_up: 'Registration form'
+      title_sign_up: 'ACCOUNT CREATION'
       title_sign_up_attention: '(All fields are required)'
       lbl_email: "Remember your login in the form of a fake <b>email</b> or enter a real <b>email</b> to get feedback from the support team."
       lbl_phone: "Phone number"
       lbl_name: "Name (full name)"
-      lbl_role: "Role"
+      lbl_role: "In the box below, select one of the options:"
       lbl_password_conf: "Password confirmation"
+      lbl_password_conf: "Confirm the password"
 
-      title_edit_acc: 'Edit account details'
+      title_edit_acc: 'THE ACCOUNT PAGE'
       leave_blank_pass: "(leave blank if you don't want to change it)"
       confirm_password: "(we need your current password to confirm your changes)"
+      confirm_old_password: "(to confirm the change)"
       btn_edit_acc: 'Update'
       title_cancel_acc: 'Cancel my account'
       btn_cancel_acc: "Cancel account"
       lbl_cancel_acc: "Your entire account history will also be deleted"
-      btn_extended: "Profile"
+      btn_extended: "Go to profile"
       title_extended: "Licenses, ID cards, photo"
 
       restricted_access: "Restricted access to the resource due to financial blocking"
@@ -82,12 +84,16 @@ en:
     shared:
       lbl_email: "Email"
       lbl_password: "Password"
+      lbl_enter_password: "Enter the password"
+      lbl_new_password: "New password"
+      lbl_old_password: "Old password" 
       links:
         back: Back
+        back_main_page: "Go to the map" 
         didn_t_receive_confirmation_instructions: "Didn't receive confirmation instructions?"
         didn_t_receive_unlock_instructions: "Didn't receive unlock instructions?"
         forgot_your_password: "Forgot your password?"
-        sign_in: "Sign in"
+        sign_in: "Sign in for registered users"
         sign_in_with_provider: 'Sign in with %{provider}'
         sign_up: "Sign up"
         sign_out: "Sign out"

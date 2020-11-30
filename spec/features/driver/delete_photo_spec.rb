@@ -11,17 +11,6 @@ feature "Owner of driver's profile can delete his attached photo" do
       login(user) 
     }
 
-    scenario "deletes photo from driver's profile", js: true do
-      driver.photo.attach(create_file_blob)
-      visit driver_path(driver)
-      # save_and_open_page
-      expect(page).to have_css('img')
-      accept_confirm do
-        click_on 'Удалить фотографию'
-      end
-      expect(page).to_not have_css('img')
-    end
-
     scenario "tries to delete file from other driver's profile", js: true do
       # periodically we have
       # Capybara::CapybaraError:

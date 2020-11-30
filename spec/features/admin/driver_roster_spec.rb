@@ -69,4 +69,47 @@ feature 'Admin can manage driver profiles', %{
     end
   end
 
+  describe "Admin can " do  
+    background do 
+      login(reg_admin)
+
+      @admin = create(:driver, driver_id: '00 001',  user: reg_admin)
+      @driver = create(:driver, driver_id: '00 002',  user: reg_driver)
+
+      visit drivers_path 
+    end
+     
+    scenario 'lock any driver from the list of drivers page', js: true do 
+
+      expect(page).to  have_content @driver.driver_id
+
+      find("#drivers-lock-#{reg_driver.id}").click
+
+      expect(page).to have_content 'Статус блокировки водителя был изменён'
+    end
+
+    scenario 'unlock blocket driver from the list of drivers page', js: true do 
+      expect(page).to  have_content @driver.driver_id
+
+      find("#drivers-lock-#{reg_driver.id}").click
+
+      expect(page).to have_link 'Разблокировать'
+
+      click_link  'Разблокировать'
+
+      # save_and_open_page
+      expect(page).to have_content 'Статус блокировки водителя был изменён'
+
+      expect(find("#drivers-lock-#{reg_driver.id}").text).to eq 'Заблокировать'
+    end
+
+    scenario 'not lock himself', js: true do 
+      expect(page).to  have_content @admin.driver_id
+
+      find("#drivers-lock-#{reg_admin.id}").click
+
+      # save_and_open_page
+      expect(page).to have_content 'Статус блокировки пользователя недоступен для администратора'
+    end
+  end
 end

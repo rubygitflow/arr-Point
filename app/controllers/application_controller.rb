@@ -1,9 +1,11 @@
 class ApplicationController < ActionController::Base
+
   protect_from_forgery with: :exception, prepend: true
-  include Maps
+
   before_action :set_locale
   before_action :oathy_confirmation
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :store_back_url
 
   helper_method :is_root_path?
 
@@ -20,6 +22,14 @@ class ApplicationController < ActionController::Base
   end
 
   check_authorization unless: :devise_controller?
+
+  def back_url
+    if session[:previous_request_url]
+      session[:previous_request_url]
+    else
+      root_url
+    end
+  end
 
   private
 
@@ -38,20 +48,23 @@ class ApplicationController < ActionController::Base
   end
 
   def oathy_confirmation
-    if user_signed_in? && current_user.authy_hook_enabled && 
-    current_user.last_sign_in_with_authy
-      current_user.authy_hook_turn_off
-    else
-      if current_user
-        if session[:mutable_phone] && session[:mutable_phone] != current_user.phone
-          session[:mutable_phone] = current_user.phone
-          current_user.authy_hook_turn_on
-        end
+    if user_signed_in? 
+      if current_user.finished_phone_authorization?
+        current_user.authy_hook_turn_off
+      elsif session[:mutable_phone] && session[:mutable_phone] != current_user.phone
+        session[:mutable_phone] = current_user.phone
+        current_user.authy_hook_turn_on
       end
     end
 
   end
-  
+
+  def store_back_url
+    # Pattern matching is experimental, and the behavior may change in future versions of Ruby
+    if are_available_routes?
+      session[:previous_request_url] = request.url  
+    end
+  end
 
   protected
 
@@ -62,4 +75,18 @@ class ApplicationController < ActionController::Base
       keys: [:name, :phone])
   end
 
+  def are_available_routes?
+    request.get? && 
+    self.controller_name != "locales" && 
+    self.action_name != 'accept'
+  end
+
+  def store_locale
+    # https://api.rubyonrails.org/classes/ActionDispatch/Cookies.html
+    cookies[:locale] = {value: I18n.locale.to_s, expires: 7.days.from_now}
+  end
+
+  def recover_locale
+    I18n.locale = cookies[:locale].to_sym if cookies[:locale]
+  end
 end

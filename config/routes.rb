@@ -4,15 +4,13 @@ Rails.application.routes.draw do
   
   root to: 'maps#index'
 
-  resources :maps do
-    collection do
-      get :change_language
-    end
-  end
+  resources :maps, only: :index
 
   # match '*path' => redirect('/'), via: :get
+  # match '*url' => redirect('/'), via: :get
 
   get 'drivers/splitter', to: 'drivers#splitter'
+  get 'locales/change', to: 'locales#change'
 
   resources :drivers, shallow: true do
     resources :cars, shallow: true do
@@ -39,5 +37,5 @@ Rails.application.routes.draw do
   end
 
   resources :attachments, only: :destroy
-
+ 
 end

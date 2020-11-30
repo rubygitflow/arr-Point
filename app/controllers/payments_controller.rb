@@ -6,10 +6,18 @@ class PaymentsController < ApplicationController
   authorize_resource
 
   def accept
-    pc = params[:pc]
-    @payment = Payment.find_by(payment_confirmation: pc)
-    @ride = @payment.ride
-    @car = @ride.car
+    if params[:pc]
+      pc = params[:pc]
+      @payment = Payment.find_by(payment_confirmation: pc)
+      if current_user.owner?(@payment)
+        @ride = @payment.ride
+        @car = @ride.car
+      else
+        head(:forbidden)
+      end
+    else
+      head(:forbidden)
+    end
   end
 
   def pay_off

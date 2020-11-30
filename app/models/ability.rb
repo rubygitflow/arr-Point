@@ -42,20 +42,21 @@ class Ability
       can :update, [Driver, Car], user: @user
       can :destroy, [Driver, Car], user: @user
       can :select_workhorse, Car, user: @user
-      can [:menu, :show, :new, :edit, :execute, :complete, :abort, :reject,
-           :create, :update, :destroy], Ride do |ride|
+      can [:read, :manage], Ride do |ride|
         @user.id == ride.car.user_id
       end 
-      can [:accept], Payment, user: @user
+      can :accept, Payment do |payment|
+        @user.id == payment.user_id
+      end 
 
       can :destroy, ActiveStorage::Attachment do |attachment|
         @user.owner?(attachment.record)
       end
     end
 
-    can [:index], Ride    
     # can :read, Passenger
   end
+
 
   def passenger_abilities
     can :read, Driver

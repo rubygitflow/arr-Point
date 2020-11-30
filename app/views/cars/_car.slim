@@ -1,12 +1,5 @@
 - if car.persisted?
-  .card id="car-#{car.id}" data-car-id=@car.id
-    - if car.workhorse?
-      .card-header 
-        h3 class='card-title text-error text-right' = t('.title_workhorse')
-        .actions
-          = link_to t('.btn_go_rides'), menu_car_rides_path(car), 
-          class: 'btn btn-block mb-2'
-
+  .card id="car-#{car.id}" data-car-id=car.id
     .card-body
       table class="table"
         tbody
@@ -14,40 +7,48 @@
             - car.pictures.each do |file|
               tr id="attachment-#{file.id}"
                 th  
-                  - if current_user.owner?(car) || current_user.admin
-                    .actions
-                      = link_to t('.btn_delete_picture'), 
-                        attachment_path(file), 
-                        method: :delete, remote: true, 
-                        data: {confirm: t('are_you_sure')}, 
-                        class: 'btn btn-block btn-error'
-                td 
-                  img.img-fit-cover src="#{rails_blob_url(file)}" width="120" height="80" alt="photo"
+                  - if car.workhorse?
+                    h3 class='card-title text-error text-left' = t('.title_workhorse')
+
+                td
+                  - if car.pictures.attached?
+                    .float-right
+                      img.img-fit-cover src="#{rails_blob_url(file)}" width="180" height="120" alt="photo"
+          - elsif car.workhorse?
+            tr 
+              th  
+                h3 class='card-title text-error text-left' = t('.title_workhorse')
+
+                td
           tr
             th #{t('activerecord.attributes.car.license_plate')} 
-            td = car.license_plate
+            td
+              .float-right = car.license_plate
           tr
             th #{t('activerecord.attributes.car.model')} 
-            td = car.model
+            td
+              .float-right = car.model
           tr
             th #{t('activerecord.attributes.car.year_manufacture')} 
-            td = car.year_manufacture
+            td
+              .float-right = car.year_manufacture
 
-      - if can?(:update, Car)
+      - if can?(:update, car)
         = render 'cars/form', car: car
 
-    .card-footer
-      - if can?(:update, car)
+      - if car.workhorse?
         .actions
-          = link_to t('.btn_edit_car_description'), '#', 
-          class: 'edit-car-link btn btn-block mt-2', data: { car_id: car.id }
-      - if can?(:destroy, car)
-        .actions
-          = link_to t('.btn_delete_car_description'), car_path(car), 
-          method: :delete, remote: true, data: {confirm: t('are_you_sure')}, 
-          class: 'btn btn-block btn-error' 
+          strong = link_to t('.btn_go_rides'), menu_car_rides_path(car), 
+          class: 'btn btn-block mb-2'
 
       - if can?(:select_workhorse, car)
         - unless car.workhorse?
           = link_to t('.btn_workhorse'), select_workhorse_car_path(car), 
           class: 'btn btn-block btn-primary mb-2', method: :patch, remote: true
+
+    .card-footer
+      - if can?(:destroy, car)
+        .actions
+          = link_to t('.btn_delete_car_description'), car_path(car), 
+          method: :delete, remote: true, data: {confirm: t('are_you_sure')}, 
+          class: 'btn btn-block btn-error' 

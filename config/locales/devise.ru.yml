@@ -48,33 +48,34 @@ ru:
       updated_but_not_signed_in: "Ваш аккаунт успешно изменен, но так как ваш пароль изменился, нужно войти снова."
 
       rules_accepted: 'Создавая этот аккаунт, вы соглашаетесь с положениями документов "Условия и положения" и "Политика конфиденциальности".'
-      btn_sign_up: 'Создать аккаунт'
-      title_sign_up: 'Форма регистрации'
+      btn_sign_up: 'Создать учётную запись'
+      title_sign_up: 'СОЗДАНИЕ УЧЁТНОЙ ЗАПИСИ'
       title_sign_up_attention: '(Все поля обязательны к заполнению)'
       lbl_email: "Запомните свой логин в формате фиктивного <b>email</b> или введите реальный <b>email</b>, чтобы получать обратную связь от службы поддержки."
       lbl_phone: "Номер телефона"
-      lbl_name: "Имя (полное имя)"
-      lbl_role: "Роль (статус)"
-      lbl_password_conf: "Подтверждение пароля"
+      lbl_name: "Полное имя"
+      lbl_role: "В графе ниже выберите один из вариантов:"
+      lbl_password_conf: "Подтвердить пароль"
 
-      title_edit_acc: 'Править данные учётной записи'
+      title_edit_acc: 'Внесение изменений в <br>учётную запись'
       leave_blank_pass: '(оставьте поле пустым, если не хотите его менять)'
       confirm_password: "(нам нужен ваш текущий пароль, чтобы подтвердить ваши изменения)"
+      confirm_old_password: "(для подтверждения изменения)"
       btn_edit_acc: 'Обновить'
       title_cancel_acc: 'Удалить учётную запись'
-      btn_cancel_acc: "Удалить"
+      btn_cancel_acc: "Удалить учётную запись"
       lbl_cancel_acc: "Вся история по учётной записи также будет удалена"
-      btn_extended: "Профиль"
+      btn_extended: "Перейти в профиль"
       title_extended: "Лицензии, удостоверения, фотографии"
       
       restricted_access: "Ограниченный доступ к ресурсу по причине финансовой блокировки"
     sessions:
-      signed_in: "Вход в аккаунт выполнен."
-      signed_out: "Выход из аккаунта выполнен."
-      already_signed_out: "Выход из аккаунта уже выполнен."
+      signed_in: "Учётная запись активирована."
+      signed_out: "Учётная запись деактивирована."
+      already_signed_out: "Учётная запись уже деактивирована."
 
-      title_sign_in: 'Вход в систему'
-      btn_sign_in: 'Войти в аккаунт'
+      title_sign_in: 'Авторизация'
+      btn_sign_in: 'Войти в личный кабинет'
       remember_me: 'Запомнить меня'
     unlocks:
       send_instructions: "В течение нескольких минут вы получите письмо с инструкциями по разблокировке вашей учётной записи."
@@ -83,20 +84,24 @@ ru:
     shared:
       lbl_email: "Email"
       lbl_password: "Пароль"
+      lbl_enter_password: "Ввести пароль"
+      lbl_new_password: "Новый пароль"
+      lbl_old_password: "Старый пароль" 
       links:
         back: Назад
+        back_main_page: "Перейти на карту" 
         didn_t_receive_confirmation_instructions: Не получили подтверждение?
         didn_t_receive_unlock_instructions: Не получили код разблокировки?
         forgot_your_password: Забыли пароль?
-        sign_in: Вход
+        sign_in: Вход для зарегистрированных пользователей
         sign_in_with_provider: 'Войти с помощью: %{provider}'
         sign_up: Регистрация
         sign_out: Выход
       minimum_password_length:
-        few: "(минимум %{count} знака)"
-        many: "(минимум %{count} знаков)"
-        one: "(минимум %{count} знак)"
-        other: "(минимум %{count} знаков)"
+        few: "(не менее %{count} знака)"
+        many: "(не менее %{count} знаков)"
+        one: "(не менее %{count} знака)"
+        other: "(не менее %{count} знаков)"
   errors:
     messages:
       already_confirmed: "уже подтверждена. Пожалуйста, попробуйте войти в систему"

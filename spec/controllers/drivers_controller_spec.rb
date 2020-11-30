@@ -203,8 +203,8 @@ RSpec.describe DriversController, type: :controller do
   end
 
   describe "DELETE #destroy" do
-    context 'author' do
-      it 'deletes the question' do
+    context 'owner' do
+      it "deletes the driver's profile" do
         driver = create(:user, :as_driver, :authorized) 
         login(driver)
         profile = create(:driver, user: driver)
@@ -220,8 +220,8 @@ RSpec.describe DriversController, type: :controller do
       end
     end
 
-    context 'not author' do
-      it "doesn't delete the question" do
+    context 'not owner' do
+      it "doesn't delete the driver's profile" do
         driver = create(:user, :as_driver, :authorized) 
         login(driver)
         profile = create(:driver, user: driver)

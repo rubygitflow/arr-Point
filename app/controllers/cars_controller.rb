@@ -7,33 +7,22 @@ class CarsController < ApplicationController
   authorize_resource
 
   def index
-    if @driver.present?
-      @cars = @driver.user.cars
-    else
-      head(:forbidden)
-    end
+    @cars = @driver.user.cars
   end
 
   def show
   end
 
   def new
-    @car ||= Car.new
+    @car = current_user.cars.new
   end
 
   def edit
   end
 
   def create
-    if @driver.present?
-      # только у пользователя с водительскими правами можно заводить описание машины
-      @car = Car.new(car_params)
-      @car.user = @driver.user
-      params[:id] = @car.id
-      @car.save
-    else
-      head(:forbidden)
-    end
+    @car = current_user.cars.create(car_params.merge(user: current_user))
+    params[:id] = @car.id
   end
 
 

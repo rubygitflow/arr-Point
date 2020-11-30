@@ -14,6 +14,7 @@ FactoryBot.define do
     password { '12345678' }
     password_confirmation { '12345678' }
     role_rules_accepted   { true }
+    lock { false}
   end
 
   # https://github.com/thoughtbot/factory_bot/blob/master/GETTING_STARTED.md#traits
@@ -30,7 +31,7 @@ FactoryBot.define do
   end
 
   trait :as_passager do
-    role { 'Passager' }
+    role { 'Passenger' }
   end
 
   trait :unauthorized do
@@ -45,5 +46,9 @@ FactoryBot.define do
     last_sign_in_with_authy { '2020-11-09 06:05:33' }
     authy_enabled   { false }
     authy_hook_enabled   { false }
+  end
+
+  trait :blocked do
+    lock { true }
   end
 end
